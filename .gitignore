@@ -30,3 +30,33 @@
 *.exe
 *.out
 *.app
+
+
+.idea
+cmake-build-debug
+.clangd/
+*.exe
+*.out
+build/
+dist/
+
+
+# C++ and CLion related files
+.idea/
+cmake-build-debug/
+CMakeLists.txt.user
+compile_commands.json
+*.o
+*.a
+*.so
+*.out
+*.exe
+*.dll
+*.pdb
+*.lib
+*.exp
+*.ilk
+
+# Operating System Files
+.DS_Store
+Thumbs.db
