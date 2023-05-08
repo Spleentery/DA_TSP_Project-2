@@ -1,3 +1,6 @@
+# all linux hidden lines
+.*
+
 # Prerequisites
 *.d
 
