@@ -14,3 +14,7 @@ Second Project of Algorithm Design 2023 (FEUP, Porto). Solving Travelling Salesp
 
 # Deadline
 deadline is May 26, 2023 at midnight.
+
+## Plan
+
+![plan](docs/DA_proj-2-plan.png)
