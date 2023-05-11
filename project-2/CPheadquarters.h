@@ -21,6 +21,12 @@ public:
     void read_files();
 
     Graph getGraph() const;
+
+    double heuristic(string path[]);
+
+    double heuristicRec(Vertex *v, string path[], unsigned int currentIndex, double distance);
+
+    void print3();
 };
 
 
