@@ -63,3 +63,14 @@ compile_commands.json
 # Operating System Files
 .DS_Store
 Thumbs.db
+
+
+
+
+.DS_Store
+__MACOSX/
+*.csv
+Toy-Graphs/
+Extra_Fully_Connected_Graphs/
+Real-world Graphs/
+*.zip
