@@ -19,8 +19,7 @@ int main() {
     do {
         cout << "1 - T2.1 Backtracking Algorithm\n";
         cout << "2 - T2.2 Triangular Approximation Heuristic\n";
-        cout << "3 - T2.3 Tabu Search\n";
-        cout << "4 - T2.4 other heuristic algorithms\n";
+        cout << "3 - T2.3 other heuristic algorithms\n";
         cout << "8 - Exit\n";
 
 
@@ -61,16 +60,10 @@ int main() {
 
             case 2: {
 
-                break;
+                CP.print3();
             }
 
             case 3: {
-                cin.ignore();
-
-                break;
-            }
-
-            case 4: {
                 cin.ignore();
 
                 break;

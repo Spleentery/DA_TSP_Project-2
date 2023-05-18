@@ -39,10 +39,9 @@ public:
      * @param sourc
      * @param dest
      * @param w
-     * @param service
      * @return true if successful, and false if the source or destination vertex does not exist.
      */
-    bool addEdge(const std::string &sourc, const std::string &dest, int w, const std::string &service);
+    bool addEdge(const std::string &sourc, const std::string &dest, int w);
 
 
     [[nodiscard]] int getNumVertex() const;
@@ -125,42 +124,6 @@ protected:
     int **pathMatrix = nullptr;   // path matrix for Floyd-Warshall
 
 
-    /**
-     * auxiliary function to update the flow of an augmenting path
-     * @param s
-     * @param t
-     * @param bottleneck
-     * @note The bottleneck is the minimum residual capacity of an augmenting path
-     */
-    void updateFlow(Vertex *s, Vertex *t, int bottleneck);
-
-    /**
-     * auxiliary function to find the minimum residual capacity of an augmenting path
-     * @param s
-     * @param t
-     * @return the minimum residual capacity of an augmenting path
-     */
-    int findMinResidual(Vertex *s, Vertex *t);
-
-    /**
-     * auxiliary function to find an augmenting path, given a source and a target
-     * @param s
-     * @param t
-     * @return true if an augmenting path was found, and false otherwise
-     * @note An augmenting path is a simple path - a path that does not contain cycles
-     * @attention This function uses the BFS algorithm.
-     * @attention The time complexity of the BFS algorithm is O(V+E), where V is the number of vertices and E is the number of edges in the graph.
-     */
-    bool findAugmentingPath(const std::string &s, const std::string &t);
-
-    /**
-     * auxiliary function to test and visit a vertex, given a queue, an edge, a vertex and a residual
-     * @param q
-     * @param e
-     * @param w
-     * @param residual
-     */
-    void testAndVisit(std::queue<Vertex *> &q, Edge *e, Vertex *w, double residual);
 
     bool isIn(std::string n, std::vector<std::string> vec);
 

@@ -5,33 +5,26 @@
 
 #include "Station.h"
 
-Station::Station(string name_, string district_, string municipality_, string township_, string line_) {
-    name=name_;
-    municipality=municipality_;
-    district=district_;
-    township=township_;
-    line=line_;
+Station::Station(string id_, double longitude_, double latitude_) {
+    id=id_;
+    longitude=longitude_;
+    latitude=latitude_;
+
 }
 
-string Station::get_name() {
-    return name;
+string Station::get_id() {
+    return id;
 }
 
-string Station::get_district() {
-    return district;
+double Station::get_longitude() {
+    return longitude;
 }
 
-string Station::get_municipality() {
-    return municipality;
+double Station::get_latitude() {
+    return latitude;
 }
 
-string Station::get_township() {
-    return township;
-}
 
-string Station::get_line() {
-    return line;
-}
 
 Station::Station() {
 

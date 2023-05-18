@@ -53,7 +53,7 @@ public:
 
     void setPath(Edge *path);
 
-    Edge *addEdge(Vertex *dest, int w, const std::string &service);
+    Edge *addEdge(Vertex *dest, int w);
 
     bool removeEdge(std::string destID);
 
@@ -80,7 +80,7 @@ protected:
 
 class Edge {
 public:
-    Edge(Vertex *orig, Vertex *dest, int w, const std::string &service);
+    Edge(Vertex *orig, Vertex *dest, int w);
 
     Vertex *getDest() const;
 
@@ -100,15 +100,15 @@ public:
 
     void setFlow(double flow);
 
-    [[nodiscard]] std::string getService() const;
 
-    void setService(const std::string &service);
+
+
 
 protected:
     Vertex *dest; // destination vertex
     int weight; // edge weight, can also be used for capacity
 
-    std::string service;
+
     // auxiliary fields
     bool selected = false;
 

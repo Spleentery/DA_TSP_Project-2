@@ -12,11 +12,10 @@
 using namespace std;
 
 class Station {
-    string name;
-    string district;
-    string municipality;
-    string township;
-    string line;
+    string id;
+    double longitude;
+    double latitude;
+
 public:
     /**
      * Default constructor
@@ -25,43 +24,33 @@ public:
 
     /**
      *  Constructor
-     *  @param name_
-     *  @param district_
-     *  @param municipality_
-     *  @param township_
-     *  @param line_
+     *  @param id_
+     *  @param longitude_
+     *  @param latitude_
+
      */
-    Station(string name_, string district_, string municipality_, string township_, string line_);
+    Station(string id_, double longitude_, double latitude_);
 
     /**
      * Returns the station's name
-     * @return name
+     * @return id
      */
-    string get_name();
+    string get_id();
 
     /**
      * Returns the station's district
-     * @return district
+     * @return longitude
      */
-    string get_district();
+    double get_longitude();
 
     /**
      * Returns the station's municipality
-     * @return municipality
+     * @return latitude
      */
-    string get_municipality();
+    double get_latitude();
 
-    /**
-     * Returns the station's township
-     * @return township
-     */
-    string get_township();
 
-    /**
-     * Returns the station's line
-     * @return line
-     */
-    string get_line();
+
 };
 
 #endif //PROJECT_2_STATION_H
