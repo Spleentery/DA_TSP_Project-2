@@ -53,7 +53,7 @@ public:
 
     void setPath(Edge *path);
 
-    Edge *addEdge(Vertex *dest, int w);
+    Edge *addEdge(Vertex *dest, double w);
 
     bool removeEdge(std::string destID);
 
@@ -80,11 +80,11 @@ protected:
 
 class Edge {
 public:
-    Edge(Vertex *orig, Vertex *dest, int w);
+    Edge(Vertex *orig, Vertex *dest, double d);
 
     Vertex *getDest() const;
 
-    int getWeight() const;
+    double getDistance() const;
 
     bool isSelected() const;
 
@@ -106,7 +106,7 @@ public:
 
 protected:
     Vertex *dest; // destination vertex
-    int weight; // edge weight, can also be used for capacity
+    double distance; // edge weight, can also be used for capacity
 
 
     // auxiliary fields

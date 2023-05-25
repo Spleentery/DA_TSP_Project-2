@@ -41,7 +41,7 @@ public:
      * @param w
      * @return true if successful, and false if the source or destination vertex does not exist.
      */
-    bool addEdge(const std::string &sourc, const std::string &dest, int w);
+    bool addEdge(const std::string &sourc, const std::string &dest, double d);
 
 
     [[nodiscard]] int getNumVertex() const;

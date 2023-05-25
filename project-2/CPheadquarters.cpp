@@ -25,21 +25,21 @@ void CPheadquarters::read_network(string path){
         string station_A;
         string station_B;
         string temp;
-        int capacity;
-        string service;
+        double distance;
+
 
         stringstream inputString(line1);
 
         getline(inputString, station_A, ',');
         getline(inputString, station_B, ',');
         getline(inputString, temp, ',');
-        getline(inputString, service, ',');
 
-        capacity = stoi(temp);
+
+        distance = stod(temp);
         graph.addVertex(station_A);
         graph.addVertex(station_B);
 
-        graph.addEdge(station_A, station_B, capacity);
+        graph.addEdge(station_A, station_B, distance);
     }
 }
 
@@ -66,8 +66,8 @@ void CPheadquarters::read_stations(string path){
         getline(inputString, temp1, ',');
         getline(inputString, temp2, ',');
 
-        longitude_ = stoi(temp1);
-        latitude_ = stoi(temp2);
+        longitude_ = stod(temp1);
+        latitude_ = stod(temp2);
 
 
         Station station(id_, longitude_, latitude_);
@@ -103,7 +103,7 @@ void CPheadquarters::read_files() {
         getline(inputString, temp, ',');
         getline(inputString, service, ',');
 
-        capacity = stoi(temp);
+        capacity = stof(temp);
         graph.addVertex(station_A);
         graph.addVertex(station_B);
 
@@ -134,8 +134,8 @@ void CPheadquarters::read_files() {
         getline(inputString, temp1, ',');
         getline(inputString, temp2, ',');
 
-        longitude_ = stoi(temp1);
-        latitude_ = stoi(temp2);
+        longitude_ = stof(temp1);
+        latitude_ = stof(temp2);
 
 
         Station station(id_, longitude_, latitude_);
@@ -164,7 +164,7 @@ double CPheadquarters::heuristicRec(Vertex *v, string path[], unsigned int curre
 
     for (const auto &edge: v->getAdj()) {
         Vertex *v2 = edge->getDest();
-        double dist2 = edge->getWeight();
+        double dist2 = edge->getDistance();
         if(v2->isVisited() == false){
             nodesStillUnvisited = true;
             string id2 = edge->getDest()->getId();
