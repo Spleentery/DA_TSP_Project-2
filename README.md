@@ -8,12 +8,12 @@ Second Project of Algorithm Design 2023 (FEUP, Porto). Solving Travelling Salesp
 | ---------------- | --------- | ------------------ |
 | David Burchakov  | 202203777 | up202203777@fe.up.pt                |
 | Andres Vega	   | --------- | up---------@fe.up.pt               |
-| Pedro | 202108706 | up---------@fe.up.pt 
+| Pedro | 202108706 | up202108706@fe.up.pt 
 ----
 
 
 # Deadline
-deadline is May 26, 2023 at midnight.
+deadline is May 31, 2023 at midnight.
 
 ## Plan
 
