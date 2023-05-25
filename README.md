@@ -8,7 +8,7 @@ Second Project of Algorithm Design 2023 (FEUP, Porto). Solving Travelling Salesp
 | ---------------- | --------- | ------------------ |
 | David Burchakov  | 202203777 | up202203777@fe.up.pt                |
 | Andres Vega	   | --------- | up---------@fe.up.pt               |
-| Pedro | --------- | up---------@fe.up.pt 
+| Pedro | 202108706 | up---------@fe.up.pt 
 ----
 
 
