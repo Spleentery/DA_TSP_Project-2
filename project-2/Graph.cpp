@@ -29,12 +29,12 @@ bool Graph::addVertex(const std::string &id) {
 }
 
 
-bool Graph::addEdge(const std::string &sourc, const std::string &dest, int w) {
+bool Graph::addEdge(const std::string &sourc, const std::string &dest, double d) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == nullptr || v2 == nullptr)
         return false;
-    v1->addEdge(v2, w);
+    v1->addEdge(v2, d);
 
     return true;
 }
@@ -75,7 +75,7 @@ void Graph::print() const {
     std::cout << "\nEdges:\n";
     for (const auto &vertex: vertexSet) {
         for (const auto &edge: vertex->getAdj()) {
-            std::cout << vertex->getId() << " -> " << edge->getDest()->getId() << " (weight: " << edge->getWeight() << ")" << std::endl;
+            std::cout << vertex->getId() << " -> " << edge->getDest()->getId() << " (weight: " << edge->getDistance() << ")" << std::endl;
         }
     }
 }
