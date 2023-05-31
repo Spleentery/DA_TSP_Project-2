@@ -149,6 +149,17 @@ void CPheadquarters::read_files() {
     }
 }
 
+/**
+ * Recursive part of the heuristic that looks for the closest vertex to the actual one,
+ * the closest vertex is determine using the angle, so this heuristic uses geological information from the vertex
+ * @param v
+ * @param route
+ * @param currentIndex
+ * @param distance
+ * @param nodesVisited
+ * @param totalDistance
+ * @attention the time complexity of this part of the heuristic is O(E)
+ */
 void CPheadquarters::heuristicRec(Vertex *v, string route[], unsigned int currentIndex, double distance, unsigned int &nodesVisited, double &totalDistance){
 
     bool nodesStillUnvisited = false;
@@ -212,6 +223,13 @@ void CPheadquarters::heuristicRec(Vertex *v, string route[], unsigned int curren
 
 }
 
+/**
+ * Initial part of the algorithm, finds the route of the vertex with the given id, calling the recursive function
+ * @param route
+ * @param nodesVisited
+ * @param totalDistance
+ * @param id
+ */
 void CPheadquarters::heuristic(string route[], unsigned int &nodesVisited, double &totalDistance, string id) {
 
     for (const auto &vertex: graph.getVertexSet()) {
@@ -230,6 +248,12 @@ void CPheadquarters::heuristic(string route[], unsigned int &nodesVisited, doubl
     heuristicRec(actual, route, 1, distance, nodesVisited, totalDistance);
 }
 
+/**
+ * Iterates through all vertex to determine with which one to starts
+ * @note this algorithm only work when it starts in some specifics vertex
+ * so that's the reason it needs to go through all possible nodes to choose the one who satisfies the needs of the problem
+ * @attention since this parte of the heuristic iterates through all vertex and call the recursive part from the algorithm that is O(E) the time complexity is O(EV)
+ */
 void CPheadquarters::chooseRoute(){
     string id;
     int pathSize = graph.getNumVertex();
@@ -257,6 +281,9 @@ void CPheadquarters::chooseRoute(){
     }
 }
 
+/**
+ * Ignore this
+ */
 void CPheadquarters::print3(){
     int pathSize = graph.getNumVertex() +1;
     string path[pathSize];
