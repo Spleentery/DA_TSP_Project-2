@@ -21,6 +21,10 @@ Vertex *Graph::findVertex(const std::string &id) const {
 
 
 
+
+
+
+
 bool Graph::addVertex(const std::string &id) {
     if (findVertex(id) != nullptr)
         return false;
@@ -75,7 +79,7 @@ void Graph::print() const {
     std::cout << "\nEdges:\n";
     for (const auto &vertex: vertexSet) {
         for (const auto &edge: vertex->getAdj()) {
-            std::cout << vertex->getId() << " -> " << edge->getDest()->getId() << " (weight: " << edge->getDistance() << ")" << std::endl;
+            std::cout << vertex->getId() << " -> " << edge->getDest()->getId() << " (distance: " << edge->getDistance() << ")" << std::endl;
         }
     }
 }

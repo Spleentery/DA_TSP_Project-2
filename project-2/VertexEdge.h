@@ -31,6 +31,8 @@ public:
 
     bool isVisited() const;
 
+    bool isAdded() const;
+
     bool isProcessing() const;
 
     unsigned int getIndegree() const;
@@ -45,6 +47,8 @@ public:
 
     void setVisited(bool visited);
 
+    void setAdded(bool added);
+
     void setProcesssing(bool processing);
 
     void setIndegree(unsigned int indegree);
@@ -57,6 +61,8 @@ public:
 
     bool removeEdge(std::string destID);
 
+    Edge *getEdge(std::string destID);
+
 
 protected:
     std::string id;           // identifier
@@ -64,6 +70,7 @@ protected:
 
     // auxiliary fields
     bool visited = false; // used by DFS, BFS, Prim ...
+    bool added = false;
     bool processing = false; // used by isDAG (in addition to the visited attribute)
     unsigned int indegree; // used by topsort
     double dist = 0;

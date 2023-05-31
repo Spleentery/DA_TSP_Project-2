@@ -22,11 +22,15 @@ public:
 
     Graph getGraph() const;
 
-    double heuristic(string path[]);
+    void heuristic(string path[], unsigned int &nodesVisited, double &totalDistance, string id);
 
-    double heuristicRec(Vertex *v, string path[], unsigned int currentIndex, double distance);
+    void heuristicRec(Vertex *v, string path[], unsigned int currentIndex, double distance, unsigned int &nodesVisited, double &totalDistance);
+
+    void chooseRoute();
 
     void print3();
+
+
 };
 
 

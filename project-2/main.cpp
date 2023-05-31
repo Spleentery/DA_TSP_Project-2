@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     CPheadquarters CP;
     string path;
-    cout<<"Insert path to file to consrtuct graph (../network.csv): ";
+    cout<<"Insert path to file to construct graph (../network.csv): ";
     getline(cin, path);
     CP.read_network(path);
     cout<<"Insert path to file regarding stations (../stations.csv): ";
@@ -17,7 +17,7 @@ int main() {
     int n;
     cout << "\n-------------- An Analysis Tool for Railway Network Management --------------\n" << endl;
     do {
-        cout << "1 - T2.1 Backtracking Algorithm\n";
+        cout << "\n1 - T2.1 Backtracking Algorithm\n";
         cout << "2 - T2.2 Triangular Approximation Heuristic\n";
         cout << "3 - T2.3 other heuristic algorithms\n";
         cout << "8 - Exit\n";
@@ -60,11 +60,12 @@ int main() {
 
             case 2: {
 
-                CP.print3();
+
             }
 
             case 3: {
-                cin.ignore();
+                //CP.print3();
+                CP.chooseRoute();
 
                 break;
             }
