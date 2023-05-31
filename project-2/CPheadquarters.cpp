@@ -40,6 +40,7 @@ void CPheadquarters::read_network(string path){
         graph.addVertex(station_B);
 
         graph.addEdge(station_A, station_B, distance);
+        graph.addEdge(station_B, station_A, distance);
     }
 }
 
@@ -48,9 +49,10 @@ void CPheadquarters::read_stations(string path){
     string line2;
     std::getline(inputFile2, line2); // ignore first line
 
+
     while (getline(inputFile2, line2, '\n')) {
 
-        if (!line2.empty() && line2.back() == '\r') { // Check if the last character is '\r'
+        if (!line2.empty() && line2.back() == '\n') { // Check if the last character is '\r'
             line2.pop_back(); // Remove the '\r' character
         }
 
@@ -65,6 +67,7 @@ void CPheadquarters::read_stations(string path){
         getline(inputString, id_, ',');
         getline(inputString, temp1, ',');
         getline(inputString, temp2, ',');
+
 
         longitude_ = stod(temp1);
         latitude_ = stod(temp2);
@@ -146,7 +149,7 @@ void CPheadquarters::read_files() {
     }
 }
 
-double CPheadquarters::heuristicRec(Vertex *v, string path[], unsigned int currentIndex, double distance){
+void CPheadquarters::heuristicRec(Vertex *v, string route[], unsigned int currentIndex, double distance, unsigned int &nodesVisited, double &totalDistance){
 
     bool nodesStillUnvisited = false;
     string id1 = v->getId();
@@ -156,7 +159,7 @@ double CPheadquarters::heuristicRec(Vertex *v, string path[], unsigned int curre
     double lat1 = st1.get_latitude();
 
     Vertex *small;
-    double smallAngle;
+    double smallAngle = 10000;
     double x;
     double y;
     double angle;
@@ -168,7 +171,7 @@ double CPheadquarters::heuristicRec(Vertex *v, string path[], unsigned int curre
         if(v2->isVisited() == false){
             nodesStillUnvisited = true;
             string id2 = edge->getDest()->getId();
-            Station st2 = stations.find(id1)->second;
+            Station st2 = stations.find(id2)->second;
 
             double long2 = st2.get_longitude();
             double lat2 = st2.get_latitude();
@@ -183,54 +186,94 @@ double CPheadquarters::heuristicRec(Vertex *v, string path[], unsigned int curre
                 small = v2;
                 dist = dist2;
             }
+
+        }
+    }
+
+    bool inRoute = false;
+    for(int i = 0; i < currentIndex; i++){
+        if(route[i] == v->getId()){
+            inRoute = true;
         }
     }
 
     if(nodesStillUnvisited){
-        path[currentIndex] = small->getId();
+        route[currentIndex] = small->getId();
         small->setVisited(true);
-        heuristicRec(small, path, currentIndex + 1, distance + dist);
+
+        heuristicRec(small, route, currentIndex+1, distance + dist, nodesVisited, totalDistance);
     }
     else{
-        return distance;
-    }
+        nodesVisited = currentIndex;
+        totalDistance = distance;
 
+    }
 
 
 }
 
-double CPheadquarters::heuristic(string path[]) {
+void CPheadquarters::heuristic(string route[], unsigned int &nodesVisited, double &totalDistance, string id) {
 
     for (const auto &vertex: graph.getVertexSet()) {
         vertex->setVisited(false);
+
     }
 
-    int pathSize = graph.getNumVertex() +1;
-    path[pathSize];
 
-    string first_id = stations.begin()->first;
-    Vertex *actual = graph.findVertex(first_id);
-
-    path[0] = actual->getId();
-    path[pathSize] = actual->getId();
-    actual->setVisited(true);
+    Vertex *actual = graph.findVertex(id);
 
     double distance = 0;
+    route[0] = actual->getId();
 
-    return heuristicRec(actual, path, 1, distance);
+    actual->setVisited(true);
 
+    heuristicRec(actual, route, 1, distance, nodesVisited, totalDistance);
+}
 
+void CPheadquarters::chooseRoute(){
+    string id;
+    int pathSize = graph.getNumVertex();
+    string path[pathSize];
+    unsigned int nodesVisited = 0;
+    double distance = 0;
+    for(auto it =stations.begin(); it != stations.end(); it++){
+        id = it->first;
+        heuristic(path, nodesVisited, distance, id);
+        if(nodesVisited == pathSize){
+            string sourceId = path[pathSize-1];
+            string destId = path[0];
+            Vertex *sourceV = graph.findVertex(sourceId);
+            Edge *missingEdge = sourceV->getEdge(destId);
+            if(missingEdge!= nullptr){
+                distance += missingEdge->getDistance();
+                for(int i = 0; i < pathSize; i++){
+                    cout << path[i] << "->";
+                }
+                cout << destId;
+                cout << "\nTotal distance: " << distance << endl;
+                break;
+            }
+        }
+    }
 }
 
 void CPheadquarters::print3(){
     int pathSize = graph.getNumVertex() +1;
     string path[pathSize];
+    unsigned int nodesVisited = 0;
+    double distance = 0;
+    heuristic(path, nodesVisited, distance, "4");
 
-    for(int i = 0; i < pathSize; i++){
-        cout << path[i] << "->" <<endl;
+    for(int i = 0; i < nodesVisited; i++){
+        cout << path[i] << "->";
     }
 
+
+
 }
+
+
+
 
 
 Graph CPheadquarters::getGraph() const {

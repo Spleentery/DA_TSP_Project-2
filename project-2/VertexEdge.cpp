@@ -50,6 +50,22 @@ bool Vertex::removeEdge(std::string destID) {
     return removedEdge;
 }
 
+Edge *Vertex::getEdge(std::string destID){
+
+    auto it = adj.begin();
+    while (it != adj.end()) {
+        Edge *edge = *it;
+        Vertex *dest = edge->getDest();
+        if (dest->getId() == destID) {
+
+            return edge; // allows for multiple edges to connect the same pair of vertices (multigraph)
+        } else {
+            it++;
+        }
+    }
+    return nullptr;
+}
+
 bool Vertex::operator<(Vertex &vertex) const {
     return this->dist < vertex.dist;
 }
@@ -64,6 +80,10 @@ std::vector<Edge *> Vertex::getAdj() const {
 
 bool Vertex::isVisited() const {
     return this->visited;
+}
+
+bool Vertex::isAdded() const {
+    return this->added;
 }
 
 bool Vertex::isProcessing() const {
@@ -92,6 +112,10 @@ void Vertex::setId(int id) {
 
 void Vertex::setVisited(bool visited) {
     this->visited = visited;
+}
+
+void Vertex::setAdded(bool added) {
+    this->added = added;
 }
 
 void Vertex::setProcesssing(bool processing) {
