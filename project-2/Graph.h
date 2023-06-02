@@ -134,6 +134,13 @@ protected:
      * @param name
      */
     void deleteVertex(std::string name);
+
+    double getPathCost(const std::vector<Vertex *> &path);
+
+    bool TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *> &shortestPath, double &shortestPathCost,
+                 int &numOfPossiblePaths);
+
+    bool TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost);
 };
 
 void deleteMatrix(int **m, int n);

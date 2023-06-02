@@ -147,3 +147,70 @@ void Graph::deleteVertex(std::string name) {
     }
 }
 
+double Graph::getPathCost(const std::vector<Vertex*>& path) {
+    double totalCost = 0;
+    for (int i = 0; i < path.size() - 1; ++i) {
+        for (auto edge : path[i]->getAdj()) {
+            if (edge->getDest() == path[i + 1]) {
+                totalCost += edge->getDistance();
+                break;
+            }
+        }
+    }
+    return totalCost;
+}
+
+
+bool Graph::TSPUtil(Vertex* v, std::vector<Vertex*>& path, std::vector<Vertex*>& shortestPath, double& shortestPathCost, int& numOfPossiblePaths) {
+    if (path.size() == vertexSet.size()) {
+        for (auto edge : v->getAdj()) {
+            if (edge->getDest() == path[0]) {
+                path.push_back(path[0]); // Closing the cycle
+                double pathCost = getPathCost(path);
+
+                // Print path and its cost
+                std::cout << "Path: ";
+                for (auto vertex : path)
+                    std::cout << vertex->getId() << " ";
+                std::cout << "Cost: " << pathCost << std::endl;
+                numOfPossiblePaths++;
+                if (shortestPath.empty() || pathCost < shortestPathCost) {
+                    shortestPath = path;
+                    shortestPathCost = pathCost;
+                }
+                path.pop_back();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    for (auto edge : v->getAdj()) {
+        Vertex* w = edge->getDest();
+        if (std::find(path.begin(), path.end(), w) != path.end())
+            continue;
+        path.push_back(w);
+        TSPUtil(w, path, shortestPath, shortestPathCost, numOfPossiblePaths);
+        path.pop_back();
+    }
+
+    return !shortestPath.empty();
+}
+
+
+/**
+ * Check if the graph has a Hamiltonian cycle.
+ * (visit all nodes only once and return to the starting node)
+ * conditions: graph should be connected
+ * @return
+ */
+bool Graph::TSP(std::vector<Vertex*>& shortestPath, double& shortestPathCost) {
+    if (vertexSet.empty())
+        return false;
+    int numOfPossiblePaths = 0;
+    std::vector<Vertex*> path;
+    path.push_back(vertexSet[0]); // Start from any vertex
+    auto res =  TSPUtil(vertexSet[0], path, shortestPath, shortestPathCost,numOfPossiblePaths);
+    std::cout << "Number of possible paths: " << numOfPossiblePaths << std::endl;
+    return res;
+}
