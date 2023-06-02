@@ -2,8 +2,8 @@
 // Created by david on 5/8/23.
 //
 
-#ifndef PROJECT_2_STATION_H
-#define PROJECT_2_STATION_H
+#ifndef PROJECT_2_ESTABLISHMENT_H
+#define PROJECT_2_ESTABLISHMENT_H
 
 
 
@@ -11,16 +11,14 @@
 
 using namespace std;
 
-class Station {
+class Establishment {
     string id;
     double longitude;
     double latitude;
 
 public:
-    /**
-     * Default constructor
-     */
-    Station();
+
+    Establishment();
 
     /**
      *  Constructor
@@ -29,22 +27,22 @@ public:
      *  @param latitude_
 
      */
-    Station(string id_, double longitude_, double latitude_);
+    Establishment(string id_, double longitude_, double latitude_);
 
     /**
-     * Returns the station's name
+     * Returns the id of the establishment
      * @return id
      */
     string get_id();
 
     /**
-     * Returns the station's district
+     * Returns the establishment's longitude
      * @return longitude
      */
     double get_longitude();
 
     /**
-     * Returns the station's municipality
+     * Returns the establishment's latitude
      * @return latitude
      */
     double get_latitude();
@@ -53,4 +51,4 @@ public:
 
 };
 
-#endif //PROJECT_2_STATION_H
+#endif //PROJECT_2_ESTABLISHMENT_H
