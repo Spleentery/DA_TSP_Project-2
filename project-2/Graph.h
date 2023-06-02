@@ -119,6 +119,8 @@ public:
      */
     Edge *findEdge(Vertex *source, Vertex *destination);
 
+    bool TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost);
+
 protected:
     std::vector<Vertex *> vertexSet;    // vertex set
 
@@ -140,7 +142,6 @@ protected:
     bool TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *> &shortestPath, double &shortestPathCost,
                  int &numOfPossiblePaths);
 
-    bool TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost);
 };
 
 void deleteMatrix(int **m, int n);

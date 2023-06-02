@@ -31,6 +31,7 @@ public:
     void print3();
 
 
+    void backtrack();
 };
 
 

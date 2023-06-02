@@ -40,21 +40,7 @@ int main() {
 
         switch (n) {
             case 1: {
-                cin.ignore(); // ignore newline character left in the input stream
-                string a, b;
-
-                cout << "Enter station A: ";
-                getline(cin, a);
-
-                cout << "Enter station B: ";
-                getline(cin, b);
-
-                if (a.empty() || b.empty()) {
-                    cerr << "Error: Station names cannot be empty." << endl;
-                    break;
-                }
-
-                // ... your code here ...
+                CP.backtrack();
                 break;
             }
 

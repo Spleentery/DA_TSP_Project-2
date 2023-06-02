@@ -306,3 +306,24 @@ void CPheadquarters::print3(){
 Graph CPheadquarters::getGraph() const {
     return this->graph;
 }
+
+
+/**
+ * Use a backtracking exhaustive approach for TSP
+ * Applicable only for very small graphs
+ */
+void CPheadquarters::backtrack() {
+    std::vector<Vertex*> shortestPath;
+    double shortestPathCost = 0;
+
+
+    if (this->graph.TSP(shortestPath, shortestPathCost)) {
+        cout << "Shortest Hamiltonian cycle: ";
+        for (auto vertex : shortestPath)
+            cout << vertex->getId() << " ";
+        cout << "\nCost: " << shortestPathCost << endl;
+    }
+    else {
+        cout << "The graph does not have a Hamiltonian cycle" << endl;
+    }
+}
