@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void CPheadquarters::read_network(string path){
+void CPheadquarters::read_edges(string path){
     std::ifstream inputFile1(path);
     string line1;
     std::getline(inputFile1, line1); // ignore first line
@@ -22,25 +22,25 @@ void CPheadquarters::read_network(string path){
             line1.pop_back(); // Remove the '\r' character
         }
 
-        string station_A;
-        string station_B;
+        string origin;
+        string destination;
         string temp;
         double distance;
 
 
         stringstream inputString(line1);
 
-        getline(inputString, station_A, ',');
-        getline(inputString, station_B, ',');
+        getline(inputString, origin, ',');
+        getline(inputString, destination, ',');
         getline(inputString, temp, ',');
 
 
         distance = stod(temp);
-        graph.addVertex(station_A);
-        graph.addVertex(station_B);
+        graph.addVertex(origin);
+        graph.addVertex(destination);
 
-        graph.addEdge(station_A, station_B, distance);
-        graph.addEdge(station_B, station_A, distance);
+        graph.addEdge(origin, destination, distance);
+        graph.addEdge(destination, origin, distance);
     }
 }
 

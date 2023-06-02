@@ -6,9 +6,10 @@ using namespace std;
 int main() {
     CPheadquarters CP;
     string path;
-    cout<<"Insert path to file to construct graph (../network.csv): ";
+    cout << "Insert path to file to construct a graph \ne.g Toy Graphs: \n../Toy-Graphs/Toy-Graphs/shipping.csv or ../Toy-Graphs/Toy-Graphs/stadiums.csv or ../Toy-Graphs/Toy-Graphs/tourism.csv "
+            "\nReal World Graphs: \n../Real-world Graphs/Real-world Graphs/graph1/edges.csv or ../Real-world Graphs/Real-world Graphs/graph2/edges.csv or ../Real-world Graphs/Real-world Graphs/graph3/edges.csv): ";
     getline(cin, path);
-    CP.read_network(path);
+    CP.read_edges(path);
     cout<<"Insert path to file regarding stations (../stations.csv): ";
     getline(cin, path);
     cout<<endl;

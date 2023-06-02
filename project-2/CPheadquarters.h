@@ -14,7 +14,7 @@ class CPheadquarters {
     unordered_map<string, Station> stations;
 public:
 
-    void read_network(std::string path);
+    void read_edges(std::string path);
 
     void read_stations(std::string path);
 
