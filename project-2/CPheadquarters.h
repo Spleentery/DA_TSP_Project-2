@@ -18,7 +18,6 @@ public:
 
     void read_stations(std::string path);
 
-    void read_files();
 
     Graph getGraph() const;
 

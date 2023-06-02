@@ -20,11 +20,6 @@ Vertex *Graph::findVertex(const std::string &id) const {
 }
 
 
-
-
-
-
-
 bool Graph::addVertex(const std::string &id) {
     if (findVertex(id) != nullptr)
         return false;
@@ -85,8 +80,6 @@ void Graph::print() const {
 }
 
 
-
-
 bool Graph::isIn(std::string n, std::vector<std::string> vec) {
     for (std::string s: vec) {
         if (s == n) return true;
@@ -94,36 +87,6 @@ bool Graph::isIn(std::string n, std::vector<std::string> vec) {
     return false;
 }
 
-Edge *Graph::findEdge(Vertex *source, Vertex *destination) {
-
-    for (auto edge: source->getAdj()) {
-        if (edge->getDest() == destination) {
-            return edge;
-        }
-    }
-    return nullptr;
-}
-
-
-std::vector<std::string> Graph::getSources() {
-    std::vector<std::string> res;
-    for (auto v : vertexSet) {
-        if(v->getIncoming().empty()){
-            res.push_back(v->getId());
-        }
-    }
-    return res;
-}
-
-std::vector<std::string> Graph::getTargets() {
-    std::vector<std::string> res;
-    for (auto v : vertexSet) {
-        if(v->getAdj().empty()){
-            res.push_back(v->getId());
-        }
-    }
-    return res;
-}
 
 
 void Graph::deleteVertex(std::string name) {
