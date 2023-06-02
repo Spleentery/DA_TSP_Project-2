@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 #include "CPheadquarters.h"
 
 using namespace std;
@@ -37,7 +38,7 @@ int main() {
     if (!path.empty()) {
         CP.read_stations(path);
     }
-    CP.getGraph().print();
+    //CP.getGraph().print();
     int n;
     cout << "\n-------------- An Analysis Tool for Railway Network Management --------------\n" << endl;
     do {
@@ -79,7 +80,21 @@ int main() {
 
             case 3: {
                 //CP.print3();
+                auto start_time = std::chrono::high_resolution_clock::now();
+
                 CP.chooseRoute();
+
+// Code block to measure goes here
+
+// End the timer
+                auto end_time = std::chrono::high_resolution_clock::now();
+
+// Compute the duration
+                auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+
+// Print the duration
+                std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
+
 
                 break;
             }
