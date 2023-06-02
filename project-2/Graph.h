@@ -11,6 +11,7 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
+#include <unordered_set>
 
 
 #include "VertexEdge.h"
@@ -89,7 +90,9 @@ protected:
 
     bool hasPendantVertex();
 
-    void DFS(Vertex *v, bool *visited, int *disc, int *low, int *parent, bool *ap);
+    bool hasArticulationPointUtil(Vertex *v, std::unordered_set<Vertex *> &visited,
+                                  std::unordered_set<Vertex *> &articulationPoints,
+                                  std::unordered_map<Vertex *, int> &visitedTimes);
 };
 
 void deleteMatrix(int **m, int n);

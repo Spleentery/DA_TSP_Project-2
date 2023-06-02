@@ -1,6 +1,8 @@
 #include <climits>
 #include <queue>
 #include "Graph.h"
+#include <algorithm>
+#include <unordered_set>
 
 int Graph::getNumVertex() const {
     return vertexSet.size();
@@ -157,7 +159,7 @@ bool Graph::TSPUtil(Vertex* v, std::vector<Vertex*>& path, std::vector<Vertex*>&
     if (path.size() == vertexSet.size()) {
         for (auto edge : v->getAdj()) {
             if (edge->getDest() == path[0]) {
-                path.push_back(path[0]); // Closing the cycle
+                path.push_back(path[0]);
                 double pathCost = getPathCost(path);
 
                 // Print path and its cost
@@ -213,7 +215,13 @@ bool Graph::TSP(std::vector<Vertex*>& shortestPath, double& shortestPathCost) {
     return res;
 }
 
-
+/**
+ * Utility function to check if the graph has a Hamiltonian cycle.
+ * @param v
+ * @param path
+ * @param pathCost
+ * @return
+ */
 double Graph::hasHamiltonianCycleUtil(Vertex* v, std::vector<Vertex*>& path, double& pathCost) {
     if (path.size() == vertexSet.size()) {
         for (auto edge : v->getAdj()) {
@@ -240,11 +248,70 @@ double Graph::hasHamiltonianCycleUtil(Vertex* v, std::vector<Vertex*>& path, dou
     return false;
 }
 
+/**
+ * Check if the graph has a Hamiltonian cycle.
+ * conditions:
+ * - graph must be connected
+ * - graph must not have pendant vertices
+ * - graph must not have articulation points
+ * @param path
+ * @param pathCost
+ * @return
+ */
 bool Graph::hasHamiltonianCycle(std::vector<Vertex*>& path, double& pathCost) {
-    if (vertexSet.empty() || hasPendantVertex())
+    if (vertexSet.empty() || hasPendantVertex() || hasArticulationPoint())
         return false;
 
     path.push_back(vertexSet[0]);
     auto res = hasHamiltonianCycleUtil(vertexSet[0], path, pathCost);
     return res;
 }
+
+
+bool Graph::hasArticulationPointUtil(Vertex* v, std::unordered_set<Vertex*>& visited, std::unordered_set<Vertex*>& articulationPoints, std::unordered_map<Vertex*, int>& visitedTimes) {
+    static int time = 0;
+    int visitedTime = ++time;
+    int minVisitedTime = visitedTime;
+    int childCount = 0;
+    visited.insert(v);
+
+    for (auto edge : v->getAdj()) {
+        Vertex* w = edge->getDest();
+        if (visited.find(w) == visited.end()) {
+            childCount++;
+            if (hasArticulationPointUtil(w, visited, articulationPoints, visitedTimes)) {
+                articulationPoints.insert(v);
+                return true;
+            }
+            minVisitedTime = std::min(minVisitedTime, visitedTimes[w]);
+            if (visitedTime <= visitedTimes[w]) {
+                articulationPoints.insert(v);
+            }
+        }
+        else {
+            minVisitedTime = std::min(minVisitedTime, visitedTimes[w]);
+        }
+    }
+
+    if (v == vertexSet[0] && childCount > 1) {
+        articulationPoints.insert(v);
+    }
+
+    visitedTimes[v] = minVisitedTime;
+    return false;
+}
+
+bool Graph::hasArticulationPoint() {
+    if (vertexSet.empty())
+        return false;
+
+    std::unordered_set<Vertex*> visited;
+    std::unordered_set<Vertex*> articulationPoints;
+    std::unordered_map<Vertex*, int> visitedTimes;
+
+    hasArticulationPointUtil(vertexSet[0], visited, articulationPoints, visitedTimes);
+
+    return !articulationPoints.empty();
+}
+
+
