@@ -45,11 +45,8 @@ void CPheadquarters::read_edges(string path){
 }
 
 
-void CPheadquarters::read_stations(string path){
+void CPheadquarters::read_establishments(string path){
     std::ifstream inputFile2(path);
-
-    
-
     string line2;
     std::getline(inputFile2, line2); // ignore first line
 
