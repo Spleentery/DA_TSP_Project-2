@@ -29,7 +29,10 @@ public:
 
     void print3();
 
-
+    /**
+     * Use a backtracking exhaustive approach for TSP
+     * Applicable only for very small graphs
+     */
     void backtrack();
 
     void hamiltonianCycle();

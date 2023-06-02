@@ -236,10 +236,7 @@ Graph CPheadquarters::getGraph() const {
 }
 
 
-/**
- * Use a backtracking exhaustive approach for TSP
- * Applicable only for very small graphs
- */
+
 void CPheadquarters::backtrack() {
     std::vector<Vertex*> shortestPath;
     double shortestPathCost = 0;
