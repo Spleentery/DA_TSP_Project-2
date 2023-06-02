@@ -3,6 +3,7 @@
 #include "Graph.h"
 #include <algorithm>
 #include <unordered_set>
+#include <chrono>
 
 int Graph::getNumVertex() const {
     return vertexSet.size();
@@ -153,8 +154,7 @@ double Graph::getPathCost(const std::vector<Vertex *> &path) {
  * @param numOfPossiblePaths
  * @return
  */
-bool
-Graph::TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *> &shortestPath, double &shortestPathCost,
+bool Graph::TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *> &shortestPath, double &shortestPathCost,
                int &numOfPossiblePaths) {
     if (path.size() == vertexSet.size()) {
         for (auto edge: v->getAdj()) {
@@ -205,6 +205,14 @@ Graph::TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *> &sh
  * @return true if the graph has a Hamiltonian cycle, false otherwise
  */
 bool Graph::TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost) {
+    // Start the timer
+    auto start_time = std::chrono::high_resolution_clock::now();
+
+    std::cout << "Calculating max flow for all pairs of stations..." << std::endl;
+    std::cout << "Please stand by..." << std::endl;
+
+    // Measure execution time
+    // ...
     if (vertexSet.empty()) {
         std::cout << "Graph is empty" << std::endl;
         return false;
@@ -215,11 +223,20 @@ bool Graph::TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost) {
         return false;
     }
 
+    if(hasArticulationPoint()){
+        std::cout << "Graph has an articulation point" << std::endl;
+        return false;
+    }
+
     int numOfPossiblePaths = 0;
     std::vector<Vertex *> path;
     path.push_back(vertexSet[0]); // Start from any vertex
     auto res = TSPUtil(vertexSet[0], path, shortestPath, shortestPathCost, numOfPossiblePaths);
     std::cout << "Number of possible paths: " << numOfPossiblePaths << std::endl;
+    // End the timer
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+    std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
     return res;
 }
 
@@ -267,6 +284,13 @@ double Graph::hasHamiltonianCycleUtil(Vertex *v, std::vector<Vertex *> &path, do
  * @return
  */
 bool Graph::hasHamiltonianCycle(std::vector<Vertex *> &path, double &pathCost) {
+    // Start the timer
+    auto start_time = std::chrono::high_resolution_clock::now();
+    std::cout << "Calculating max flow for all pairs of stations..." << std::endl;
+    std::cout << "Please stand by..." << std::endl;
+
+    // Measure execution time
+    // ...
     if (this->vertexSet.empty()) {
         std::cout << "Graph is empty" << std::endl;
         return false;
@@ -277,10 +301,81 @@ bool Graph::hasHamiltonianCycle(std::vector<Vertex *> &path, double &pathCost) {
         return false;
     }
 
+    if(hasArticulationPoint()){
+        std::cout << "Graph has an articulation point" << std::endl;
+        return false;
+    }
+
 
     path.push_back(this->vertexSet[0]);
     auto res = hasHamiltonianCycleUtil(this->vertexSet[0], path, pathCost);
+
+    // End the timer
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+    std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
     return res;
+}
+
+/**
+ * use Tarjan’s Algorithm to find articulation points
+ * Time Complexity: O(V*(V+E))
+ * @return
+ */
+bool Graph::hasArticulationPointUtil(Vertex* pCurrentVertex, int time) {
+    int children = 0;
+    int currentVertexIdInt = std::stoi(pCurrentVertex->getId());
+    visited[currentVertexIdInt] = true;
+    visited[currentVertexIdInt] = true;
+
+    disc[currentVertexIdInt] = low[currentVertexIdInt] = ++time;
+
+    for (auto edge : pCurrentVertex->getAdj()) {
+        Vertex* pAdjacentVertex = edge->getDest();
+        int adjacentVertexIdInt = std::stoi(pAdjacentVertex->getId());
+        if (!visited[adjacentVertexIdInt]) {
+            children++;
+            parent[adjacentVertexIdInt] = currentVertexIdInt;
+
+            if (hasArticulationPointUtil(pAdjacentVertex, time))
+                return true;
+
+            low[currentVertexIdInt] = std::min(low[currentVertexIdInt], low[adjacentVertexIdInt]);
+
+            if (parent[currentVertexIdInt] == -1 && children > 1) {
+                ap[currentVertexIdInt] = true;
+                return true;
+            }
+
+            if (parent[currentVertexIdInt] != -1 && low[adjacentVertexIdInt] >= disc[currentVertexIdInt]) {
+                ap[currentVertexIdInt] = true;
+                return true;
+            }
+        }
+        else if (adjacentVertexIdInt != parent[currentVertexIdInt]) {
+            low[currentVertexIdInt] = std::min(low[currentVertexIdInt], disc[adjacentVertexIdInt]);
+        }
+    }
+
+    return false;
+}
+
+bool Graph::hasArticulationPoint() {
+    int V = vertexSet.size();
+    disc.assign(V, -1);
+    low.assign(V, -1);
+    parent.assign(V, -1);
+    visited.assign(V, false);
+    ap.assign(V, false);
+
+    for (auto vertex : vertexSet) {
+        if (!visited[std::stoi(vertex->getId())]) {
+            if (hasArticulationPointUtil(vertex, 0))
+                return true;
+        }
+    }
+
+    return false;
 }
 
 

@@ -69,6 +69,9 @@ protected:
     double **distMatrix = nullptr;   // dist matrix for Floyd-Warshall
     int **pathMatrix = nullptr;   // path matrix for Floyd-Warshall
 
+    // for Tarjan's algorithm
+    std::vector<int> disc, low, parent;
+    std::vector<bool> visited, ap;
 
 
     bool isIn(std::string n, std::vector<std::string> vec);
@@ -89,6 +92,11 @@ protected:
 
     bool hasPendantVertex();
 
+    bool hasArticulationPoint();
+
+    bool hasArticulationPointUtil(Vertex *pVertex, std::vector<Vertex *> vector1, int time);
+
+    bool hasArticulationPointUtil(Vertex *pCurrentVertex, int time);
 };
 
 void deleteMatrix(int **m, int n);
