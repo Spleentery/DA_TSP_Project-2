@@ -13,7 +13,9 @@ int main() {
     cout<<"Insert path to file regarding stations (../stations.csv): ";
     getline(cin, path);
     cout<<endl;
-    CP.read_stations(path);
+    if (!path.empty()) {
+        CP.read_stations(path);
+    }
     CP.getGraph().print();
     int n;
     cout << "\n-------------- An Analysis Tool for Railway Network Management --------------\n" << endl;
