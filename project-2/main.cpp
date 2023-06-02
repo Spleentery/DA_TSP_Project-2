@@ -3,6 +3,24 @@
 
 using namespace std;
 
+int getValidInput(int lowerLimit, int upperLimit) {
+    int n;
+    bool validInput = false;
+    while (!validInput) {
+        cout << "Insert your option:\n";
+        cin >> n;
+
+        if (cin.fail() || n < lowerLimit || n > upperLimit) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter a number between " << lowerLimit << " and " << upperLimit << "." << endl;
+        } else {
+            validInput = true;
+        }
+    }
+    return n;
+}
+
 int main() {
     CPheadquarters CP;
     string path;
@@ -26,24 +44,28 @@ int main() {
         cout << "8 - Exit\n";
 
 
-        bool validInput = false;
-
-        while (!validInput) {
-            cout << "Insert your option:\n";
-            cin >> n;
-
-            if (cin.fail() || n < 1 || n > 8) {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Invalid input. Please enter a number between 1 and 8." << endl;
-            } else {
-                validInput = true;
-            }
-        }
+        n = getValidInput(1, 8);
 
         switch (n) {
             case 1: {
-                CP.backtrack();
+                cout << "1 - TSP using Backtracking algorithm (for small graphs)\n";
+                cout << "2 - Just find the Hamiltonian Cycle (for big graphs)\n";
+                int backtrack_choice;
+                backtrack_choice = getValidInput(1, 2);
+                switch(backtrack_choice){
+                    case 1:
+                        CP.backtrack();
+                        break;
+
+                    case 2:
+                        CP.hamiltonianCycle();
+                        break;
+
+                    default: {
+                        cerr << "Error: Invalid option selected." << endl;
+                        break;
+                    }
+                }
                 break;
             }
 

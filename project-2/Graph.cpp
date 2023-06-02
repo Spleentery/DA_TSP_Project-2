@@ -164,8 +164,9 @@ bool Graph::TSPUtil(Vertex* v, std::vector<Vertex*>& path, std::vector<Vertex*>&
 /**
  * Check if the graph has a Hamiltonian cycle.
  * (visit all nodes only once and return to the starting node)
+ * If it has, return the minimum cost cycle.
  * conditions: graph should be connected
- * @return
+ * @return true if the graph has a Hamiltonian cycle, false otherwise
  */
 bool Graph::TSP(std::vector<Vertex*>& shortestPath, double& shortestPathCost) {
     if (vertexSet.empty())
@@ -175,5 +176,41 @@ bool Graph::TSP(std::vector<Vertex*>& shortestPath, double& shortestPathCost) {
     path.push_back(vertexSet[0]); // Start from any vertex
     auto res =  TSPUtil(vertexSet[0], path, shortestPath, shortestPathCost,numOfPossiblePaths);
     std::cout << "Number of possible paths: " << numOfPossiblePaths << std::endl;
+    return res;
+}
+
+
+double Graph::hasHamiltonianCycleUtil(Vertex* v, std::vector<Vertex*>& path, double& pathCost) {
+    if (path.size() == vertexSet.size()) {
+        for (auto edge : v->getAdj()) {
+            if (edge->getDest() == path[0]) {
+                path.push_back(path[0]); // Closing the cycle
+                pathCost = getPathCost(path);
+                path.pop_back(); // Revert the cycle closing
+                return true;  // found a Hamiltonian cycle
+            }
+        }
+        return false;
+    }
+
+    for (auto edge : v->getAdj()) {
+        Vertex* w = edge->getDest();
+        if (std::find(path.begin(), path.end(), w) != path.end())
+            continue;
+        path.push_back(w);
+        if (hasHamiltonianCycleUtil(w, path, pathCost))
+            return true;  // propagate the success up the call stack
+        path.pop_back();
+    }
+
+    return false;
+}
+
+bool Graph::hasHamiltonianCycle(std::vector<Vertex*>& path, double& pathCost) {
+    if (vertexSet.empty())
+        return false;
+
+    path.push_back(vertexSet[0]);
+    auto res = hasHamiltonianCycleUtil(vertexSet[0], path, pathCost);
     return res;
 }

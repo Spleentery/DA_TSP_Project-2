@@ -31,6 +31,8 @@ public:
 
 
     void backtrack();
+
+    void hamiltonianCycle();
 };
 
 

@@ -234,9 +234,6 @@ void CPheadquarters::print3(){
 }
 
 
-
-
-
 Graph CPheadquarters::getGraph() const {
     return this->graph;
 }
@@ -256,6 +253,20 @@ void CPheadquarters::backtrack() {
         for (auto vertex : shortestPath)
             cout << vertex->getId() << " ";
         cout << "\nCost: " << shortestPathCost << endl;
+    }
+    else {
+        cout << "The graph does not have a Hamiltonian cycle" << endl;
+    }
+}
+
+void CPheadquarters::hamiltonianCycle() {
+    std::vector<Vertex*> path;
+    double cost = 0;
+    if (this->graph.hasHamiltonianCycle(path, cost)) {
+        cout << "Hamiltonian cycle: ";
+        for (auto vertex : path)
+            cout << vertex->getId() << " ";
+        cout << "\nCost: " << cost << endl;
     }
     else {
         cout << "The graph does not have a Hamiltonian cycle" << endl;

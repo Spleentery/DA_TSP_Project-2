@@ -59,6 +59,9 @@ public:
 
     bool TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost);
 
+
+    bool hasHamiltonianCycle(std::vector<Vertex *> &path, double &pathCost);
+
 protected:
     std::vector<Vertex *> vertexSet;    // vertex set
 
@@ -80,6 +83,7 @@ protected:
     bool TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *> &shortestPath, double &shortestPathCost,
                  int &numOfPossiblePaths);
 
+    double hasHamiltonianCycleUtil(Vertex *v, std::vector<Vertex *> &path, double &pathCost);
 };
 
 void deleteMatrix(int **m, int n);
