@@ -14,11 +14,10 @@ class CPheadquarters {
     unordered_map<string, Station> stations;
 public:
 
-    void read_network(std::string path);
+    void read_edges(std::string path);
 
     void read_stations(std::string path);
 
-    void read_files();
 
     Graph getGraph() const;
 
@@ -31,6 +30,7 @@ public:
     void print3();
 
 
+    void backtrack();
 };
 
 

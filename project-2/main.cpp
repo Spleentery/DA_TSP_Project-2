@@ -6,13 +6,16 @@ using namespace std;
 int main() {
     CPheadquarters CP;
     string path;
-    cout<<"Insert path to file to construct graph (../network.csv): ";
+    cout << "Insert path to file to construct a graph \ne.g Toy Graphs: \n../Toy-Graphs/Toy-Graphs/shipping.csv or ../Toy-Graphs/Toy-Graphs/stadiums.csv or ../Toy-Graphs/Toy-Graphs/tourism.csv "
+            "\nReal World Graphs: \n../Real-world Graphs/Real-world Graphs/graph1/edges.csv or ../Real-world Graphs/Real-world Graphs/graph2/edges.csv or ../Real-world Graphs/Real-world Graphs/graph3/edges.csv): ";
     getline(cin, path);
-    CP.read_network(path);
+    CP.read_edges(path);
     cout<<"Insert path to file regarding stations (../stations.csv): ";
     getline(cin, path);
     cout<<endl;
-    CP.read_stations(path);
+    if (!path.empty()) {
+        CP.read_stations(path);
+    }
     CP.getGraph().print();
     int n;
     cout << "\n-------------- An Analysis Tool for Railway Network Management --------------\n" << endl;
@@ -40,21 +43,7 @@ int main() {
 
         switch (n) {
             case 1: {
-                cin.ignore(); // ignore newline character left in the input stream
-                string a, b;
-
-                cout << "Enter station A: ";
-                getline(cin, a);
-
-                cout << "Enter station B: ";
-                getline(cin, b);
-
-                if (a.empty() || b.empty()) {
-                    cerr << "Error: Station names cannot be empty." << endl;
-                    break;
-                }
-
-                // ... your code here ...
+                CP.backtrack();
                 break;
             }
 
