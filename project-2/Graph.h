@@ -86,13 +86,9 @@ protected:
 
     double hasHamiltonianCycleUtil(Vertex *v, std::vector<Vertex *> &path, double &pathCost);
 
-    bool hasArticulationPoint();
 
     bool hasPendantVertex();
 
-    bool hasArticulationPointUtil(Vertex *v, std::unordered_set<Vertex *> &visited,
-                                  std::unordered_set<Vertex *> &articulationPoints,
-                                  std::unordered_map<Vertex *, int> &visitedTimes);
 };
 
 void deleteMatrix(int **m, int n);
