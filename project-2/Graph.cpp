@@ -119,7 +119,6 @@ bool Graph::hasPendantVertex() {
             std::cout << "Graph has pendant vertex: " << v->getId() << std::endl;
             return true;
         }
-
     return false;
 }
 
