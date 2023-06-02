@@ -110,6 +110,27 @@ void Graph::deleteVertex(std::string name) {
     }
 }
 
+
+
+
+/**
+ * Function to check for pendant vertices in the graph
+ * @return true if the graph has pendant vertices, false otherwise
+ */
+bool Graph::hasPendantVertex() {
+    for (auto v : vertexSet)
+        if (v->getAdj().size() == 1)
+            return true;
+
+    return false;
+}
+
+
+/**
+ *
+ * @param path
+ * @return
+ */
 double Graph::getPathCost(const std::vector<Vertex*>& path) {
     double totalCost = 0;
     for (int i = 0; i < path.size() - 1; ++i) {
@@ -123,7 +144,15 @@ double Graph::getPathCost(const std::vector<Vertex*>& path) {
     return totalCost;
 }
 
-
+/**
+ *
+ * @param v
+ * @param path
+ * @param shortestPath
+ * @param shortestPathCost
+ * @param numOfPossiblePaths
+ * @return
+ */
 bool Graph::TSPUtil(Vertex* v, std::vector<Vertex*>& path, std::vector<Vertex*>& shortestPath, double& shortestPathCost, int& numOfPossiblePaths) {
     if (path.size() == vertexSet.size()) {
         for (auto edge : v->getAdj()) {
@@ -162,14 +191,19 @@ bool Graph::TSPUtil(Vertex* v, std::vector<Vertex*>& path, std::vector<Vertex*>&
 
 
 /**
- * Check if the graph has a Hamiltonian cycle.
+ * * Check if the graph has a Hamiltonian cycle.
  * (visit all nodes only once and return to the starting node)
  * If it has, return the minimum cost cycle.
- * conditions: graph should be connected
+ * conditions:
+ * - graph must be connected
+ * - graph must not have pendant vertices
+ * - graph must not have articulation points
+ * @param shortestPath
+ * @param shortestPathCost
  * @return true if the graph has a Hamiltonian cycle, false otherwise
  */
 bool Graph::TSP(std::vector<Vertex*>& shortestPath, double& shortestPathCost) {
-    if (vertexSet.empty())
+    if (vertexSet.empty() || hasPendantVertex())
         return false;
     int numOfPossiblePaths = 0;
     std::vector<Vertex*> path;
@@ -207,7 +241,7 @@ double Graph::hasHamiltonianCycleUtil(Vertex* v, std::vector<Vertex*>& path, dou
 }
 
 bool Graph::hasHamiltonianCycle(std::vector<Vertex*>& path, double& pathCost) {
-    if (vertexSet.empty())
+    if (vertexSet.empty() || hasPendantVertex())
         return false;
 
     path.push_back(vertexSet[0]);

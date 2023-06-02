@@ -228,9 +228,6 @@ void CPheadquarters::print3(){
     for(int i = 0; i < nodesVisited; i++){
         cout << path[i] << "->";
     }
-
-
-
 }
 
 

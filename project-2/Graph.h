@@ -84,6 +84,12 @@ protected:
                  int &numOfPossiblePaths);
 
     double hasHamiltonianCycleUtil(Vertex *v, std::vector<Vertex *> &path, double &pathCost);
+
+    bool hasArticulationPoint();
+
+    bool hasPendantVertex();
+
+    void DFS(Vertex *v, bool *visited, int *disc, int *low, int *parent, bool *ap);
 };
 
 void deleteMatrix(int **m, int n);
