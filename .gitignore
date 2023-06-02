@@ -69,7 +69,7 @@ Thumbs.db
 
 .DS_Store
 __MACOSX/
-*.csv
+# *.csv
 Toy-Graphs/
 Extra_Fully_Connected_Graphs/
 Real-world Graphs/
