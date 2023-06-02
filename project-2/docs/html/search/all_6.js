@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['get_5fid_0',['get_id',['../classStation.html#a09e51ab5eb081f1e426402ed9d37ad02',1,'Station']]],
-  ['get_5flatitude_1',['get_latitude',['../classStation.html#a40b29c63be505c4d4265ca225f6ae09b',1,'Station']]],
-  ['get_5flongitude_2',['get_longitude',['../classStation.html#a8119c21f4f014c419fbfe6d489ee9d7f',1,'Station']]],
+  ['get_5fid_0',['get_id',['../classEstablishment.html#abe5b31345f07d85a4874c2fefe314a4f',1,'Establishment']]],
+  ['get_5flatitude_1',['get_latitude',['../classEstablishment.html#a26b39d87696320d0d18108847302fcef',1,'Establishment']]],
+  ['get_5flongitude_2',['get_longitude',['../classEstablishment.html#a22c35b8a308a5bcf7073747360e55589',1,'Establishment']]],
   ['getpathcost_3',['getPathCost',['../classGraph.html#acd2998d22dbf7439f9f251eb1c6b27bc',1,'Graph']]],
   ['graph_4',['Graph',['../classGraph.html',1,'']]]
 ];

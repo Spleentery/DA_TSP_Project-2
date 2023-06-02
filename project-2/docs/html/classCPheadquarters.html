@@ -100,8 +100,8 @@ $(document).ready(function(){initNavTree('classCPheadquarters.html',''); initRes
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af19f86c71d34629af4cf500b6df8c217"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPheadquarters.html#af19f86c71d34629af4cf500b6df8c217">read_edges</a> (std::string path)</td></tr>
 <tr class="separator:af19f86c71d34629af4cf500b6df8c217"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ff27c92e95477e47c5a7c5590bcbe3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPheadquarters.html#a8ff27c92e95477e47c5a7c5590bcbe3c">read_stations</a> (std::string path)</td></tr>
-<tr class="separator:a8ff27c92e95477e47c5a7c5590bcbe3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af54590d5d39d7384af64f5f640abbac8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPheadquarters.html#af54590d5d39d7384af64f5f640abbac8">read_establishments</a> (std::string path)</td></tr>
+<tr class="separator:af54590d5d39d7384af64f5f640abbac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73011d75a85ed5cbf9f98f86922507d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGraph.html">Graph</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPheadquarters.html#a73011d75a85ed5cbf9f98f86922507d7">getGraph</a> () const</td></tr>
 <tr class="separator:a73011d75a85ed5cbf9f98f86922507d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f572443d0f8ecbcc58a820f6f182dc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPheadquarters.html#a0f572443d0f8ecbcc58a820f6f182dc3">heuristic</a> (string path[], unsigned int &amp;nodesVisited, double &amp;totalDistance, string id)</td></tr>
@@ -113,9 +113,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad421ca872f51bb6a49446d3de4ef559c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPheadquarters.html#ad421ca872f51bb6a49446d3de4ef559c">chooseRoute</a> ()</td></tr>
 <tr class="memdesc:ad421ca872f51bb6a49446d3de4ef559c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterates through all vertex to determine with which one to starts.  <br /></td></tr>
 <tr class="separator:ad421ca872f51bb6a49446d3de4ef559c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad18faa21a8cf3534454b0d3b1ed00dc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPheadquarters.html#ad18faa21a8cf3534454b0d3b1ed00dc8">print3</a> ()</td></tr>
-<tr class="memdesc:ad18faa21a8cf3534454b0d3b1ed00dc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ignore this.  <br /></td></tr>
-<tr class="separator:ad18faa21a8cf3534454b0d3b1ed00dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a784e9b774ff0cfc479846b4fb7840399"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPheadquarters.html#a784e9b774ff0cfc479846b4fb7840399">backtrack</a> ()</td></tr>
 <tr class="memdesc:a784e9b774ff0cfc479846b4fb7840399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use a backtracking exhaustive approach for TSP Applicable only for very small graphs.  <br /></td></tr>
 <tr class="separator:a784e9b774ff0cfc479846b4fb7840399"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,22 +140,22 @@ Public Member Functions</h2></td></tr>
 
 <p>Use a backtracking exhaustive approach for TSP Applicable only for very small graphs. </p>
 
-<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00240">240</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  240</span>                               {</div>
-<div class="line"><span class="lineno">  241</span>    std::vector&lt;Vertex*&gt; shortestPath;</div>
-<div class="line"><span class="lineno">  242</span>    <span class="keywordtype">double</span> shortestPathCost = 0;</div>
-<div class="line"><span class="lineno">  243</span> </div>
-<div class="line"><span class="lineno">  244</span> </div>
-<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">if</span> (this-&gt;graph.<a class="code hl_function" href="classGraph.html#a8efa301f095b8f19ff6bc0d0f9c12fe5">TSP</a>(shortestPath, shortestPathCost)) {</div>
-<div class="line"><span class="lineno">  246</span>        cout &lt;&lt; <span class="stringliteral">&quot;Shortest Hamiltonian cycle: &quot;</span>;</div>
-<div class="line"><span class="lineno">  247</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> vertex : shortestPath)</div>
-<div class="line"><span class="lineno">  248</span>            cout &lt;&lt; vertex-&gt;getId() &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><span class="lineno">  249</span>        cout &lt;&lt; <span class="stringliteral">&quot;\nCost: &quot;</span> &lt;&lt; shortestPathCost &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  250</span>    }</div>
-<div class="line"><span class="lineno">  251</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  252</span>        cout &lt;&lt; <span class="stringliteral">&quot;The graph does not have a Hamiltonian cycle&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  253</span>    }</div>
-<div class="line"><span class="lineno">  254</span>}</div>
+<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00202">202</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  202</span>                               {</div>
+<div class="line"><span class="lineno">  203</span>    std::vector&lt;Vertex*&gt; shortestPath;</div>
+<div class="line"><span class="lineno">  204</span>    <span class="keywordtype">double</span> shortestPathCost = 0;</div>
+<div class="line"><span class="lineno">  205</span> </div>
+<div class="line"><span class="lineno">  206</span> </div>
+<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">if</span> (this-&gt;graph.<a class="code hl_function" href="classGraph.html#a8efa301f095b8f19ff6bc0d0f9c12fe5">TSP</a>(shortestPath, shortestPathCost)) {</div>
+<div class="line"><span class="lineno">  208</span>        cout &lt;&lt; <span class="stringliteral">&quot;Shortest Hamiltonian cycle: &quot;</span>;</div>
+<div class="line"><span class="lineno">  209</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> vertex : shortestPath)</div>
+<div class="line"><span class="lineno">  210</span>            cout &lt;&lt; vertex-&gt;getId() &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><span class="lineno">  211</span>        cout &lt;&lt; <span class="stringliteral">&quot;\nCost: &quot;</span> &lt;&lt; shortestPathCost &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  212</span>    }</div>
+<div class="line"><span class="lineno">  213</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  214</span>        cout &lt;&lt; <span class="stringliteral">&quot;The graph does not have a Hamiltonian cycle&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  215</span>    }</div>
+<div class="line"><span class="lineno">  216</span>}</div>
 <div class="ttc" id="aclassGraph_html_a8efa301f095b8f19ff6bc0d0f9c12fe5"><div class="ttname"><a href="classGraph.html#a8efa301f095b8f19ff6bc0d0f9c12fe5">Graph::TSP</a></div><div class="ttdeci">bool TSP(std::vector&lt; Vertex * &gt; &amp;shortestPath, double &amp;shortestPathCost)</div><div class="ttdoc">Check if the graph has a Hamiltonian cycle.</div><div class="ttdef"><b>Definition:</b> <a href="classGraph.html#l00179">Graph.cpp:179</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -182,34 +179,34 @@ Public Member Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>this algorithm only work when it starts in some specifics vertex so that's the reason it needs to go through all possible nodes to choose the one who satisfies the needs of the problem </dd></dl>
 <dl class="section attention"><dt>Attention</dt><dd>since this parte of the heuristic iterates through all vertex and call the recursive part from the algorithm that is O(E) the time complexity is O(EV) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00191">191</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  191</span>                                {</div>
-<div class="line"><span class="lineno">  192</span>    <span class="keywordtype">string</span> id;</div>
-<div class="line"><span class="lineno">  193</span>    <span class="keywordtype">int</span> pathSize = graph.getNumVertex();</div>
-<div class="line"><span class="lineno">  194</span>    <span class="keywordtype">string</span> path[pathSize];</div>
-<div class="line"><span class="lineno">  195</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nodesVisited = 0;</div>
-<div class="line"><span class="lineno">  196</span>    <span class="keywordtype">double</span> distance = 0;</div>
-<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span> it =stations.begin(); it != stations.end(); it++){</div>
-<div class="line"><span class="lineno">  198</span>        <span class="keywordtype">id</span> = it-&gt;first;</div>
-<div class="line"><span class="lineno">  199</span>        <a class="code hl_function" href="classCPheadquarters.html#a0f572443d0f8ecbcc58a820f6f182dc3">heuristic</a>(path, nodesVisited, distance, <span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  200</span>        <span class="keywordflow">if</span>(nodesVisited == pathSize){</div>
-<div class="line"><span class="lineno">  201</span>            <span class="keywordtype">string</span> sourceId = path[pathSize-1];</div>
-<div class="line"><span class="lineno">  202</span>            <span class="keywordtype">string</span> destId = path[0];</div>
-<div class="line"><span class="lineno">  203</span>            <a class="code hl_class" href="classVertex.html">Vertex</a> *sourceV = graph.<a class="code hl_function" href="classGraph.html#a12666658321af4855f1ad691b9840987">findVertex</a>(sourceId);</div>
-<div class="line"><span class="lineno">  204</span>            <a class="code hl_class" href="classEdge.html">Edge</a> *missingEdge = sourceV-&gt;getEdge(destId);</div>
-<div class="line"><span class="lineno">  205</span>            <span class="keywordflow">if</span>(missingEdge!= <span class="keyword">nullptr</span>){</div>
-<div class="line"><span class="lineno">  206</span>                distance += missingEdge-&gt;getDistance();</div>
-<div class="line"><span class="lineno">  207</span>                <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; pathSize; i++){</div>
-<div class="line"><span class="lineno">  208</span>                    cout &lt;&lt; path[i] &lt;&lt; <span class="stringliteral">&quot;-&gt;&quot;</span>;</div>
-<div class="line"><span class="lineno">  209</span>                }</div>
-<div class="line"><span class="lineno">  210</span>                cout &lt;&lt; destId;</div>
-<div class="line"><span class="lineno">  211</span>                cout &lt;&lt; <span class="stringliteral">&quot;\nTotal distance: &quot;</span> &lt;&lt; distance &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  212</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  213</span>            }</div>
-<div class="line"><span class="lineno">  214</span>        }</div>
-<div class="line"><span class="lineno">  215</span>    }</div>
-<div class="line"><span class="lineno">  216</span>}</div>
-<div class="ttc" id="aclassCPheadquarters_html_a0f572443d0f8ecbcc58a820f6f182dc3"><div class="ttname"><a href="classCPheadquarters.html#a0f572443d0f8ecbcc58a820f6f182dc3">CPheadquarters::heuristic</a></div><div class="ttdeci">void heuristic(string path[], unsigned int &amp;nodesVisited, double &amp;totalDistance, string id)</div><div class="ttdoc">Initial part of the algorithm, finds the route of the vertex with the given id, calling the recursive...</div><div class="ttdef"><b>Definition:</b> <a href="classCPheadquarters.html#l00167">CPheadquarters.cpp:167</a></div></div>
+<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00167">167</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  167</span>                                {</div>
+<div class="line"><span class="lineno">  168</span>    <span class="keywordtype">string</span> id;</div>
+<div class="line"><span class="lineno">  169</span>    <span class="keywordtype">int</span> pathSize = graph.getNumVertex();</div>
+<div class="line"><span class="lineno">  170</span>    <span class="keywordtype">string</span> path[pathSize];</div>
+<div class="line"><span class="lineno">  171</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nodesVisited = 0;</div>
+<div class="line"><span class="lineno">  172</span>    <span class="keywordtype">double</span> distance = 0;</div>
+<div class="line"><span class="lineno">  173</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span> it =stations.begin(); it != stations.end(); it++){</div>
+<div class="line"><span class="lineno">  174</span>        <span class="keywordtype">id</span> = it-&gt;first;</div>
+<div class="line"><span class="lineno">  175</span>        <a class="code hl_function" href="classCPheadquarters.html#a0f572443d0f8ecbcc58a820f6f182dc3">heuristic</a>(path, nodesVisited, distance, <span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  176</span>        <span class="keywordflow">if</span>(nodesVisited == pathSize){</div>
+<div class="line"><span class="lineno">  177</span>            <span class="keywordtype">string</span> sourceId = path[pathSize-1];</div>
+<div class="line"><span class="lineno">  178</span>            <span class="keywordtype">string</span> destId = path[0];</div>
+<div class="line"><span class="lineno">  179</span>            <a class="code hl_class" href="classVertex.html">Vertex</a> *sourceV = graph.<a class="code hl_function" href="classGraph.html#a12666658321af4855f1ad691b9840987">findVertex</a>(sourceId);</div>
+<div class="line"><span class="lineno">  180</span>            <a class="code hl_class" href="classEdge.html">Edge</a> *missingEdge = sourceV-&gt;getEdge(destId);</div>
+<div class="line"><span class="lineno">  181</span>            <span class="keywordflow">if</span>(missingEdge!= <span class="keyword">nullptr</span>){</div>
+<div class="line"><span class="lineno">  182</span>                distance += missingEdge-&gt;getDistance();</div>
+<div class="line"><span class="lineno">  183</span>                <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; pathSize; i++){</div>
+<div class="line"><span class="lineno">  184</span>                    cout &lt;&lt; path[i] &lt;&lt; <span class="stringliteral">&quot;-&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">  185</span>                }</div>
+<div class="line"><span class="lineno">  186</span>                cout &lt;&lt; destId;</div>
+<div class="line"><span class="lineno">  187</span>                cout &lt;&lt; <span class="stringliteral">&quot;\nTotal distance: &quot;</span> &lt;&lt; distance &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  188</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  189</span>            }</div>
+<div class="line"><span class="lineno">  190</span>        }</div>
+<div class="line"><span class="lineno">  191</span>    }</div>
+<div class="line"><span class="lineno">  192</span>}</div>
+<div class="ttc" id="aclassCPheadquarters_html_a0f572443d0f8ecbcc58a820f6f182dc3"><div class="ttname"><a href="classCPheadquarters.html#a0f572443d0f8ecbcc58a820f6f182dc3">CPheadquarters::heuristic</a></div><div class="ttdeci">void heuristic(string path[], unsigned int &amp;nodesVisited, double &amp;totalDistance, string id)</div><div class="ttdoc">Initial part of the algorithm, finds the route of the vertex with the given id, calling the recursive...</div><div class="ttdef"><b>Definition:</b> <a href="classCPheadquarters.html#l00148">CPheadquarters.cpp:148</a></div></div>
 <div class="ttc" id="aclassEdge_html"><div class="ttname"><a href="classEdge.html">Edge</a></div><div class="ttdef"><b>Definition:</b> <a href="classEdge.html#l00088">VertexEdge.h:88</a></div></div>
 <div class="ttc" id="aclassGraph_html_a12666658321af4855f1ad691b9840987"><div class="ttname"><a href="classGraph.html#a12666658321af4855f1ad691b9840987">Graph::findVertex</a></div><div class="ttdeci">Vertex * findVertex(const std::string &amp;id) const</div><div class="ttdoc">Auxiliary function to find a vertex with a given ID.</div><div class="ttdef"><b>Definition:</b> <a href="classGraph.html#l00017">Graph.cpp:17</a></div></div>
 <div class="ttc" id="aclassVertex_html"><div class="ttname"><a href="classVertex.html">Vertex</a></div><div class="ttdef"><b>Definition:</b> <a href="classVertex.html#l00022">VertexEdge.h:22</a></div></div>
@@ -231,10 +228,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00234">234</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  234</span>                                     {</div>
-<div class="line"><span class="lineno">  235</span>    <span class="keywordflow">return</span> this-&gt;graph;</div>
-<div class="line"><span class="lineno">  236</span>}</div>
+<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00196">196</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  196</span>                                     {</div>
+<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">return</span> this-&gt;graph;</div>
+<div class="line"><span class="lineno">  198</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -253,20 +250,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00256">256</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  256</span>                                      {</div>
-<div class="line"><span class="lineno">  257</span>    std::vector&lt;Vertex*&gt; path;</div>
-<div class="line"><span class="lineno">  258</span>    <span class="keywordtype">double</span> cost = 0;</div>
-<div class="line"><span class="lineno">  259</span>    <span class="keywordflow">if</span> (this-&gt;graph.<a class="code hl_function" href="classGraph.html#a665423851066546828e7112afcfa8633">hasHamiltonianCycle</a>(path, cost)) {</div>
-<div class="line"><span class="lineno">  260</span>        cout &lt;&lt; <span class="stringliteral">&quot;Hamiltonian cycle: &quot;</span>;</div>
-<div class="line"><span class="lineno">  261</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> vertex : path)</div>
-<div class="line"><span class="lineno">  262</span>            cout &lt;&lt; vertex-&gt;getId() &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><span class="lineno">  263</span>        cout &lt;&lt; <span class="stringliteral">&quot;\nCost: &quot;</span> &lt;&lt; cost &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  264</span>    }</div>
-<div class="line"><span class="lineno">  265</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  266</span>        cout &lt;&lt; <span class="stringliteral">&quot;The graph does not have a Hamiltonian cycle&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  267</span>    }</div>
-<div class="line"><span class="lineno">  268</span>}</div>
+<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00218">218</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  218</span>                                      {</div>
+<div class="line"><span class="lineno">  219</span>    std::vector&lt;Vertex*&gt; path;</div>
+<div class="line"><span class="lineno">  220</span>    <span class="keywordtype">double</span> cost = 0;</div>
+<div class="line"><span class="lineno">  221</span>    <span class="keywordflow">if</span> (this-&gt;graph.<a class="code hl_function" href="classGraph.html#a665423851066546828e7112afcfa8633">hasHamiltonianCycle</a>(path, cost)) {</div>
+<div class="line"><span class="lineno">  222</span>        cout &lt;&lt; <span class="stringliteral">&quot;Hamiltonian cycle: &quot;</span>;</div>
+<div class="line"><span class="lineno">  223</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> vertex : path)</div>
+<div class="line"><span class="lineno">  224</span>            cout &lt;&lt; vertex-&gt;getId() &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><span class="lineno">  225</span>        cout &lt;&lt; <span class="stringliteral">&quot;\nCost: &quot;</span> &lt;&lt; cost &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  226</span>    }</div>
+<div class="line"><span class="lineno">  227</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  228</span>        cout &lt;&lt; <span class="stringliteral">&quot;The graph does not have a Hamiltonian cycle&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  229</span>    }</div>
+<div class="line"><span class="lineno">  230</span>}</div>
 <div class="ttc" id="aclassGraph_html_a665423851066546828e7112afcfa8633"><div class="ttname"><a href="classGraph.html#a665423851066546828e7112afcfa8633">Graph::hasHamiltonianCycle</a></div><div class="ttdeci">bool hasHamiltonianCycle(std::vector&lt; Vertex * &gt; &amp;path, double &amp;pathCost)</div><div class="ttdoc">Check if the graph has a Hamiltonian cycle.</div><div class="ttdef"><b>Definition:</b> <a href="classGraph.html#l00244">Graph.cpp:244</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -281,7 +278,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void CPheadquarters::heuristic </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>route</em>[], </td>
+          <td class="paramname"><em>path</em>[], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -320,25 +317,25 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00167">167</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  167</span>                                                                                                           {</div>
-<div class="line"><span class="lineno">  168</span> </div>
-<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;vertex: graph.getVertexSet()) {</div>
-<div class="line"><span class="lineno">  170</span>        vertex-&gt;setVisited(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  171</span> </div>
-<div class="line"><span class="lineno">  172</span>    }</div>
-<div class="line"><span class="lineno">  173</span> </div>
-<div class="line"><span class="lineno">  174</span> </div>
-<div class="line"><span class="lineno">  175</span>    <a class="code hl_class" href="classVertex.html">Vertex</a> *actual = graph.<a class="code hl_function" href="classGraph.html#a12666658321af4855f1ad691b9840987">findVertex</a>(<span class="keywordtype">id</span>);</div>
-<div class="line"><span class="lineno">  176</span> </div>
-<div class="line"><span class="lineno">  177</span>    <span class="keywordtype">double</span> distance = 0;</div>
-<div class="line"><span class="lineno">  178</span>    route[0] = actual-&gt;getId();</div>
-<div class="line"><span class="lineno">  179</span> </div>
-<div class="line"><span class="lineno">  180</span>    actual-&gt;setVisited(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  181</span> </div>
-<div class="line"><span class="lineno">  182</span>    <a class="code hl_function" href="classCPheadquarters.html#a509a9c98faa33a6d13ce7aa552581051">heuristicRec</a>(actual, route, 1, distance, nodesVisited, totalDistance);</div>
-<div class="line"><span class="lineno">  183</span>}</div>
-<div class="ttc" id="aclassCPheadquarters_html_a509a9c98faa33a6d13ce7aa552581051"><div class="ttname"><a href="classCPheadquarters.html#a509a9c98faa33a6d13ce7aa552581051">CPheadquarters::heuristicRec</a></div><div class="ttdeci">void heuristicRec(Vertex *v, string path[], unsigned int currentIndex, double distance, unsigned int &amp;nodesVisited, double &amp;totalDistance)</div><div class="ttdoc">Recursive part of the heuristic that looks for the closest vertex to the actual one,...</div><div class="ttdef"><b>Definition:</b> <a href="classCPheadquarters.html#l00097">CPheadquarters.cpp:97</a></div></div>
+<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00148">148</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  148</span>                                                                                                           {</div>
+<div class="line"><span class="lineno">  149</span> </div>
+<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;vertex: graph.getVertexSet()) {</div>
+<div class="line"><span class="lineno">  151</span>        vertex-&gt;setVisited(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  152</span> </div>
+<div class="line"><span class="lineno">  153</span>    }</div>
+<div class="line"><span class="lineno">  154</span> </div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>    <a class="code hl_class" href="classVertex.html">Vertex</a> *actual = graph.<a class="code hl_function" href="classGraph.html#a12666658321af4855f1ad691b9840987">findVertex</a>(<span class="keywordtype">id</span>);</div>
+<div class="line"><span class="lineno">  157</span> </div>
+<div class="line"><span class="lineno">  158</span>    <span class="keywordtype">double</span> distance = 0;</div>
+<div class="line"><span class="lineno">  159</span>    route[0] = actual-&gt;getId();</div>
+<div class="line"><span class="lineno">  160</span> </div>
+<div class="line"><span class="lineno">  161</span>    actual-&gt;setVisited(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>    <a class="code hl_function" href="classCPheadquarters.html#a509a9c98faa33a6d13ce7aa552581051">heuristicRec</a>(actual, route, 1, distance, nodesVisited, totalDistance);</div>
+<div class="line"><span class="lineno">  164</span>}</div>
+<div class="ttc" id="aclassCPheadquarters_html_a509a9c98faa33a6d13ce7aa552581051"><div class="ttname"><a href="classCPheadquarters.html#a509a9c98faa33a6d13ce7aa552581051">CPheadquarters::heuristicRec</a></div><div class="ttdeci">void heuristicRec(Vertex *v, string path[], unsigned int currentIndex, double distance, unsigned int &amp;nodesVisited, double &amp;totalDistance)</div><div class="ttdoc">Recursive part of the heuristic that looks for the closest vertex to the actual one,...</div><div class="ttdef"><b>Definition:</b> <a href="classCPheadquarters.html#l00085">CPheadquarters.cpp:85</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -358,7 +355,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>route</em>[], </td>
+          <td class="paramname"><em>path</em>[], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -406,104 +403,72 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section attention"><dt>Attention</dt><dd>the time complexity of this part of the heuristic is O(E) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00097">97</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>                                                                                                                                                         {</div>
-<div class="line"><span class="lineno">   98</span> </div>
-<div class="line"><span class="lineno">   99</span>    <span class="keywordtype">bool</span> nodesStillUnvisited = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  100</span>    <span class="keywordtype">string</span> id1 = v-&gt;getId();</div>
-<div class="line"><span class="lineno">  101</span>    <a class="code hl_class" href="classStation.html">Station</a> st1 = stations.find(id1)-&gt;second;</div>
-<div class="line"><span class="lineno">  102</span> </div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordtype">double</span> long1 = st1.<a class="code hl_function" href="classStation.html#a8119c21f4f014c419fbfe6d489ee9d7f">get_longitude</a>();</div>
-<div class="line"><span class="lineno">  104</span>    <span class="keywordtype">double</span> lat1 = st1.<a class="code hl_function" href="classStation.html#a40b29c63be505c4d4265ca225f6ae09b">get_latitude</a>();</div>
-<div class="line"><span class="lineno">  105</span> </div>
-<div class="line"><span class="lineno">  106</span>    <a class="code hl_class" href="classVertex.html">Vertex</a> *small;</div>
-<div class="line"><span class="lineno">  107</span>    <span class="keywordtype">double</span> smallAngle = 10000;</div>
-<div class="line"><span class="lineno">  108</span>    <span class="keywordtype">double</span> x;</div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordtype">double</span> y;</div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordtype">double</span> angle;</div>
-<div class="line"><span class="lineno">  111</span>    <span class="keywordtype">double</span> dist;</div>
-<div class="line"><span class="lineno">  112</span> </div>
-<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;edge: v-&gt;getAdj()) {</div>
-<div class="line"><span class="lineno">  114</span>        <a class="code hl_class" href="classVertex.html">Vertex</a> *v2 = edge-&gt;getDest();</div>
-<div class="line"><span class="lineno">  115</span>        <span class="keywordtype">double</span> dist2 = edge-&gt;getDistance();</div>
-<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">if</span>(v2-&gt;isVisited() == <span class="keyword">false</span>){</div>
-<div class="line"><span class="lineno">  117</span>            nodesStillUnvisited = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  118</span>            <span class="keywordtype">string</span> id2 = edge-&gt;getDest()-&gt;getId();</div>
-<div class="line"><span class="lineno">  119</span>            <a class="code hl_class" href="classStation.html">Station</a> st2 = stations.find(id2)-&gt;second;</div>
-<div class="line"><span class="lineno">  120</span> </div>
-<div class="line"><span class="lineno">  121</span>            <span class="keywordtype">double</span> long2 = st2.<a class="code hl_function" href="classStation.html#a8119c21f4f014c419fbfe6d489ee9d7f">get_longitude</a>();</div>
-<div class="line"><span class="lineno">  122</span>            <span class="keywordtype">double</span> lat2 = st2.<a class="code hl_function" href="classStation.html#a40b29c63be505c4d4265ca225f6ae09b">get_latitude</a>();</div>
-<div class="line"><span class="lineno">  123</span> </div>
-<div class="line"><span class="lineno">  124</span>            x = long1 - long2;</div>
-<div class="line"><span class="lineno">  125</span>            y = lat1 - lat2;</div>
-<div class="line"><span class="lineno">  126</span> </div>
-<div class="line"><span class="lineno">  127</span>            angle = atan2(y,x);</div>
-<div class="line"><span class="lineno">  128</span> </div>
-<div class="line"><span class="lineno">  129</span>            <span class="keywordflow">if</span>(angle &lt; smallAngle){</div>
-<div class="line"><span class="lineno">  130</span>                smallAngle = angle;</div>
-<div class="line"><span class="lineno">  131</span>                small = v2;</div>
-<div class="line"><span class="lineno">  132</span>                dist = dist2;</div>
-<div class="line"><span class="lineno">  133</span>            }</div>
-<div class="line"><span class="lineno">  134</span> </div>
-<div class="line"><span class="lineno">  135</span>        }</div>
-<div class="line"><span class="lineno">  136</span>    }</div>
-<div class="line"><span class="lineno">  137</span> </div>
-<div class="line"><span class="lineno">  138</span>    <span class="keywordtype">bool</span> inRoute = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; currentIndex; i++){</div>
-<div class="line"><span class="lineno">  140</span>        <span class="keywordflow">if</span>(route[i] == v-&gt;getId()){</div>
-<div class="line"><span class="lineno">  141</span>            inRoute = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  142</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00085">85</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>                                                                                                                                                         {</div>
+<div class="line"><span class="lineno">   86</span> </div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordtype">bool</span> nodesStillUnvisited = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordtype">string</span> id1 = v-&gt;getId();</div>
+<div class="line"><span class="lineno">   89</span>    <a class="code hl_class" href="classEstablishment.html">Establishment</a> st1 = stations.find(id1)-&gt;second;</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordtype">double</span> long1 = st1.<a class="code hl_function" href="classEstablishment.html#a22c35b8a308a5bcf7073747360e55589">get_longitude</a>();</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordtype">double</span> lat1 = st1.<a class="code hl_function" href="classEstablishment.html#a26b39d87696320d0d18108847302fcef">get_latitude</a>();</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>    <a class="code hl_class" href="classVertex.html">Vertex</a> *small;</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordtype">double</span> smallAngle = 10000;</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordtype">double</span> x;</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordtype">double</span> y;</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordtype">double</span> angle;</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordtype">double</span> dist;</div>
+<div class="line"><span class="lineno">  100</span> </div>
+<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;edge: v-&gt;getAdj()) {</div>
+<div class="line"><span class="lineno">  102</span>        <a class="code hl_class" href="classVertex.html">Vertex</a> *v2 = edge-&gt;getDest();</div>
+<div class="line"><span class="lineno">  103</span>        <span class="keywordtype">double</span> dist2 = edge-&gt;getDistance();</div>
+<div class="line"><span class="lineno">  104</span>        <span class="keywordflow">if</span>(v2-&gt;isVisited() == <span class="keyword">false</span>){</div>
+<div class="line"><span class="lineno">  105</span>            nodesStillUnvisited = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  106</span>            <span class="keywordtype">string</span> id2 = edge-&gt;getDest()-&gt;getId();</div>
+<div class="line"><span class="lineno">  107</span>            <a class="code hl_class" href="classEstablishment.html">Establishment</a> st2 = stations.find(id2)-&gt;second;</div>
+<div class="line"><span class="lineno">  108</span> </div>
+<div class="line"><span class="lineno">  109</span>            <span class="keywordtype">double</span> long2 = st2.<a class="code hl_function" href="classEstablishment.html#a22c35b8a308a5bcf7073747360e55589">get_longitude</a>();</div>
+<div class="line"><span class="lineno">  110</span>            <span class="keywordtype">double</span> lat2 = st2.<a class="code hl_function" href="classEstablishment.html#a26b39d87696320d0d18108847302fcef">get_latitude</a>();</div>
+<div class="line"><span class="lineno">  111</span> </div>
+<div class="line"><span class="lineno">  112</span>            x = long1 - long2;</div>
+<div class="line"><span class="lineno">  113</span>            y = lat1 - lat2;</div>
+<div class="line"><span class="lineno">  114</span> </div>
+<div class="line"><span class="lineno">  115</span>            angle = atan2(y,x);</div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span>            <span class="keywordflow">if</span>(angle &lt; smallAngle){</div>
+<div class="line"><span class="lineno">  118</span>                smallAngle = angle;</div>
+<div class="line"><span class="lineno">  119</span>                small = v2;</div>
+<div class="line"><span class="lineno">  120</span>                dist = dist2;</div>
+<div class="line"><span class="lineno">  121</span>            }</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>        }</div>
+<div class="line"><span class="lineno">  124</span>    }</div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordtype">bool</span> inRoute = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; currentIndex; i++){</div>
+<div class="line"><span class="lineno">  128</span>        <span class="keywordflow">if</span>(route[i] == v-&gt;getId()){</div>
+<div class="line"><span class="lineno">  129</span>            inRoute = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  130</span>        }</div>
+<div class="line"><span class="lineno">  131</span>    }</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">if</span>(nodesStillUnvisited){</div>
+<div class="line"><span class="lineno">  134</span>        route[currentIndex] = small-&gt;getId();</div>
+<div class="line"><span class="lineno">  135</span>        small-&gt;setVisited(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  136</span> </div>
+<div class="line"><span class="lineno">  137</span>        <a class="code hl_function" href="classCPheadquarters.html#a509a9c98faa33a6d13ce7aa552581051">heuristicRec</a>(small, route, currentIndex+1, distance + dist, nodesVisited, totalDistance);</div>
+<div class="line"><span class="lineno">  138</span>    }</div>
+<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">else</span>{</div>
+<div class="line"><span class="lineno">  140</span>        nodesVisited = currentIndex;</div>
+<div class="line"><span class="lineno">  141</span>        totalDistance = distance;</div>
+<div class="line"><span class="lineno">  142</span> </div>
 <div class="line"><span class="lineno">  143</span>    }</div>
 <div class="line"><span class="lineno">  144</span> </div>
-<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">if</span>(nodesStillUnvisited){</div>
-<div class="line"><span class="lineno">  146</span>        route[currentIndex] = small-&gt;getId();</div>
-<div class="line"><span class="lineno">  147</span>        small-&gt;setVisited(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>        <a class="code hl_function" href="classCPheadquarters.html#a509a9c98faa33a6d13ce7aa552581051">heuristicRec</a>(small, route, currentIndex+1, distance + dist, nodesVisited, totalDistance);</div>
-<div class="line"><span class="lineno">  150</span>    }</div>
-<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">else</span>{</div>
-<div class="line"><span class="lineno">  152</span>        nodesVisited = currentIndex;</div>
-<div class="line"><span class="lineno">  153</span>        totalDistance = distance;</div>
-<div class="line"><span class="lineno">  154</span> </div>
-<div class="line"><span class="lineno">  155</span>    }</div>
-<div class="line"><span class="lineno">  156</span> </div>
-<div class="line"><span class="lineno">  157</span> </div>
-<div class="line"><span class="lineno">  158</span>}</div>
-<div class="ttc" id="aclassStation_html"><div class="ttname"><a href="classStation.html">Station</a></div><div class="ttdef"><b>Definition:</b> <a href="classStation.html#l00014">Station.h:14</a></div></div>
-<div class="ttc" id="aclassStation_html_a40b29c63be505c4d4265ca225f6ae09b"><div class="ttname"><a href="classStation.html#a40b29c63be505c4d4265ca225f6ae09b">Station::get_latitude</a></div><div class="ttdeci">double get_latitude()</div><div class="ttdoc">Returns the station's municipality.</div><div class="ttdef"><b>Definition:</b> <a href="classStation.html#l00023">Station.cpp:23</a></div></div>
-<div class="ttc" id="aclassStation_html_a8119c21f4f014c419fbfe6d489ee9d7f"><div class="ttname"><a href="classStation.html#a8119c21f4f014c419fbfe6d489ee9d7f">Station::get_longitude</a></div><div class="ttdeci">double get_longitude()</div><div class="ttdoc">Returns the station's district.</div><div class="ttdef"><b>Definition:</b> <a href="classStation.html#l00019">Station.cpp:19</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ad18faa21a8cf3534454b0d3b1ed00dc8" name="ad18faa21a8cf3534454b0d3b1ed00dc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad18faa21a8cf3534454b0d3b1ed00dc8">&#9670;&#160;</a></span>print3()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void CPheadquarters::print3 </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Ignore this. </p>
-
-<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00221">221</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  221</span>                           {</div>
-<div class="line"><span class="lineno">  222</span>    <span class="keywordtype">int</span> pathSize = graph.getNumVertex() +1;</div>
-<div class="line"><span class="lineno">  223</span>    <span class="keywordtype">string</span> path[pathSize];</div>
-<div class="line"><span class="lineno">  224</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nodesVisited = 0;</div>
-<div class="line"><span class="lineno">  225</span>    <span class="keywordtype">double</span> distance = 0;</div>
-<div class="line"><span class="lineno">  226</span>    <a class="code hl_function" href="classCPheadquarters.html#a0f572443d0f8ecbcc58a820f6f182dc3">heuristic</a>(path, nodesVisited, distance, <span class="stringliteral">&quot;4&quot;</span>);</div>
-<div class="line"><span class="lineno">  227</span> </div>
-<div class="line"><span class="lineno">  228</span>    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; nodesVisited; i++){</div>
-<div class="line"><span class="lineno">  229</span>        cout &lt;&lt; path[i] &lt;&lt; <span class="stringliteral">&quot;-&gt;&quot;</span>;</div>
-<div class="line"><span class="lineno">  230</span>    }</div>
-<div class="line"><span class="lineno">  231</span>}</div>
+<div class="line"><span class="lineno">  145</span> </div>
+<div class="line"><span class="lineno">  146</span>}</div>
+<div class="ttc" id="aclassEstablishment_html"><div class="ttname"><a href="classEstablishment.html">Establishment</a></div><div class="ttdef"><b>Definition:</b> <a href="classEstablishment.html#l00014">Establishment.h:14</a></div></div>
+<div class="ttc" id="aclassEstablishment_html_a22c35b8a308a5bcf7073747360e55589"><div class="ttname"><a href="classEstablishment.html#a22c35b8a308a5bcf7073747360e55589">Establishment::get_longitude</a></div><div class="ttdeci">double get_longitude()</div><div class="ttdoc">Returns the establishment's longitude.</div><div class="ttdef"><b>Definition:</b> <a href="classEstablishment.html#l00019">Establishment.cpp:19</a></div></div>
+<div class="ttc" id="aclassEstablishment_html_a26b39d87696320d0d18108847302fcef"><div class="ttname"><a href="classEstablishment.html#a26b39d87696320d0d18108847302fcef">Establishment::get_latitude</a></div><div class="ttdeci">double get_latitude()</div><div class="ttdoc">Returns the establishment's latitude.</div><div class="ttdef"><b>Definition:</b> <a href="classEstablishment.html#l00023">Establishment.cpp:23</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -560,14 +525,14 @@ Public Member Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a8ff27c92e95477e47c5a7c5590bcbe3c" name="a8ff27c92e95477e47c5a7c5590bcbe3c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ff27c92e95477e47c5a7c5590bcbe3c">&#9670;&#160;</a></span>read_stations()</h2>
+<a id="af54590d5d39d7384af64f5f640abbac8" name="af54590d5d39d7384af64f5f640abbac8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af54590d5d39d7384af64f5f640abbac8">&#9670;&#160;</a></span>read_establishments()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CPheadquarters::read_stations </td>
+          <td class="memname">void CPheadquarters::read_establishments </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>path</em></td><td>)</td>
@@ -577,7 +542,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00047">47</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>                                             {</div>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>                                                   {</div>
 <div class="line"><span class="lineno">   48</span>    std::ifstream inputFile2(R<span class="stringliteral">&quot;(../stations.csv)&quot;);</span></div>
 <div class="line"><span class="lineno">   49</span><span class="stringliteral">    </span><span class="keywordtype">string</span> line2;</div>
 <div class="line"><span class="lineno">   50</span>    std::getline(inputFile2, line2); <span class="comment">// ignore first line</span></div>
@@ -606,7 +571,7 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   73</span>        latitude_ = stod(temp2);</div>
 <div class="line"><span class="lineno">   74</span> </div>
 <div class="line"><span class="lineno">   75</span> </div>
-<div class="line"><span class="lineno">   76</span>        <a class="code hl_class" href="classStation.html">Station</a> station(id_, longitude_, latitude_);</div>
+<div class="line"><span class="lineno">   76</span>        <a class="code hl_class" href="classEstablishment.html">Establishment</a> station(id_, longitude_, latitude_);</div>
 <div class="line"><span class="lineno">   77</span>        stations[id_] = station;</div>
 <div class="line"><span class="lineno">   78</span> </div>
 <div class="line"><span class="lineno">   79</span>        <span class="comment">// print information about the station, to make sure it was imported correctly</span></div>

@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('main_8cpp_source.html',''); initResiza
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    getline(cin, path);</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    cout&lt;&lt;endl;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">if</span> (!path.empty()) {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        CP.read_stations(path);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        CP.read_establishments(path);</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    CP.getGraph().<a class="code hl_function" href="classGraph.html#aeeede3cb48be5d8cac08ea05ce54bd52">print</a>();</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">int</span> n;</div>
@@ -172,29 +172,28 @@ $(document).ready(function(){initNavTree('main_8cpp_source.html',''); initResiza
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            }</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="keywordflow">case</span> 3: {</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                <span class="comment">//CP.print3();</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                CP.<a class="code hl_function" href="classCPheadquarters.html#ad421ca872f51bb6a49446d3de4ef559c">chooseRoute</a>();</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            }</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <span class="keywordflow">case</span> 8: {</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                cout &lt;&lt; <span class="stringliteral">&quot;Exiting program...&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            }</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keywordflow">default</span>: {</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                cerr &lt;&lt; <span class="stringliteral">&quot;Error: Invalid option selected.&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            }</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        }</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    } <span class="keywordflow">while</span> (n != 8);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                CP.<a class="code hl_function" href="classCPheadquarters.html#ad421ca872f51bb6a49446d3de4ef559c">chooseRoute</a>();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <span class="keywordflow">case</span> 8: {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                cout &lt;&lt; <span class="stringliteral">&quot;Exiting program...&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            }</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keywordflow">default</span>: {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                cerr &lt;&lt; <span class="stringliteral">&quot;Error: Invalid option selected.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            }</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    } <span class="keywordflow">while</span> (n != 8);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
 <div class="ttc" id="aclassCPheadquarters_html"><div class="ttname"><a href="classCPheadquarters.html">CPheadquarters</a></div><div class="ttdef"><b>Definition:</b> <a href="classCPheadquarters.html#l00012">CPheadquarters.h:12</a></div></div>
-<div class="ttc" id="aclassCPheadquarters_html_a784e9b774ff0cfc479846b4fb7840399"><div class="ttname"><a href="classCPheadquarters.html#a784e9b774ff0cfc479846b4fb7840399">CPheadquarters::backtrack</a></div><div class="ttdeci">void backtrack()</div><div class="ttdoc">Use a backtracking exhaustive approach for TSP Applicable only for very small graphs.</div><div class="ttdef"><b>Definition:</b> <a href="classCPheadquarters.html#l00240">CPheadquarters.cpp:240</a></div></div>
-<div class="ttc" id="aclassCPheadquarters_html_ad421ca872f51bb6a49446d3de4ef559c"><div class="ttname"><a href="classCPheadquarters.html#ad421ca872f51bb6a49446d3de4ef559c">CPheadquarters::chooseRoute</a></div><div class="ttdeci">void chooseRoute()</div><div class="ttdoc">Iterates through all vertex to determine with which one to starts.</div><div class="ttdef"><b>Definition:</b> <a href="classCPheadquarters.html#l00191">CPheadquarters.cpp:191</a></div></div>
+<div class="ttc" id="aclassCPheadquarters_html_a784e9b774ff0cfc479846b4fb7840399"><div class="ttname"><a href="classCPheadquarters.html#a784e9b774ff0cfc479846b4fb7840399">CPheadquarters::backtrack</a></div><div class="ttdeci">void backtrack()</div><div class="ttdoc">Use a backtracking exhaustive approach for TSP Applicable only for very small graphs.</div><div class="ttdef"><b>Definition:</b> <a href="classCPheadquarters.html#l00202">CPheadquarters.cpp:202</a></div></div>
+<div class="ttc" id="aclassCPheadquarters_html_ad421ca872f51bb6a49446d3de4ef559c"><div class="ttname"><a href="classCPheadquarters.html#ad421ca872f51bb6a49446d3de4ef559c">CPheadquarters::chooseRoute</a></div><div class="ttdeci">void chooseRoute()</div><div class="ttdoc">Iterates through all vertex to determine with which one to starts.</div><div class="ttdef"><b>Definition:</b> <a href="classCPheadquarters.html#l00167">CPheadquarters.cpp:167</a></div></div>
 <div class="ttc" id="aclassGraph_html_aeeede3cb48be5d8cac08ea05ce54bd52"><div class="ttname"><a href="classGraph.html#aeeede3cb48be5d8cac08ea05ce54bd52">Graph::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">prints the graph</div><div class="ttdef"><b>Definition:</b> <a href="classGraph.html#l00069">Graph.cpp:69</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['hasarticulationpoint_0',['hasArticulationPoint',['../classGraph.html#a10ad435106e86c877cec43cb2822690d',1,'Graph']]],
-  ['hasarticulationpointutil_1',['hasArticulationPointUtil',['../classGraph.html#a85565c3b8b96bd5ba34b2fe8542a57cb',1,'Graph']]],
-  ['hashamiltoniancycle_2',['hasHamiltonianCycle',['../classGraph.html#a665423851066546828e7112afcfa8633',1,'Graph']]],
-  ['hashamiltoniancycleutil_3',['hasHamiltonianCycleUtil',['../classGraph.html#a93770fbd73f9e5a4ea9556de351c4346',1,'Graph']]],
-  ['haspendantvertex_4',['hasPendantVertex',['../classGraph.html#a88604050032ee23c31cb384a970056ff',1,'Graph']]],
-  ['heuristic_5',['heuristic',['../classCPheadquarters.html#a0f572443d0f8ecbcc58a820f6f182dc3',1,'CPheadquarters']]],
-  ['heuristicrec_6',['heuristicRec',['../classCPheadquarters.html#a509a9c98faa33a6d13ce7aa552581051',1,'CPheadquarters']]]
+  ['get_5fid_0',['get_id',['../classEstablishment.html#abe5b31345f07d85a4874c2fefe314a4f',1,'Establishment']]],
+  ['get_5flatitude_1',['get_latitude',['../classEstablishment.html#a26b39d87696320d0d18108847302fcef',1,'Establishment']]],
+  ['get_5flongitude_2',['get_longitude',['../classEstablishment.html#a22c35b8a308a5bcf7073747360e55589',1,'Establishment']]],
+  ['getpathcost_3',['getPathCost',['../classGraph.html#acd2998d22dbf7439f9f251eb1c6b27bc',1,'Graph']]]
 ];
