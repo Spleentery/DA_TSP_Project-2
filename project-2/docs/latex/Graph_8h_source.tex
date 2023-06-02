@@ -1,0 +1,81 @@
+\hypertarget{Graph_8h_source}{}\doxysection{Graph.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ david\ on\ 5/8/23.}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00005}00005\ \textcolor{preprocessor}{\#ifndef\ PROJECT\_2\_GRAPH\_H}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00006}00006\ \textcolor{preprocessor}{\#define\ PROJECT\_2\_GRAPH\_H}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}VertexEdge.h"{}}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00019}\mbox{\hyperlink{classGraph}{00019}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraph}{Graph}}\ \{}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00020}00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{classGraph}{\string~Graph}}();}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00028}00028\ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *\mbox{\hyperlink{classGraph_a12666658321af4855f1ad691b9840987}{findVertex}}(\textcolor{keyword}{const}\ std::string\ \&\textcolor{keywordtype}{id})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00035}00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGraph_aa265fe199ebbac978b8a954ea754b0c2}{addVertex}}(\textcolor{keyword}{const}\ std::string\ \&\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGraph_a4e313f729119695142478dd97026e747}{addEdge}}(\textcolor{keyword}{const}\ std::string\ \&sourc,\ \textcolor{keyword}{const}\ std::string\ \&dest,\ \textcolor{keywordtype}{double}\ d);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00050}00050\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{int}\ getNumVertex()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00052}00052\ \ \ \ \ [[nodiscard]]\ std::vector<Vertex\ *>\ getVertexSet()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_aeeede3cb48be5d8cac08ea05ce54bd52}{print}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00075}00075\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGraph_a8efa301f095b8f19ff6bc0d0f9c12fe5}{TSP}}(std::vector<Vertex\ *>\ \&shortestPath,\ \textcolor{keywordtype}{double}\ \&shortestPathCost);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00089}00089\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGraph_a665423851066546828e7112afcfa8633}{hasHamiltonianCycle}}(std::vector<Vertex\ *>\ \&path,\ \textcolor{keywordtype}{double}\ \&pathCost);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00091}00091\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00092}00092\ \ \ \ \ std::vector<Vertex\ *>\ vertexSet;\ \ \ \ \textcolor{comment}{//\ vertex\ set}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00094}00094\ \ \ \ \ \textcolor{keywordtype}{double}\ **distMatrix\ =\ \textcolor{keyword}{nullptr};\ \ \ \textcolor{comment}{//\ dist\ matrix\ for\ Floyd-\/Warshall}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{int}\ **pathMatrix\ =\ \textcolor{keyword}{nullptr};\ \ \ \textcolor{comment}{//\ path\ matrix\ for\ Floyd-\/Warshall}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00097}00097\ \ \ \ \ \textcolor{comment}{//\ for\ Tarjan's\ algorithm}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00098}00098\ \ \ \ \ std::vector<int>\ disc,\ low,\ parent;}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00099}00099\ \ \ \ \ std::vector<bool>\ visited,\ ap;}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00102}00102\ \ \ \ \ \textcolor{keywordtype}{bool}\ isIn(std::string\ n,\ std::vector<std::string>\ vec);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00108}00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_ade95ce0f9cf736c26bec53c84322c127}{deleteVertex}}(std::string\ name);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00115}00115\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classGraph_acd2998d22dbf7439f9f251eb1c6b27bc}{getPathCost}}(\textcolor{keyword}{const}\ std::vector<Vertex\ *>\ \&path);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00125}00125\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGraph_a31b37a7d0f375245920e7cbe69ef8e6f}{TSPUtil}}(\mbox{\hyperlink{classVertex}{Vertex}}\ *v,\ std::vector<Vertex\ *>\ \&path,\ std::vector<Vertex\ *>\ \&shortestPath,\ \textcolor{keywordtype}{double}\ \&shortestPathCost,}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \&numOfPossiblePaths);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00134}00134\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classGraph_a93770fbd73f9e5a4ea9556de351c4346}{hasHamiltonianCycleUtil}}(\mbox{\hyperlink{classVertex}{Vertex}}\ *v,\ std::vector<Vertex\ *>\ \&path,\ \textcolor{keywordtype}{double}\ \&pathCost);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00141}00141\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGraph_a88604050032ee23c31cb384a970056ff}{hasPendantVertex}}();}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00148}00148\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGraph_a10ad435106e86c877cec43cb2822690d}{hasArticulationPoint}}();}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00156}00156\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGraph_a85565c3b8b96bd5ba34b2fe8542a57cb}{hasArticulationPointUtil}}(\mbox{\hyperlink{classVertex}{Vertex}}\ *pCurrentVertex,\ \textcolor{keywordtype}{int}\ time);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00157}00157\ \};}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00159}00159\ \textcolor{keywordtype}{void}\ deleteMatrix(\textcolor{keywordtype}{int}\ **m,\ \textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00161}00161\ \textcolor{keywordtype}{void}\ deleteMatrix(\textcolor{keywordtype}{double}\ **m,\ \textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00164}00164\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PROJECT\_2\_GRAPH\_H}}
+
+\end{DoxyCode}

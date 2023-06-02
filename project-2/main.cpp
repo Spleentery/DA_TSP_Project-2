@@ -36,7 +36,7 @@ int main() {
     getline(cin, path);
     cout<<endl;
     if (!path.empty()) {
-        CP.read_stations(path);
+        CP.read_establishments(path);
     }
     //CP.getGraph().print();
     int n;
@@ -79,8 +79,10 @@ int main() {
             }
 
             case 3: {
+
                 //CP.print3();
                 auto start_time = std::chrono::high_resolution_clock::now();
+
 
                 CP.chooseRoute();
 

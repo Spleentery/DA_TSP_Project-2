@@ -1,0 +1,235 @@
+\hypertarget{CPheadquarters_8cpp_source}{}\doxysection{CPheadquarters.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ david\ on\ 5/8/23.}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}CPheadquarters.h"{}}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00013}00013\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00015}00015\ \textcolor{keywordtype}{void}\ CPheadquarters::read\_edges(\textcolor{keywordtype}{string}\ path)\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00016}00016\ \ \ \ \ std::ifstream\ inputFile1(path);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{string}\ line1;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00018}00018\ \ \ \ \ std::getline(inputFile1,\ line1);\ \textcolor{comment}{//\ ignore\ first\ line}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(inputFile1,\ line1,\ \textcolor{charliteral}{'\(\backslash\)n'}))\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!line1.empty()\ \&\&\ line1.back()\ ==\ \textcolor{charliteral}{'\(\backslash\)r'})\ \{\ \textcolor{comment}{//\ Check\ if\ the\ last\ character\ is\ '\(\backslash\)r'}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ line1.pop\_back();\ \textcolor{comment}{//\ Remove\ the\ '\(\backslash\)r'\ character}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ origin;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ destination;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ temp;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ distance;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ stringstream\ inputString(line1);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ getline(inputString,\ origin,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ getline(inputString,\ destination,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ getline(inputString,\ temp,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ distance\ =\ stod(temp);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ graph.\mbox{\hyperlink{classGraph_aa265fe199ebbac978b8a954ea754b0c2}{addVertex}}(origin);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ graph.\mbox{\hyperlink{classGraph_aa265fe199ebbac978b8a954ea754b0c2}{addVertex}}(destination);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ graph.\mbox{\hyperlink{classGraph_a4e313f729119695142478dd97026e747}{addEdge}}(origin,\ destination,\ distance);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ graph.\mbox{\hyperlink{classGraph_a4e313f729119695142478dd97026e747}{addEdge}}(destination,\ origin,\ distance);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00047}00047\ \textcolor{keywordtype}{void}\ CPheadquarters::read\_establishments(\textcolor{keywordtype}{string}\ path)\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00048}00048\ \ \ \ \ std::ifstream\ inputFile2(R\textcolor{stringliteral}{"{}(../stations.csv)"{});}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ }\textcolor{keywordtype}{string}\ line2;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00050}00050\ \ \ \ \ std::getline(inputFile2,\ line2);\ \textcolor{comment}{//\ ignore\ first\ line}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(inputFile2,\ line2,\ \textcolor{charliteral}{'\(\backslash\)n'}))\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!line2.empty()\ \&\&\ line2.back()\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{\ \textcolor{comment}{//\ Check\ if\ the\ last\ character\ is\ '\(\backslash\)r'}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ line2.pop\_back();\ \textcolor{comment}{//\ Remove\ the\ '\(\backslash\)r'\ character}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ id\_;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ temp1;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ temp2;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ longitude\_;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ latitude\_;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ stringstream\ inputString(line2);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ getline(inputString,\ id\_,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ getline(inputString,\ temp1,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ getline(inputString,\ temp2,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ longitude\_\ =\ stod(temp1);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ latitude\_\ =\ stod(temp2);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEstablishment}{Establishment}}\ station(id\_,\ longitude\_,\ latitude\_);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ stations[id\_]\ =\ station;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ print\ information\ about\ the\ station,\ to\ make\ sure\ it\ was\ imported\ correctly}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//cout\ <<\ "{}station:\ "{}\ <<\ nome\ <<\ "{}\ distrito:\ "{}\ <<\ distrito\ <<\ "{}\ municipality:\ "{}\ <<\ municipality\ <<\ "{}\ township:\ "{}\ <<\ township\ <<\ "{}\ line:\ "{}\ <<\ line\ <<\ endl;}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00085}\mbox{\hyperlink{classCPheadquarters_a509a9c98faa33a6d13ce7aa552581051}{00085}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_a509a9c98faa33a6d13ce7aa552581051}{CPheadquarters::heuristicRec}}(\mbox{\hyperlink{classVertex}{Vertex}}\ *v,\ \textcolor{keywordtype}{string}\ route[],\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ currentIndex,\ \textcolor{keywordtype}{double}\ distance,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \&nodesVisited,\ \textcolor{keywordtype}{double}\ \&totalDistance)\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ nodesStillUnvisited\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{string}\ id1\ =\ v-\/>getId();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00089}00089\ \ \ \ \ \mbox{\hyperlink{classEstablishment}{Establishment}}\ st1\ =\ stations.find(id1)-\/>second;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordtype}{double}\ long1\ =\ st1.\mbox{\hyperlink{classEstablishment_a22c35b8a308a5bcf7073747360e55589}{get\_longitude}}();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{double}\ lat1\ =\ st1.\mbox{\hyperlink{classEstablishment_a26b39d87696320d0d18108847302fcef}{get\_latitude}}();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00094}00094\ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *small;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{double}\ smallAngle\ =\ 10000;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{keywordtype}{double}\ x;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{double}\ y;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{double}\ angle;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{keywordtype}{double}\ dist;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&edge:\ v-\/>getAdj())\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *v2\ =\ edge-\/>getDest();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dist2\ =\ edge-\/>getDistance();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(v2-\/>isVisited()\ ==\ \textcolor{keyword}{false})\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ nodesStillUnvisited\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ id2\ =\ edge-\/>getDest()-\/>getId();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEstablishment}{Establishment}}\ st2\ =\ stations.find(id2)-\/>second;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ long2\ =\ st2.\mbox{\hyperlink{classEstablishment_a22c35b8a308a5bcf7073747360e55589}{get\_longitude}}();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ lat2\ =\ st2.\mbox{\hyperlink{classEstablishment_a26b39d87696320d0d18108847302fcef}{get\_latitude}}();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ long1\ -\/\ long2;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ lat1\ -\/\ lat2;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ angle\ =\ atan2(y,x);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(angle\ <\ smallAngle)\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smallAngle\ =\ angle;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ small\ =\ v2;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dist\ =\ dist2;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00124}00124\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordtype}{bool}\ inRoute\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ currentIndex;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(route[i]\ ==\ v-\/>getId())\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ inRoute\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00133}00133\ \ \ \ \ \textcolor{keywordflow}{if}(nodesStillUnvisited)\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ route[currentIndex]\ =\ small-\/>getId();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ small-\/>setVisited(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCPheadquarters_a509a9c98faa33a6d13ce7aa552581051}{heuristicRec}}(small,\ route,\ currentIndex+1,\ distance\ +\ dist,\ nodesVisited,\ totalDistance);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00138}00138\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ nodesVisited\ =\ currentIndex;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ totalDistance\ =\ distance;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00143}00143\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00146}00146\ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00148}\mbox{\hyperlink{classCPheadquarters_a0f572443d0f8ecbcc58a820f6f182dc3}{00148}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_a0f572443d0f8ecbcc58a820f6f182dc3}{CPheadquarters::heuristic}}(\textcolor{keywordtype}{string}\ route[],\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \&nodesVisited,\ \textcolor{keywordtype}{double}\ \&totalDistance,\ \textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00150}00150\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&vertex:\ graph.getVertexSet())\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ vertex-\/>setVisited(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00153}00153\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00156}00156\ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *actual\ =\ graph.\mbox{\hyperlink{classGraph_a12666658321af4855f1ad691b9840987}{findVertex}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00158}00158\ \ \ \ \ \textcolor{keywordtype}{double}\ distance\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00159}00159\ \ \ \ \ route[0]\ =\ actual-\/>getId();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00161}00161\ \ \ \ \ actual-\/>setVisited(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00163}00163\ \ \ \ \ \mbox{\hyperlink{classCPheadquarters_a509a9c98faa33a6d13ce7aa552581051}{heuristicRec}}(actual,\ route,\ 1,\ distance,\ nodesVisited,\ totalDistance);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00164}00164\ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00167}\mbox{\hyperlink{classCPheadquarters_ad421ca872f51bb6a49446d3de4ef559c}{00167}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_ad421ca872f51bb6a49446d3de4ef559c}{CPheadquarters::chooseRoute}}()\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00168}00168\ \ \ \ \ \textcolor{keywordtype}{string}\ id;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00169}00169\ \ \ \ \ \textcolor{keywordtype}{int}\ pathSize\ =\ graph.getNumVertex();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00170}00170\ \ \ \ \ \textcolor{keywordtype}{string}\ path[pathSize];}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nodesVisited\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordtype}{double}\ distance\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00173}00173\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ it\ =stations.begin();\ it\ !=\ stations.end();\ it++)\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ it-\/>first;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCPheadquarters_a0f572443d0f8ecbcc58a820f6f182dc3}{heuristic}}(path,\ nodesVisited,\ distance,\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(nodesVisited\ ==\ pathSize)\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ sourceId\ =\ path[pathSize-\/1];}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ destId\ =\ path[0];}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *sourceV\ =\ graph.\mbox{\hyperlink{classGraph_a12666658321af4855f1ad691b9840987}{findVertex}}(sourceId);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge}{Edge}}\ *missingEdge\ =\ sourceV-\/>getEdge(destId);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(missingEdge!=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ distance\ +=\ missingEdge-\/>getDistance();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ pathSize;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ path[i]\ <<\ \textcolor{stringliteral}{"{}-\/>"{}};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ destId;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nTotal\ distance:\ "{}}\ <<\ distance\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00191}00191\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00192}00192\ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00196}00196\ \mbox{\hyperlink{classGraph}{Graph}}\ CPheadquarters::getGraph()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00197}00197\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>graph;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00198}00198\ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00202}\mbox{\hyperlink{classCPheadquarters_a784e9b774ff0cfc479846b4fb7840399}{00202}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_a784e9b774ff0cfc479846b4fb7840399}{CPheadquarters::backtrack}}()\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00203}00203\ \ \ \ \ std::vector<Vertex*>\ shortestPath;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00204}00204\ \ \ \ \ \textcolor{keywordtype}{double}\ shortestPathCost\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00207}00207\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>graph.\mbox{\hyperlink{classGraph_a8efa301f095b8f19ff6bc0d0f9c12fe5}{TSP}}(shortestPath,\ shortestPathCost))\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Shortest\ Hamiltonian\ cycle:\ "{}};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ vertex\ :\ shortestPath)}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ vertex-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nCost:\ "{}}\ <<\ shortestPathCost\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00212}00212\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00213}00213\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}The\ graph\ does\ not\ have\ a\ Hamiltonian\ cycle"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00215}00215\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00216}00216\ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00218}00218\ \textcolor{keywordtype}{void}\ CPheadquarters::hamiltonianCycle()\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00219}00219\ \ \ \ \ std::vector<Vertex*>\ path;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00220}00220\ \ \ \ \ \textcolor{keywordtype}{double}\ cost\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00221}00221\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>graph.\mbox{\hyperlink{classGraph_a665423851066546828e7112afcfa8633}{hasHamiltonianCycle}}(path,\ cost))\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Hamiltonian\ cycle:\ "{}};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ vertex\ :\ path)}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ vertex-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nCost:\ "{}}\ <<\ cost\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00226}00226\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00227}00227\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}The\ graph\ does\ not\ have\ a\ Hamiltonian\ cycle"{}}\ <<\ endl;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00229}00229\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00230}00230\ \}}
+
+\end{DoxyCode}
