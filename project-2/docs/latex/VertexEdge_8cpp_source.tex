@@ -1,0 +1,199 @@
+\hypertarget{VertexEdge_8cpp_source}{}\doxysection{Vertex\+Edge.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ david\ on\ 5/8/23.}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}VertexEdge.h"{}}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00007}00007\ \textcolor{comment}{/*************************\ Vertex\ \ **************************/}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00009}00009\ Vertex::Vertex(std::string\ \textcolor{keywordtype}{id})\ :\ id(id)\ \{\}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00011}00011\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00012}00012\ \textcolor{comment}{\ *\ Auxiliary\ function\ to\ add\ an\ outgoing\ edge\ to\ a\ vertex\ (this),}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00013}00013\ \textcolor{comment}{\ *\ with\ a\ given\ destination\ vertex\ (d)\ and\ edge\ weight\ (w).}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00014}00014\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00015}00015\ \mbox{\hyperlink{classEdge}{Edge}}\ *Vertex::addEdge(\mbox{\hyperlink{classVertex}{Vertex}}\ *d,\ \textcolor{keywordtype}{double}\ dist)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{auto}\ newEdge\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classEdge}{Edge}}(\textcolor{keyword}{this},\ d,\ dist);}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00017}00017\ \ \ \ \ adj.push\_back(newEdge);}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00018}00018\ \ \ \ \ d-\/>incoming.push\_back(newEdge);}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{return}\ newEdge;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00022}00022\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00023}00023\ \textcolor{comment}{\ *\ Auxiliary\ function\ to\ remove\ an\ outgoing\ edge\ (with\ a\ given\ destination\ (d))}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00024}00024\ \textcolor{comment}{\ *\ from\ a\ vertex\ (this).}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00025}00025\ \textcolor{comment}{\ *\ Returns\ true\ if\ successful,\ and\ false\ if\ such\ edge\ does\ not\ exist.}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00026}00026\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00027}00027\ \textcolor{keywordtype}{bool}\ Vertex::removeEdge(std::string\ destID)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ removedEdge\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ adj.begin();}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{while}\ (it\ !=\ adj.end())\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge}{Edge}}\ *edge\ =\ *it;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *dest\ =\ edge-\/>getDest();}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dest-\/>getId()\ ==\ destID)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ it\ =\ adj.erase(it);}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Also\ remove\ the\ corresponding\ edge\ from\ the\ incoming\ list}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it2\ =\ dest-\/>incoming.begin();}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (it2\ !=\ dest-\/>incoming.end())\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((*it2)-\/>getOrig()-\/>getId()\ ==\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ it2\ =\ dest-\/>incoming.erase(it2);}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ it2++;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ edge;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ removedEdge\ =\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ allows\ for\ multiple\ edges\ to\ connect\ the\ same\ pair\ of\ vertices\ (multigraph)}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ it++;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{return}\ removedEdge;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00053}00053\ \mbox{\hyperlink{classEdge}{Edge}}\ *Vertex::getEdge(std::string\ destID)\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ adj.begin();}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{while}\ (it\ !=\ adj.end())\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge}{Edge}}\ *edge\ =\ *it;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *dest\ =\ edge-\/>getDest();}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dest-\/>getId()\ ==\ destID)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ edge;\ \textcolor{comment}{//\ allows\ for\ multiple\ edges\ to\ connect\ the\ same\ pair\ of\ vertices\ (multigraph)}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ it++;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00069}00069\ \textcolor{keywordtype}{bool}\ Vertex::operator<(\mbox{\hyperlink{classVertex}{Vertex}}\ \&vertex)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>dist\ <\ vertex.dist;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00073}00073\ std::string\ Vertex::getId()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>id;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00077}00077\ std::vector<Edge\ *>\ Vertex::getAdj()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>adj;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00081}00081\ \textcolor{keywordtype}{bool}\ Vertex::isVisited()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>visited;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00085}00085\ \textcolor{keywordtype}{bool}\ Vertex::isAdded()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>added;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00087}00087\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00089}00089\ \textcolor{keywordtype}{bool}\ Vertex::isProcessing()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>processing;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00093}00093\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ Vertex::getIndegree()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>indegree;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00095}00095\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00097}00097\ \textcolor{keywordtype}{double}\ Vertex::getDist()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>dist;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00101}00101\ \mbox{\hyperlink{classEdge}{Edge}}\ *Vertex::getPath()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>path;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00103}00103\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00105}00105\ std::vector<Edge\ *>\ Vertex::getIncoming()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00106}00106\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>incoming;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00107}00107\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00109}00109\ \textcolor{keywordtype}{void}\ Vertex::setId(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00110}00110\ \ \ \ \ this-\/>\textcolor{keywordtype}{id}\ =\ id;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00111}00111\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00113}00113\ \textcolor{keywordtype}{void}\ Vertex::setVisited(\textcolor{keywordtype}{bool}\ visited)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00114}00114\ \ \ \ \ this-\/>visited\ =\ visited;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00115}00115\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00117}00117\ \textcolor{keywordtype}{void}\ Vertex::setAdded(\textcolor{keywordtype}{bool}\ added)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00118}00118\ \ \ \ \ this-\/>added\ =\ added;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00119}00119\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00121}00121\ \textcolor{keywordtype}{void}\ Vertex::setProcesssing(\textcolor{keywordtype}{bool}\ processing)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00122}00122\ \ \ \ \ this-\/>processing\ =\ processing;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00125}00125\ \textcolor{keywordtype}{void}\ Vertex::setIndegree(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ indegree)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00126}00126\ \ \ \ \ this-\/>indegree\ =\ indegree;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00127}00127\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00129}00129\ \textcolor{keywordtype}{void}\ Vertex::setDist(\textcolor{keywordtype}{double}\ dist)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00130}00130\ \ \ \ \ this-\/>dist\ =\ dist;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00131}00131\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00133}00133\ \textcolor{keywordtype}{void}\ Vertex::setPath(\mbox{\hyperlink{classEdge}{Edge}}\ *path)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00134}00134\ \ \ \ \ this-\/>path\ =\ path;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00135}00135\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00138}00138\ \textcolor{keywordtype}{void}\ Vertex::print()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00139}00139\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Vertex:\ "{}}\ <<\ \textcolor{keywordtype}{id}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00140}00140\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Adjacent\ to:\ "{}};}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00141}00141\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge}{Edge}}\ *e:\ adj)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ std::cout\ <<\ e-\/>getDest()-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00143}00143\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00144}00144\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00145}00145\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Visited:\ "{}}\ <<\ visited\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00146}00146\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Indegree:\ "{}}\ <<\ indegree\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00147}00147\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Distance:\ "{}}\ <<\ dist\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00148}00148\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Path:\ "{}}\ <<\ path\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00149}00149\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00152}00152\ \textcolor{comment}{/**********************\ Edge\ \ ****************************/}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00154}00154\ Edge::Edge(\mbox{\hyperlink{classVertex}{Vertex}}\ *orig,\ \mbox{\hyperlink{classVertex}{Vertex}}\ *dest,\ \textcolor{keywordtype}{double}\ d)\ :\ orig(orig),\ dest(dest),\ distance(d),}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flow(0)\ \{\}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00157}00157\ \mbox{\hyperlink{classVertex}{Vertex}}\ *Edge::getDest()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00158}00158\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>dest;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00159}00159\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00161}00161\ \textcolor{keywordtype}{double}\ Edge::getDistance()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00162}00162\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>distance;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00163}00163\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00165}00165\ \mbox{\hyperlink{classVertex}{Vertex}}\ *Edge::getOrig()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>orig;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00167}00167\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00169}00169\ \mbox{\hyperlink{classEdge}{Edge}}\ *Edge::getReverse()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00170}00170\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>reverse;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00171}00171\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00173}00173\ \textcolor{keywordtype}{bool}\ Edge::isSelected()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00174}00174\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>selected;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00175}00175\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00177}00177\ \textcolor{keywordtype}{double}\ Edge::getFlow()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{return}\ flow;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00179}00179\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00181}00181\ \textcolor{keywordtype}{void}\ Edge::setSelected(\textcolor{keywordtype}{bool}\ selected)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00182}00182\ \ \ \ \ this-\/>selected\ =\ selected;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00183}00183\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00185}00185\ \textcolor{keywordtype}{void}\ Edge::setReverse(\mbox{\hyperlink{classEdge}{Edge}}\ *reverse)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00186}00186\ \ \ \ \ this-\/>reverse\ =\ reverse;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00187}00187\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00189}00189\ \textcolor{keywordtype}{void}\ Edge::setFlow(\textcolor{keywordtype}{double}\ flow)\ \{}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00190}00190\ \ \ \ \ this-\/>flow\ =\ flow;}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00191}00191\ \}}
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{VertexEdge_8cpp_source_l00194}00194\ }
+
+\end{DoxyCode}
