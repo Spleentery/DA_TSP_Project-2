@@ -1,6 +1,9 @@
 #include <climits>
 #include <queue>
 #include "Graph.h"
+#include <algorithm>
+#include <unordered_set>
+#include <chrono>
 
 int Graph::getNumVertex() const {
     return vertexSet.size();
@@ -63,7 +66,6 @@ Graph::~Graph() {
 }
 
 
-
 void Graph::print() const {
     std::cout << "---------------- Graph----------------\n";
     std::cout << "Number of vertices: " << vertexSet.size() << std::endl;
@@ -74,7 +76,8 @@ void Graph::print() const {
     std::cout << "\nEdges:\n";
     for (const auto &vertex: vertexSet) {
         for (const auto &edge: vertex->getAdj()) {
-            std::cout << vertex->getId() << " -> " << edge->getDest()->getId() << " (distance: " << edge->getDistance() << ")" << std::endl;
+            std::cout << vertex->getId() << " -> " << edge->getDest()->getId() << " (distance: " << edge->getDistance()
+                      << ")" << std::endl;
         }
     }
 }
@@ -88,32 +91,44 @@ bool Graph::isIn(std::string n, std::vector<std::string> vec) {
 }
 
 
-
 void Graph::deleteVertex(std::string name) {
     auto v = findVertex(name);
-    for(auto e : v->getAdj()){
+    for (auto e: v->getAdj()) {
         auto s = e->getDest()->getId();
         v->removeEdge(s);
     }
-    for(auto e : v->getIncoming()){
+    for (auto e: v->getIncoming()) {
         e->getOrig()->removeEdge(name);
     }
     auto it = vertexSet.begin();
-    while (it!=vertexSet.end()){
-        Vertex* currentVertex = *it;
-        if(currentVertex->getId()==name){
-            it=vertexSet.erase(it);
-        }
-        else{
+    while (it != vertexSet.end()) {
+        Vertex *currentVertex = *it;
+        if (currentVertex->getId() == name) {
+            it = vertexSet.erase(it);
+        } else {
             it++;
         }
     }
 }
 
-double Graph::getPathCost(const std::vector<Vertex*>& path) {
+
+
+bool Graph::hasPendantVertex() {
+    for (auto v: vertexSet)
+        if (v->getAdj().size() == 1) {
+            std::cout << "Graph has pendant vertex: " << v->getId() << std::endl;
+            return true;
+        }
+
+    return false;
+}
+
+
+
+double Graph::getPathCost(const std::vector<Vertex *> &path) {
     double totalCost = 0;
     for (int i = 0; i < path.size() - 1; ++i) {
-        for (auto edge : path[i]->getAdj()) {
+        for (auto edge: path[i]->getAdj()) {
             if (edge->getDest() == path[i + 1]) {
                 totalCost += edge->getDistance();
                 break;
@@ -124,16 +139,17 @@ double Graph::getPathCost(const std::vector<Vertex*>& path) {
 }
 
 
-bool Graph::TSPUtil(Vertex* v, std::vector<Vertex*>& path, std::vector<Vertex*>& shortestPath, double& shortestPathCost, int& numOfPossiblePaths) {
+bool Graph::TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *> &shortestPath, double &shortestPathCost,
+               int &numOfPossiblePaths) {
     if (path.size() == vertexSet.size()) {
-        for (auto edge : v->getAdj()) {
+        for (auto edge: v->getAdj()) {
             if (edge->getDest() == path[0]) {
-                path.push_back(path[0]); // Closing the cycle
+                path.push_back(path[0]);
                 double pathCost = getPathCost(path);
 
                 // Print path and its cost
                 std::cout << "Path: ";
-                for (auto vertex : path)
+                for (auto vertex: path)
                     std::cout << vertex->getId() << " ";
                 std::cout << "Cost: " << pathCost << std::endl;
                 numOfPossiblePaths++;
@@ -148,8 +164,8 @@ bool Graph::TSPUtil(Vertex* v, std::vector<Vertex*>& path, std::vector<Vertex*>&
         return false;
     }
 
-    for (auto edge : v->getAdj()) {
-        Vertex* w = edge->getDest();
+    for (auto edge: v->getAdj()) {
+        Vertex *w = edge->getDest();
         if (std::find(path.begin(), path.end(), w) != path.end())
             continue;
         path.push_back(w);
@@ -161,19 +177,162 @@ bool Graph::TSPUtil(Vertex* v, std::vector<Vertex*>& path, std::vector<Vertex*>&
 }
 
 
-/**
- * Check if the graph has a Hamiltonian cycle.
- * (visit all nodes only once and return to the starting node)
- * conditions: graph should be connected
- * @return
- */
-bool Graph::TSP(std::vector<Vertex*>& shortestPath, double& shortestPathCost) {
-    if (vertexSet.empty())
+bool Graph::TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost) {
+    if (vertexSet.empty()) {
+        std::cout << "Graph is empty" << std::endl;
         return false;
+    }
+
+    if (hasPendantVertex()) {
+        std::cout << "Graph has a pendant vertex" << std::endl;
+        return false;
+    }
+
+    if(hasArticulationPoint()){
+        std::cout << "Graph has an articulation point" << std::endl;
+        return false;
+    }
+
+    // Start the timer
+    auto start_time = std::chrono::high_resolution_clock::now();
+
+    std::cout << "Calculating max flow for all pairs of stations..." << std::endl;
+    std::cout << "Please stand by..." << std::endl;
+
+    // Measure execution time
+    // ...
+
     int numOfPossiblePaths = 0;
-    std::vector<Vertex*> path;
+    std::vector<Vertex *> path;
     path.push_back(vertexSet[0]); // Start from any vertex
-    auto res =  TSPUtil(vertexSet[0], path, shortestPath, shortestPathCost,numOfPossiblePaths);
+    auto res = TSPUtil(vertexSet[0], path, shortestPath, shortestPathCost, numOfPossiblePaths);
     std::cout << "Number of possible paths: " << numOfPossiblePaths << std::endl;
+    // End the timer
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+    std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
     return res;
 }
+
+
+double Graph::hasHamiltonianCycleUtil(Vertex *v, std::vector<Vertex *> &path, double &pathCost) {
+    if (path.size() == vertexSet.size()) {
+        for (auto edge: v->getAdj()) {
+            if (edge->getDest() == path[0]) {
+                path.push_back(path[0]); // Closing the cycle
+                pathCost = getPathCost(path);
+                path.pop_back(); // Revert the cycle closing
+                return true;  // found a Hamiltonian cycle
+            }
+        }
+        return false;
+    }
+
+    for (auto edge: v->getAdj()) {
+        Vertex *w = edge->getDest();
+        if (std::find(path.begin(), path.end(), w) != path.end())
+            continue;
+        path.push_back(w);
+        if (hasHamiltonianCycleUtil(w, path, pathCost))
+            return true;  // propagate the success up the call stack
+        path.pop_back();
+    }
+
+    return false;
+}
+
+
+bool Graph::hasHamiltonianCycle(std::vector<Vertex *> &path, double &pathCost) {
+
+    if (this->vertexSet.empty()) {
+        std::cout << "Graph is empty" << std::endl;
+        return false;
+    }
+
+    if (hasPendantVertex()) {
+        std::cout << "Graph has a pendant vertex" << std::endl;
+        return false;
+    }
+
+    if(hasArticulationPoint()){
+        std::cout << "Graph has an articulation point" << std::endl;
+        return false;
+    }
+
+    // Start the timer
+    auto start_time = std::chrono::high_resolution_clock::now();
+    std::cout << "Calculating max flow for all pairs of stations..." << std::endl;
+    std::cout << "Please stand by..." << std::endl;
+
+    // Measure execution time
+    // ...
+    path.push_back(this->vertexSet[0]);
+    auto res = hasHamiltonianCycleUtil(this->vertexSet[0], path, pathCost);
+
+    // End the timer
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+    std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
+    return res;
+}
+
+
+
+bool Graph::hasArticulationPointUtil(Vertex* pCurrentVertex, int time) {
+    int children = 0;
+    int currentVertexIdInt = std::stoi(pCurrentVertex->getId());
+    visited[currentVertexIdInt] = true;
+    visited[currentVertexIdInt] = true;
+
+    disc[currentVertexIdInt] = low[currentVertexIdInt] = ++time;
+
+    for (auto edge : pCurrentVertex->getAdj()) {
+        Vertex* pAdjacentVertex = edge->getDest();
+        int adjacentVertexIdInt = std::stoi(pAdjacentVertex->getId());
+        if (!visited[adjacentVertexIdInt]) {
+            children++;
+            parent[adjacentVertexIdInt] = currentVertexIdInt;
+
+            if (hasArticulationPointUtil(pAdjacentVertex, time))
+                return true;
+
+            low[currentVertexIdInt] = std::min(low[currentVertexIdInt], low[adjacentVertexIdInt]);
+
+            if (parent[currentVertexIdInt] == -1 && children > 1) {
+                ap[currentVertexIdInt] = true;
+                return true;
+            }
+
+            if (parent[currentVertexIdInt] != -1 && low[adjacentVertexIdInt] >= disc[currentVertexIdInt]) {
+                ap[currentVertexIdInt] = true;
+                return true;
+            }
+        }
+        else if (adjacentVertexIdInt != parent[currentVertexIdInt]) {
+            low[currentVertexIdInt] = std::min(low[currentVertexIdInt], disc[adjacentVertexIdInt]);
+        }
+    }
+
+    return false;
+}
+
+
+bool Graph::hasArticulationPoint() {
+    int V = vertexSet.size();
+    disc.assign(V, -1);
+    low.assign(V, -1);
+    parent.assign(V, -1);
+    visited.assign(V, false);
+    ap.assign(V, false);
+
+    for (auto vertex : vertexSet) {
+        if (!visited[std::stoi(vertex->getId())]) {
+            if (hasArticulationPointUtil(vertex, 0))
+                return true;
+        }
+    }
+
+    return false;
+}
+
+
