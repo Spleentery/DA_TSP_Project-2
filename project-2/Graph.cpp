@@ -196,7 +196,7 @@ bool Graph::TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost) {
     // Start the timer
     auto start_time = std::chrono::high_resolution_clock::now();
 
-    std::cout << "Calculating max flow for all pairs of stations..." << std::endl;
+    std::cout << "Calculating TSP using backtracking..." << std::endl;
     std::cout << "Please stand by..." << std::endl;
 
     // Measure execution time
@@ -261,7 +261,7 @@ bool Graph::hasHamiltonianCycle(std::vector<Vertex *> &path, double &pathCost) {
 
     // Start the timer
     auto start_time = std::chrono::high_resolution_clock::now();
-    std::cout << "Calculating max flow for all pairs of stations..." << std::endl;
+    std::cout << "Searching for a Hamiltonian Cycle..." << std::endl;
     std::cout << "Please stand by..." << std::endl;
 
     // Measure execution time
