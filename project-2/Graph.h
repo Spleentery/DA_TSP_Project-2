@@ -58,9 +58,34 @@ public:
 
 
 
+    /**
+     * Check if the graph has a Hamiltonian cycle.
+     * (visit all nodes only once and return to the starting node)
+     * If it has, return the minimum cost cycle.
+     * conditions:
+     * - graph must be connected
+     * - graph must not have pendant vertices
+     * - graph must not have articulation points
+     * @attention Time Complexity: O(n!)
+     * @note TSP is NP-hard problem, application to large graphs is infeasible
+     * @param shortestPath
+     * @param shortestPathCost
+     * @return true if the graph has a Hamiltonian cycle, false otherwise
+     */
     bool TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost);
 
-
+    /**
+     * Check if the graph has a Hamiltonian cycle.
+     * conditions:
+     * - graph must be connected
+     * - graph must not have pendant vertices
+     * - graph must not have articulation points
+     * @attention Time Complexity: O(n!)
+     * @note Hamiltonian Cycle problem is NP-complete
+     * @param path
+     * @param pathCost
+     * @return
+     */
     bool hasHamiltonianCycle(std::vector<Vertex *> &path, double &pathCost);
 
 protected:
@@ -82,20 +107,52 @@ protected:
      */
     void deleteVertex(std::string name);
 
+    /**
+     * calculate the cost of the path
+     * @param path
+     * @return double
+     */
     double getPathCost(const std::vector<Vertex *> &path);
-
+    /**
+     * Utility function to solve the TSP problem
+     * @param v
+     * @param path
+     * @param shortestPath
+     * @param shortestPathCost
+     * @param numOfPossiblePaths
+     * @return
+     */
     bool TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *> &shortestPath, double &shortestPathCost,
                  int &numOfPossiblePaths);
-
+    /**
+     * Utility function to check if the graph has a Hamiltonian cycle.
+     * @param v
+     * @param path
+     * @param pathCost
+     * @return double
+     */
     double hasHamiltonianCycleUtil(Vertex *v, std::vector<Vertex *> &path, double &pathCost);
 
-
+    /**
+     * Function to check for pendant vertices in the graph
+     * @attention Time complexity: O(V)   (linear)
+     * @return true if the graph has pendant vertices, false otherwise
+     */
     bool hasPendantVertex();
 
+    /**
+     * use Tarjan’s Algorithm to find articulation points
+     * @attention Time Complexity: O(V + E)  (linear)
+     * @return true/false
+     */
     bool hasArticulationPoint();
 
-    bool hasArticulationPointUtil(Vertex *pVertex, std::vector<Vertex *> vector1, int time);
-
+    /**
+     * Utility function to check if the graph contains a articulation point.
+     * @param pCurrentVertex
+     * @param time
+     * @return true/false
+     */
     bool hasArticulationPointUtil(Vertex *pCurrentVertex, int time);
 };
 

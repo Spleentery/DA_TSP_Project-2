@@ -112,10 +112,7 @@ void Graph::deleteVertex(std::string name) {
 }
 
 
-/**
- * Function to check for pendant vertices in the graph
- * @return true if the graph has pendant vertices, false otherwise
- */
+
 bool Graph::hasPendantVertex() {
     for (auto v: vertexSet)
         if (v->getAdj().size() == 1) {
@@ -127,11 +124,7 @@ bool Graph::hasPendantVertex() {
 }
 
 
-/**
- *
- * @param path
- * @return
- */
+
 double Graph::getPathCost(const std::vector<Vertex *> &path) {
     double totalCost = 0;
     for (int i = 0; i < path.size() - 1; ++i) {
@@ -145,15 +138,7 @@ double Graph::getPathCost(const std::vector<Vertex *> &path) {
     return totalCost;
 }
 
-/**
- *
- * @param v
- * @param path
- * @param shortestPath
- * @param shortestPathCost
- * @param numOfPossiblePaths
- * @return
- */
+
 bool Graph::TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *> &shortestPath, double &shortestPathCost,
                int &numOfPossiblePaths) {
     if (path.size() == vertexSet.size()) {
@@ -192,27 +177,7 @@ bool Graph::TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *
 }
 
 
-/**
- * * Check if the graph has a Hamiltonian cycle.
- * (visit all nodes only once and return to the starting node)
- * If it has, return the minimum cost cycle.
- * conditions:
- * - graph must be connected
- * - graph must not have pendant vertices
- * - graph must not have articulation points
- * @param shortestPath
- * @param shortestPathCost
- * @return true if the graph has a Hamiltonian cycle, false otherwise
- */
 bool Graph::TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost) {
-    // Start the timer
-    auto start_time = std::chrono::high_resolution_clock::now();
-
-    std::cout << "Calculating max flow for all pairs of stations..." << std::endl;
-    std::cout << "Please stand by..." << std::endl;
-
-    // Measure execution time
-    // ...
     if (vertexSet.empty()) {
         std::cout << "Graph is empty" << std::endl;
         return false;
@@ -228,6 +193,15 @@ bool Graph::TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost) {
         return false;
     }
 
+    // Start the timer
+    auto start_time = std::chrono::high_resolution_clock::now();
+
+    std::cout << "Calculating max flow for all pairs of stations..." << std::endl;
+    std::cout << "Please stand by..." << std::endl;
+
+    // Measure execution time
+    // ...
+
     int numOfPossiblePaths = 0;
     std::vector<Vertex *> path;
     path.push_back(vertexSet[0]); // Start from any vertex
@@ -240,13 +214,7 @@ bool Graph::TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost) {
     return res;
 }
 
-/**
- * Utility function to check if the graph has a Hamiltonian cycle.
- * @param v
- * @param path
- * @param pathCost
- * @return
- */
+
 double Graph::hasHamiltonianCycleUtil(Vertex *v, std::vector<Vertex *> &path, double &pathCost) {
     if (path.size() == vertexSet.size()) {
         for (auto edge: v->getAdj()) {
@@ -273,24 +241,9 @@ double Graph::hasHamiltonianCycleUtil(Vertex *v, std::vector<Vertex *> &path, do
     return false;
 }
 
-/**
- * Check if the graph has a Hamiltonian cycle.
- * conditions:
- * - graph must be connected
- * - graph must not have pendant vertices
- * - graph must not have articulation points
- * @param path
- * @param pathCost
- * @return
- */
-bool Graph::hasHamiltonianCycle(std::vector<Vertex *> &path, double &pathCost) {
-    // Start the timer
-    auto start_time = std::chrono::high_resolution_clock::now();
-    std::cout << "Calculating max flow for all pairs of stations..." << std::endl;
-    std::cout << "Please stand by..." << std::endl;
 
-    // Measure execution time
-    // ...
+bool Graph::hasHamiltonianCycle(std::vector<Vertex *> &path, double &pathCost) {
+
     if (this->vertexSet.empty()) {
         std::cout << "Graph is empty" << std::endl;
         return false;
@@ -306,7 +259,13 @@ bool Graph::hasHamiltonianCycle(std::vector<Vertex *> &path, double &pathCost) {
         return false;
     }
 
+    // Start the timer
+    auto start_time = std::chrono::high_resolution_clock::now();
+    std::cout << "Calculating max flow for all pairs of stations..." << std::endl;
+    std::cout << "Please stand by..." << std::endl;
 
+    // Measure execution time
+    // ...
     path.push_back(this->vertexSet[0]);
     auto res = hasHamiltonianCycleUtil(this->vertexSet[0], path, pathCost);
 
@@ -317,11 +276,8 @@ bool Graph::hasHamiltonianCycle(std::vector<Vertex *> &path, double &pathCost) {
     return res;
 }
 
-/**
- * use Tarjan’s Algorithm to find articulation points
- * Time Complexity: O(V*(V+E))
- * @return
- */
+
+
 bool Graph::hasArticulationPointUtil(Vertex* pCurrentVertex, int time) {
     int children = 0;
     int currentVertexIdInt = std::stoi(pCurrentVertex->getId());
@@ -359,6 +315,7 @@ bool Graph::hasArticulationPointUtil(Vertex* pCurrentVertex, int time) {
 
     return false;
 }
+
 
 bool Graph::hasArticulationPoint() {
     int V = vertexSet.size();
