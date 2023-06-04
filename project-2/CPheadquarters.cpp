@@ -290,6 +290,8 @@ void CPheadquarters::triangular_Approximation_Heuristic() {
 
 }
 
+constexpr double EarthRadius = 6371.0;
+
 double CPheadquarters::getDist(int a,int b){
     for (auto edge: graph.findVertex(a)->getAdj()){
         if (edge->getDest()->getId()==b) return edge->getDistance();
@@ -297,20 +299,20 @@ double CPheadquarters::getDist(int a,int b){
     return haversineDistance(graph.findVertex(a)->getLatitude(),graph.findVertex(a)->getLongitude(), graph.findVertex(b)->getLatitude(), graph.findVertex(b)->getLongitude());
 }
 
-constexpr double kEarthRadiusKm = 6371.0;
 
-double CPheadquarters::degreesToRadians (double degrees) {
-    return degrees * M_PI / 180.0;
+
+double CPheadquarters::degToRad (double degrees) {
+    return degrees*M_PI/180.0;
 }
 
-double CPheadquarters::haversineDistance(double lat1, double lon1, double lat2, double lon2) {
-    double ang_lat=degreesToRadians(lat2-lat1);
-    double ang_lon=degreesToRadians(lon2-lon1);
-    double a =std::sin(ang_lat / 2) * std::sin(ang_lat / 2) +
-                std::cos(degreesToRadians (lat1)) * std::cos(degreesToRadians (lat2)) *
-             std::sin(ang_lon / 2) * std::sin(ang_lon / 2);
+double CPheadquarters::haversineDistance(double latitude1, double longitude1, double latitude2, double longitude2) {
+    double ang_lat=degToRad(latitude2-latitude1);
+    double ang_lon=degToRad(longitude2-longitude1);
+    double a =sin(ang_lat / 2) * sin(ang_lat / 2) +
+            cos(degToRad (latitude1)) * cos(degToRad (latitude2)) *
+             sin(ang_lon / 2) * sin(ang_lon / 2);
 
-    double c = 2 * std::atan2(std::sqrt(a), std::sqrt(1 - a));
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
 
-    return kEarthRadiusKm * c;
+    return EarthRadius * c;
 }
