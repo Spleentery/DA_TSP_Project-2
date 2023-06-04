@@ -82,18 +82,6 @@ bool Vertex::isVisited() const {
     return this->visited;
 }
 
-bool Vertex::isAdded() const {
-    return this->added;
-}
-
-bool Vertex::isProcessing() const {
-    return this->processing;
-}
-
-unsigned int Vertex::getIndegree() const {
-    return this->indegree;
-}
-
 double Vertex::getDist() const {
     return this->dist;
 }
@@ -114,18 +102,6 @@ void Vertex::setVisited(bool visited) {
     this->visited = visited;
 }
 
-void Vertex::setAdded(bool added) {
-    this->added = added;
-}
-
-void Vertex::setProcesssing(bool processing) {
-    this->processing = processing;
-}
-
-void Vertex::setIndegree(unsigned int indegree) {
-    this->indegree = indegree;
-}
-
 void Vertex::setDist(double dist) {
     this->dist = dist;
 }
@@ -143,7 +119,6 @@ void Vertex::print() const {
     }
     std::cout << std::endl;
     std::cout << "Visited: " << visited << std::endl;
-    std::cout << "Indegree: " << indegree << std::endl;
     std::cout << "Distance: " << dist << std::endl;
     std::cout << "Path: " << path << std::endl;
 }
@@ -163,8 +138,7 @@ std::vector<long> Vertex::getChildren() {
 
 /********************** Edge  ****************************/
 
-Edge::Edge(Vertex *orig, Vertex *dest, double d) : orig(orig), dest(dest), distance(d),
-                                                                             flow(0) {}
+Edge::Edge(Vertex *orig, Vertex *dest, double d) : orig(orig), dest(dest), distance(d) {}
 
 Vertex *Edge::getDest() const {
     return this->dest;
@@ -176,26 +150,6 @@ double Edge::getDistance() const {
 
 Vertex *Edge::getOrig() const {
     return this->orig;
-}
-
-Edge *Edge::getReverse() const {
-    return this->reverse;
-}
-
-bool Edge::isSelected() const {
-    return this->selected;
-}
-
-double Edge::getFlow() const {
-    return flow;
-}
-
-void Edge::setSelected(bool selected) {
-    this->selected = selected;
-}
-
-void Edge::setReverse(Edge *reverse) {
-    this->reverse = reverse;
 }
 
 double Vertex::getLatitude() {

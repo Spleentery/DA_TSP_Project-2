@@ -33,10 +33,6 @@ public:
 
     bool isAdded() const;
 
-    bool isProcessing() const;
-
-    unsigned int getIndegree() const;
-
     double getDist() const;
 
     Edge *getPath() const;
@@ -46,12 +42,6 @@ public:
     void setId(int info);
 
     void setVisited(bool visited);
-
-    void setAdded(bool added);
-
-    void setProcesssing(bool processing);
-
-    void setIndegree(unsigned int indegree);
 
     void setDist(double dist);
 
@@ -85,9 +75,6 @@ protected:
 
     // auxiliary fields
     bool visited = false; // used by DFS, BFS, Prim ...
-    bool added = false;
-    bool processing = false; // used by isDAG (in addition to the visited attribute)
-    unsigned int indegree; // used by topsort
     double dist = 0;
     double longitude=0;
     double latitude=0;
@@ -113,36 +100,15 @@ public:
 
     double getDistance() const;
 
-    bool isSelected() const;
-
     Vertex *getOrig() const;
-
-    Edge *getReverse() const;
-
-    double getFlow() const;
-
-    void setSelected(bool selected);
-
-    void setReverse(Edge *reverse);
-
-
-
-
-
-
 
 protected:
     Vertex *dest; // destination vertex
     double distance; // edge weight, can also be used for capacity
 
-    // auxiliary fields
-    bool selected = false;
-
     // used for bidirectional edges
     Vertex *orig;
-    Edge *reverse = nullptr;
 
-    double flow; // for flow-related problems
 };
 
 

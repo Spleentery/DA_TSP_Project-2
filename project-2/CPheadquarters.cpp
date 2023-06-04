@@ -46,7 +46,7 @@ void CPheadquarters::read_edges(string path){
 
         graph.addEdge(origin_id, destination_id, distance);
         graph.addEdge(destination_id, origin_id, distance);
-        cout << origin;
+        cout << origin << '\n';
     }
 }
 
@@ -83,8 +83,7 @@ void CPheadquarters::read_coordinates(string path){
         v->setLongitude(longitude_);
         v->setLatitude(latitude_);
 
-        // print information about the station, to make sure it was imported correctly
-        //cout << "station: " << nome << " distrito: " << distrito << " municipality: " << municipality << " township: " << township << " line: " << line << endl;
+        cout << long_id << '\n';
     }
 }
 
@@ -249,14 +248,17 @@ void CPheadquarters::triangular_Approximation_Heuristic() {
         v.second->eraseChildren();
     }
 
-    Vertex *root = graph.getVertexSet()[0];
+    Vertex *root = graph.findVertex(0);
     root->setDist(0);
     MutablePriorityQueue<Vertex> q;
     q.insert(root);
-    while (q.empty()) {
+    while (!q.empty()) {
         auto v = q.extractMin();
+        cout<<"working on:"<<v->getId()<<'\n';
         v->setVisited(true);
-        v->getPath()->getOrig()->addChildren(v->getPath()->getOrig()->getId());
+        if(v->getId()!=0) {
+            v->getPath()->getOrig()->addChildren(v->getId());
+        }
         for (auto &e: v->getAdj()) {
             Vertex *w = e->getDest();
             if (!w->isVisited()) {
@@ -280,10 +282,11 @@ void CPheadquarters::triangular_Approximation_Heuristic() {
     double result=0;
 
     for (int i = 0; i < mst_preorder_path.size()-1; i++) {
-        result+= getDist(i,i+1);
+        result+= getDist(mst_preorder_path[i],mst_preorder_path[i+1]);
     }
+    result+=getDist(mst_preorder_path[mst_preorder_path.size()-1],mst_preorder_path[0]);
 
-    cout<<"Result"<<result;
+    cout<<"Result:"<<result;
 
 }
 
