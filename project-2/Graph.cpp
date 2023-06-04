@@ -9,14 +9,13 @@ int Graph::getNumVertex() const {
     return vertexSet.size();
 }
 
-std::vector<Vertex *> Graph::getVertexSet() const {
+std::unordered_map<long,Vertex *> Graph::getVertexSet() const {
     return vertexSet;
 }
 
 
-Vertex *Graph::findVertex(const std::string &id) const {
-    for (auto v: vertexSet) {
-        if (v->getId() == id)
+Vertex *Graph:: findVertex(const std::string &id) const {
+    if(vertexSet.containsKey())
             return v;
     }
     return nullptr;

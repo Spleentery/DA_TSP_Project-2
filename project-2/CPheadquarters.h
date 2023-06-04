@@ -7,11 +7,12 @@
 
 
 #include "Graph.h"
-#include "Establishment.h"
+
+using namespace std;
 
 class CPheadquarters {
     Graph graph;
-    unordered_map<string, Establishment> stations;
+    vector<std::string> mst_preorder_path;
 public:
 
     void read_edges(std::string path);
@@ -59,6 +60,16 @@ public:
     void backtrack();
 
     void hamiltonianCycle();
+
+    void triangular_Approximation_Heuristic();
+
+    void pathRec(Vertex *vertex);
+
+    double degreesToRadians(double degrees);
+
+    double haversineDistance(double lat1, double lon1, double lat2, double lon2);
+
+    double getDist(int a, int b);
 };
 
 

@@ -63,10 +63,25 @@ public:
 
     Edge *getEdge(std::string destID);
 
+    void eraseChildren();
 
+    void addChildren(std::string s);
+
+    std::vector<std::string> getChildren();
+
+    double getLatitude();
+
+    double getLongitude();
+
+    void setLatitude(double latitude);
+
+    void setLongitude(double longitude);
+
+    int queueIndex = 0;
 protected:
     std::string id;           // identifier
     std::vector<Edge *> adj;  // outgoing edges
+    std::vector<std::string> children;
 
     // auxiliary fields
     bool visited = false; // used by DFS, BFS, Prim ...
@@ -74,12 +89,17 @@ protected:
     bool processing = false; // used by isDAG (in addition to the visited attribute)
     unsigned int indegree; // used by topsort
     double dist = 0;
+    double longitude=0;
+    double latitude=0;
+
+
     Edge *path = nullptr;
 
     std::vector<Edge *> incoming; // incoming edges
 
-    int queueIndex = 0;        // required by MutablePriorityQueue and UFDS
+    // required by MutablePriorityQueue and UFDS
     void print() const;
+
 };
 
 
@@ -114,7 +134,6 @@ public:
 protected:
     Vertex *dest; // destination vertex
     double distance; // edge weight, can also be used for capacity
-
 
     // auxiliary fields
     bool selected = false;

@@ -148,6 +148,18 @@ void Vertex::print() const {
     std::cout << "Path: " << path << std::endl;
 }
 
+void Vertex::eraseChildren() {
+    children.clear();
+}
+
+void Vertex::addChildren(std::string s) {
+    children.push_back(s);
+}
+
+std::vector<std::string> Vertex::getChildren() {
+    return children;
+}
+
 
 /********************** Edge  ****************************/
 
@@ -186,8 +198,24 @@ void Edge::setReverse(Edge *reverse) {
     this->reverse = reverse;
 }
 
-void Edge::setFlow(double flow) {
+void Vertex::setFlow(double flow) {
     this->flow = flow;
+}
+
+double Vertex::getLatitude() {
+    return latitude;
+}
+
+double Vertex::getLongitude() {
+    return longitude;
+}
+
+void Vertex::setLatitude(double latitude_) {
+    latitude=latitude_;
+}
+
+void Edge::setLongitude(double longitude_) {
+    longitude=longitude_;
 }
 
 

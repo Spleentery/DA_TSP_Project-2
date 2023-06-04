@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include "CPheadquarters.h"
+#include "MutablePriorityQueue.h"
 #include <chrono>
 #include <set>
 #include <cmath>
@@ -73,9 +74,9 @@ void CPheadquarters::read_establishments(string path){
         longitude_ = stod(temp1);
         latitude_ = stod(temp2);
 
-
-        Establishment station(id_, longitude_, latitude_);
-        stations[id_] = station;
+        auto v = graph.findVertex(id_);
+        v->setLongitude(longitude_);
+        v->setLatitude(latitude_);
 
         // print information about the station, to make sure it was imported correctly
         //cout << "station: " << nome << " distrito: " << distrito << " municipality: " << municipality << " township: " << township << " line: " << line << endl;
@@ -228,4 +229,83 @@ void CPheadquarters::hamiltonianCycle() {
     else {
         cout << "The graph does not have a Hamiltonian cycle" << endl;
     }
+}
+void CPheadquarters::pathRec(Vertex* vertex){
+    mst_preorder_path.push_back(vertex->getId());
+    for (auto child : vertex->getChildren()) {
+        pathRec(graph.getVertexSet()[child]);
+    }
+    return;
+}
+
+
+void CPheadquarters::triangular_Approximation_Heuristic() {
+    std::unordered_map<std::string,Vertex *> vertexis = graph.getVertexSet();
+    for (auto v: vertexis) {
+        v.second->setVisited(false);
+        v.second->setDist(std::numeric_limits<double>::max());
+        v.second->eraseChildren();
+    }
+
+    Vertex *root = graph.getVertexSet()[0];
+    root->setDist(0);
+    MutablePriorityQueue<Vertex> q;
+    q.insert(root);
+    while (q.empty()) {
+        auto v = q.extractMin();
+        v->setVisited(true);
+        v->getPath()->getOrig()->addChildren(v->getPath()->getOrig()->getId());
+        for (auto &e: v->getAdj()) {
+            Vertex *w = e->getDest();
+            if (!w->isVisited()) {
+                auto oldDist = w->getDist();
+                if (e->getDistance() < oldDist) {
+                    w->setDist(e->getDistance());
+                    w->setPath(e);
+                    if (oldDist == std::numeric_limits<double>::max()) {
+                        q.insert(w);
+                    } else {
+                        q.decreaseKey(w);
+                    }
+                }
+            }
+        }
+    }
+
+    mst_preorder_path.clear();
+    pathRec(root);
+
+    double result=0;
+
+    for (int i = 0; i < mst_preorder_path.size()-1; i++) {
+        result+= getDist(i,i+1);
+    }
+
+    cout<<"Result"<<result;
+
+}
+
+double CPheadquarters::getDist(int a,int b){
+    for (auto edge: graph.findVertex(a)->getAdj()){
+        if (edge->getDest()->getId()==b) return edge->getDist();
+    }
+    return haversineDistance(graph.findVertex(a)->getLatitude(),graph.findVertex(a)->getLon(), graph.findVertex(b)->getLat(), graph.findVertex(b)->getLon());
+}
+
+constexpr double kEarthRadiusKm = 6371.0;
+
+double CPheadquarters::degreesToRadians (double degrees) {
+    return degrees * M_PI / 180.0;
+}
+
+double CPheadquarters::haversineDistance(double lat1, double lon1, double lat2, double lon2) {
+    double dLat=degreesToRadians(lat2-lat1);
+    double dLon=degreesToRadians(lon2-lon1);
+    double a =std::sin(dlat / 2) * std::sin(dLat / 2) +
+                std::cos(degreesToRadians (lat1)) * std::cos(degreesToRadians (lat2)) *
+             std::sin(dlon / 2) * std::sin(dlon / 2);
+
+    double c = 2 * std::atan2(std::sqrt(a), std::sqrt(1 - a));
+
+    return kEarthRadiusKm * c;
 }

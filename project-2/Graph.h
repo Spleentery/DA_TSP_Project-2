@@ -25,14 +25,14 @@ public:
     * @param id
     * @return vertex pointer to vertex with given content, or nullptr if not found
     */
-    Vertex *findVertex(const std::string &id) const;
+    Vertex *findVertex(const long id) const;
 
     /**
      *  Adds a vertex with a given content or info (in) to a graph (this).
      * @param id
      * @return true if successful, and false if a vertex with that content already exists.
      */
-    bool addVertex(const std::string &id);
+    bool addVertex(const long id);
 
     /**
      * Adds an edge to a graph (this), given the contents of the source and
@@ -42,14 +42,14 @@ public:
      * @param w
      * @return true if successful, and false if the source or destination vertex does not exist.
      */
-    bool addEdge(const std::string &sourc, const std::string &dest, double d);
+    bool addEdge(const long sourc, const long dest, double d);
 
 
 
 
     [[nodiscard]] int getNumVertex() const;
 
-    [[nodiscard]] std::vector<Vertex *> getVertexSet() const;
+    [[nodiscard]] std::unordered_map<long,Vertex *> getVertexSet() const;
 
     /**
      * prints the graph
@@ -89,7 +89,7 @@ public:
     bool hasHamiltonianCycle(std::vector<Vertex *> &path, double &pathCost);
 
 protected:
-    std::vector<Vertex *> vertexSet;    // vertex set
+    std::unordered_map<long,Vertex *> vertexSet;    // vertex set
 
     double **distMatrix = nullptr;   // dist matrix for Floyd-Warshall
     int **pathMatrix = nullptr;   // path matrix for Floyd-Warshall
