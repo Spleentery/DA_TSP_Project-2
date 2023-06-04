@@ -14,23 +14,24 @@ std::unordered_map<long,Vertex *> Graph::getVertexSet() const {
 }
 
 
-Vertex *Graph:: findVertex(const std::string &id) const {
-    if(vertexSet.containsKey())
-            return v;
+Vertex *Graph:: findVertex(const long id) const {
+    auto it = vertexSet.find(id);
+    if(it!=vertexSet.end()){
+        return it->second;
     }
     return nullptr;
 }
 
 
-bool Graph::addVertex(const std::string &id) {
+bool Graph::addVertex(const long id) {
     if (findVertex(id) != nullptr)
         return false;
-    vertexSet.push_back(new Vertex(id));
+    vertexSet[id]=(new Vertex(id));
     return true;
 }
 
 
-bool Graph::addEdge(const std::string &sourc, const std::string &dest, double d) {
+bool Graph::addEdge(const long sourc, const long dest, double d) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == nullptr || v2 == nullptr)
@@ -70,27 +71,19 @@ void Graph::print() const {
     std::cout << "Number of vertices: " << vertexSet.size() << std::endl;
     std::cout << "Vertices:\n";
     for (const auto &vertex: vertexSet) {
-        std::cout << vertex->getId() << " ";
+        std::cout << vertex.second->getId() << " ";
     }
     std::cout << "\nEdges:\n";
     for (const auto &vertex: vertexSet) {
-        for (const auto &edge: vertex->getAdj()) {
-            std::cout << vertex->getId() << " -> " << edge->getDest()->getId() << " (distance: " << edge->getDistance()
+        for (const auto &edge: vertex.second->getAdj()) {
+            std::cout << vertex.second->getId() << " -> " << edge->getDest()->getId() << " (distance: " << edge->getDistance()
                       << ")" << std::endl;
         }
     }
 }
 
 
-bool Graph::isIn(std::string n, std::vector<std::string> vec) {
-    for (std::string s: vec) {
-        if (s == n) return true;
-    }
-    return false;
-}
-
-
-void Graph::deleteVertex(std::string name) {
+void Graph::deleteVertex(long name) {
     auto v = findVertex(name);
     for (auto e: v->getAdj()) {
         auto s = e->getDest()->getId();
@@ -101,8 +94,8 @@ void Graph::deleteVertex(std::string name) {
     }
     auto it = vertexSet.begin();
     while (it != vertexSet.end()) {
-        Vertex *currentVertex = *it;
-        if (currentVertex->getId() == name) {
+        auto currentVertex = *it;
+        if (currentVertex.second->getId() == name) {
             it = vertexSet.erase(it);
         } else {
             it++;
@@ -114,8 +107,8 @@ void Graph::deleteVertex(std::string name) {
 
 bool Graph::hasPendantVertex() {
     for (auto v: vertexSet)
-        if (v->getAdj().size() == 1) {
-            std::cout << "Graph has pendant vertex: " << v->getId() << std::endl;
+        if (v.second->getAdj().size() == 1) {
+            std::cout << "Graph has pendant vertex: " << v.second->getId() << std::endl;
             return true;
         }
     return false;
@@ -278,7 +271,7 @@ bool Graph::hasHamiltonianCycle(std::vector<Vertex *> &path, double &pathCost) {
 
 bool Graph::hasArticulationPointUtil(Vertex* pCurrentVertex, int time) {
     int children = 0;
-    int currentVertexIdInt = std::stoi(pCurrentVertex->getId());
+    long currentVertexIdInt = pCurrentVertex->getId();
     visited[currentVertexIdInt] = true;
     visited[currentVertexIdInt] = true;
 
@@ -286,7 +279,7 @@ bool Graph::hasArticulationPointUtil(Vertex* pCurrentVertex, int time) {
 
     for (auto edge : pCurrentVertex->getAdj()) {
         Vertex* pAdjacentVertex = edge->getDest();
-        int adjacentVertexIdInt = std::stoi(pAdjacentVertex->getId());
+        long adjacentVertexIdInt = pAdjacentVertex->getId();
         if (!visited[adjacentVertexIdInt]) {
             children++;
             parent[adjacentVertexIdInt] = currentVertexIdInt;
@@ -324,8 +317,8 @@ bool Graph::hasArticulationPoint() {
     ap.assign(V, false);
 
     for (auto vertex : vertexSet) {
-        if (!visited[std::stoi(vertex->getId())]) {
-            if (hasArticulationPointUtil(vertex, 0))
+        if (!visited[vertex.second->getId()]) {
+            if (hasArticulationPointUtil(vertex.second, 0))
                 return true;
         }
     }

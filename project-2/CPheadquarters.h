@@ -12,12 +12,12 @@ using namespace std;
 
 class CPheadquarters {
     Graph graph;
-    vector<std::string> mst_preorder_path;
+    vector<long> mst_preorder_path;
 public:
 
     void read_edges(std::string path);
 
-    void read_establishments(std::string path);
+    void read_coordinates(std::string path);
 
 
     Graph getGraph() const;
@@ -29,7 +29,7 @@ public:
      * @param totalDistance
      * @param id
      */
-    void heuristic(string path[], unsigned int &nodesVisited, double &totalDistance, string id);
+    void heuristic(long path[], unsigned int &nodesVisited, double &totalDistance, long id);
 
     /**
      * Recursive part of the heuristic that looks for the closest vertex to the actual one,
@@ -42,7 +42,7 @@ public:
      * @param totalDistance
      * @attention the time complexity of this part of the heuristic is O(E)
      */
-    void heuristicRec(Vertex *v, string path[], unsigned int currentIndex, double distance, unsigned int &nodesVisited, double &totalDistance);
+    void heuristicRec(Vertex *v, long path[], unsigned int currentIndex, double distance, unsigned int &nodesVisited, double &totalDistance);
 
     /**
      * Iterates through all vertex to determine with which one to starts

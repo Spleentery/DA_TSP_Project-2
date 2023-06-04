@@ -25,14 +25,14 @@ public:
     * @param id
     * @return vertex pointer to vertex with given content, or nullptr if not found
     */
-    Vertex *findVertex(const long id) const;
+    Vertex *findVertex(long id) const;
 
     /**
      *  Adds a vertex with a given content or info (in) to a graph (this).
      * @param id
      * @return true if successful, and false if a vertex with that content already exists.
      */
-    bool addVertex(const long id);
+    bool addVertex(long id);
 
     /**
      * Adds an edge to a graph (this), given the contents of the source and
@@ -42,7 +42,7 @@ public:
      * @param w
      * @return true if successful, and false if the source or destination vertex does not exist.
      */
-    bool addEdge(const long sourc, const long dest, double d);
+    bool addEdge(long sourc, long dest, double d);
 
 
 
@@ -99,13 +99,11 @@ protected:
     std::vector<bool> visited, ap;
 
 
-    bool isIn(std::string n, std::vector<std::string> vec);
-
     /**
      * delete a vertex from the graph, making a subgraph from a graph
      * @param name
      */
-    void deleteVertex(std::string name);
+    void deleteVertex(long name);
 
     /**
      * calculate the cost of the path

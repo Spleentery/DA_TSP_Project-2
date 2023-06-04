@@ -21,11 +21,11 @@ class Edge;
 
 class Vertex {
 public:
-    Vertex(std::string id);
+    Vertex(long id);
 
     bool operator<(Vertex &vertex) const; // // required by MutablePriorityQueue
 
-    std::string getId() const;
+    long getId() const;
 
     std::vector<Edge *> getAdj() const;
 
@@ -59,15 +59,15 @@ public:
 
     Edge *addEdge(Vertex *dest, double w);
 
-    bool removeEdge(std::string destID);
+    bool removeEdge(long destID);
 
-    Edge *getEdge(std::string destID);
+    Edge *getEdge(long destID);
 
     void eraseChildren();
 
-    void addChildren(std::string s);
+    void addChildren(long s);
 
-    std::vector<std::string> getChildren();
+    std::vector<long> getChildren();
 
     double getLatitude();
 
@@ -79,9 +79,9 @@ public:
 
     int queueIndex = 0;
 protected:
-    std::string id;           // identifier
+    long id;           // identifier
     std::vector<Edge *> adj;  // outgoing edges
-    std::vector<std::string> children;
+    std::vector<long> children;
 
     // auxiliary fields
     bool visited = false; // used by DFS, BFS, Prim ...
@@ -125,7 +125,7 @@ public:
 
     void setReverse(Edge *reverse);
 
-    void setFlow(double flow);
+
 
 
 

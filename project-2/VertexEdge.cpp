@@ -6,7 +6,7 @@
 
 /************************* Vertex  **************************/
 
-Vertex::Vertex(std::string id) : id(id) {}
+Vertex::Vertex(long id) : id(id) {}
 
 /*
  * Auxiliary function to add an outgoing edge to a vertex (this),
@@ -24,7 +24,7 @@ Edge *Vertex::addEdge(Vertex *d, double dist) {
  * from a vertex (this).
  * Returns true if successful, and false if such edge does not exist.
  */
-bool Vertex::removeEdge(std::string destID) {
+bool Vertex::removeEdge(long destID) {
     bool removedEdge = false;
     auto it = adj.begin();
     while (it != adj.end()) {
@@ -50,7 +50,7 @@ bool Vertex::removeEdge(std::string destID) {
     return removedEdge;
 }
 
-Edge *Vertex::getEdge(std::string destID){
+Edge *Vertex::getEdge(long destID){
 
     auto it = adj.begin();
     while (it != adj.end()) {
@@ -70,7 +70,7 @@ bool Vertex::operator<(Vertex &vertex) const {
     return this->dist < vertex.dist;
 }
 
-std::string Vertex::getId() const {
+long Vertex::getId() const {
     return this->id;
 }
 
@@ -152,11 +152,11 @@ void Vertex::eraseChildren() {
     children.clear();
 }
 
-void Vertex::addChildren(std::string s) {
+void Vertex::addChildren(long s) {
     children.push_back(s);
 }
 
-std::vector<std::string> Vertex::getChildren() {
+std::vector<long> Vertex::getChildren() {
     return children;
 }
 
@@ -198,10 +198,6 @@ void Edge::setReverse(Edge *reverse) {
     this->reverse = reverse;
 }
 
-void Vertex::setFlow(double flow) {
-    this->flow = flow;
-}
-
 double Vertex::getLatitude() {
     return latitude;
 }
@@ -214,7 +210,7 @@ void Vertex::setLatitude(double latitude_) {
     latitude=latitude_;
 }
 
-void Edge::setLongitude(double longitude_) {
+void Vertex::setLongitude(double longitude_) {
     longitude=longitude_;
 }
 

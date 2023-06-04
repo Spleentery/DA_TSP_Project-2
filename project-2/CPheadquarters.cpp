@@ -37,16 +37,21 @@ void CPheadquarters::read_edges(string path){
 
 
         distance = stod(temp);
-        graph.addVertex(origin);
-        graph.addVertex(destination);
 
-        graph.addEdge(origin, destination, distance);
-        graph.addEdge(destination, origin, distance);
+        long origin_id = std::stol(origin);
+        graph.addVertex(origin_id);
+
+        long destination_id = std::stol(destination);
+        graph.addVertex(destination_id);
+
+        graph.addEdge(origin_id, destination_id, distance);
+        graph.addEdge(destination_id, origin_id, distance);
+        cout << origin;
     }
 }
 
 
-void CPheadquarters::read_establishments(string path){
+void CPheadquarters::read_coordinates(string path){
     std::ifstream inputFile2(path);
     string line2;
     std::getline(inputFile2, line2); // ignore first line
@@ -70,11 +75,11 @@ void CPheadquarters::read_establishments(string path){
         getline(inputString, temp1, ',');
         getline(inputString, temp2, ',');
 
-
+        long long_id = std::stol(id_);
         longitude_ = stod(temp1);
         latitude_ = stod(temp2);
 
-        auto v = graph.findVertex(id_);
+        auto v = graph.findVertex(long_id);
         v->setLongitude(longitude_);
         v->setLatitude(latitude_);
 
@@ -84,14 +89,12 @@ void CPheadquarters::read_establishments(string path){
 }
 
 
-void CPheadquarters::heuristicRec(Vertex *v, string route[], unsigned int currentIndex, double distance, unsigned int &nodesVisited, double &totalDistance){
+void CPheadquarters::heuristicRec(Vertex *v, long route[], unsigned int currentIndex, double distance, unsigned int &nodesVisited, double &totalDistance){
 
     bool nodesStillUnvisited = false;
-    string id1 = v->getId();
-    Establishment st1 = stations.find(id1)->second;
 
-    double long1 = st1.get_longitude();
-    double lat1 = st1.get_latitude();
+    double long1 = v->getLongitude();
+    double lat1 = v->getLatitude();
 
     Vertex *small;
     double smallAngle = 10000;
@@ -105,11 +108,9 @@ void CPheadquarters::heuristicRec(Vertex *v, string route[], unsigned int curren
         double dist2 = edge->getDistance();
         if(v2->isVisited() == false){
             nodesStillUnvisited = true;
-            string id2 = edge->getDest()->getId();
-            Establishment st2 = stations.find(id2)->second;
 
-            double long2 = st2.get_longitude();
-            double lat2 = st2.get_latitude();
+            double long2 = edge->getDest()->getLongitude();
+            double lat2 = edge->getDest()->getLatitude();
 
             x = long1 - long2;
             y = lat1 - lat2;
@@ -147,10 +148,10 @@ void CPheadquarters::heuristicRec(Vertex *v, string route[], unsigned int curren
 
 }
 
-void CPheadquarters::heuristic(string route[], unsigned int &nodesVisited, double &totalDistance, string id) {
+void CPheadquarters::heuristic(long route[], unsigned int &nodesVisited, double &totalDistance, long id) {
 
-    for (const auto &vertex: graph.getVertexSet()) {
-        vertex->setVisited(false);
+    for (const auto vertex: graph.getVertexSet()) {
+        vertex.second->setVisited(false);
 
     }
 
@@ -167,17 +168,18 @@ void CPheadquarters::heuristic(string route[], unsigned int &nodesVisited, doubl
 
 
 void CPheadquarters::chooseRoute(){
-    string id;
-    int pathSize = graph.getNumVertex();
-    string path[pathSize];
+    long id;
+    auto pathSize = graph.getNumVertex();
+    auto vertixes = graph.getVertexSet();
+    long path[pathSize];
     unsigned int nodesVisited = 0;
     double distance = 0;
-    for(auto it =stations.begin(); it != stations.end(); it++){
+    for(auto it =vertixes.begin(); it != vertixes.end(); it++){
         id = it->first;
         heuristic(path, nodesVisited, distance, id);
         if(nodesVisited == pathSize){
-            string sourceId = path[pathSize-1];
-            string destId = path[0];
+            long sourceId = path[pathSize-1];
+            long destId = path[0];
             Vertex *sourceV = graph.findVertex(sourceId);
             Edge *missingEdge = sourceV->getEdge(destId);
             if(missingEdge!= nullptr){
@@ -240,7 +242,7 @@ void CPheadquarters::pathRec(Vertex* vertex){
 
 
 void CPheadquarters::triangular_Approximation_Heuristic() {
-    std::unordered_map<std::string,Vertex *> vertexis = graph.getVertexSet();
+    std::unordered_map<long,Vertex *> vertexis = graph.getVertexSet();
     for (auto v: vertexis) {
         v.second->setVisited(false);
         v.second->setDist(std::numeric_limits<double>::max());
@@ -287,9 +289,9 @@ void CPheadquarters::triangular_Approximation_Heuristic() {
 
 double CPheadquarters::getDist(int a,int b){
     for (auto edge: graph.findVertex(a)->getAdj()){
-        if (edge->getDest()->getId()==b) return edge->getDist();
+        if (edge->getDest()->getId()==b) return edge->getDistance();
     }
-    return haversineDistance(graph.findVertex(a)->getLatitude(),graph.findVertex(a)->getLon(), graph.findVertex(b)->getLat(), graph.findVertex(b)->getLon());
+    return haversineDistance(graph.findVertex(a)->getLatitude(),graph.findVertex(a)->getLongitude(), graph.findVertex(b)->getLatitude(), graph.findVertex(b)->getLongitude());
 }
 
 constexpr double kEarthRadiusKm = 6371.0;
@@ -299,11 +301,11 @@ double CPheadquarters::degreesToRadians (double degrees) {
 }
 
 double CPheadquarters::haversineDistance(double lat1, double lon1, double lat2, double lon2) {
-    double dLat=degreesToRadians(lat2-lat1);
-    double dLon=degreesToRadians(lon2-lon1);
-    double a =std::sin(dlat / 2) * std::sin(dLat / 2) +
+    double ang_lat=degreesToRadians(lat2-lat1);
+    double ang_lon=degreesToRadians(lon2-lon1);
+    double a =std::sin(ang_lat / 2) * std::sin(ang_lat / 2) +
                 std::cos(degreesToRadians (lat1)) * std::cos(degreesToRadians (lat2)) *
-             std::sin(dlon / 2) * std::sin(dlon / 2);
+             std::sin(ang_lon / 2) * std::sin(ang_lon / 2);
 
     double c = 2 * std::atan2(std::sqrt(a), std::sqrt(1 - a));
 

@@ -36,7 +36,7 @@ int main() {
     getline(cin, path);
     cout<<endl;
     if (!path.empty()) {
-        CP.read_establishments(path);
+        CP.read_coordinates(path);
     }
     //CP.getGraph().print();
     int n;
