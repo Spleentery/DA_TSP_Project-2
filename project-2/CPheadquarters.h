@@ -106,6 +106,10 @@ public:
      * @attention Time Complexity: O(E)
      */
     double getDist(int a, int b);
+
+    void raquel();
+
+    double calculateAngle(double Ax, double Ay, double Bx, double By, double Cx, double Cy);
 };
 
 
