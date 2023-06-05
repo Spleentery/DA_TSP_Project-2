@@ -26,17 +26,21 @@ int main() {
     CPheadquarters CP;
     string path;
     cout << "Insert path to file to construct a graph "
-            "\ne.g Toy Graphs: \n../Toy-Graphs/Toy-Graphs/shipping.csv or ../Toy-Graphs/Toy-Graphs/stadiums.csv or ../Toy-Graphs/Toy-Graphs/tourism.csv "
-            "\nReal World Graphs: \n../Real-world Graphs/Real-world Graphs/graph1/edges.csv or ../Real-world Graphs/Real-world Graphs/graph2/edges.csv or ../Real-world Graphs/Real-world Graphs/graph3/edges.csv"
-            "\nExtra Fully Connected: \n../Extra_Fully_Connected_Graphs/Extra_Fully_Connected_Graphs/edges_25.csv ): ";
+            "\ne.g"
+            "\n|Toy Graphs           |: ../Toy-Graphs/Toy-Graphs/shipping.csv"
+            "\n|Real World Graphs    |: ../Real-world Graphs/Real-world Graphs/graph1/edges.csv"
+            "\n|Extra Fully Connected|: ../Extra_Fully_Connected_Graphs/Extra_Fully_Connected_Graphs/edges_25.csv )"
+            "\n:";
     getline(cin, path);
     CP.read_edges(path);
-    cout<<"If necessary, insert path to file that contains latitude and longitude (e.g ../Real-world Graphs/Real-world Graphs/graph1/nodes.csv)"
-          "\n otherwise, press enter ";
+    cout<<"If necessary, insert path to file that contains latitude and longitude"
+          "\n(e.g ../Real-world Graphs/Real-world Graphs/graph1/nodes.csv)"
+          "\n Otherwise, press enter."
+          "\n:";
     getline(cin, path);
     cout<<endl;
     if (!path.empty()) {
-        CP.read_establishments(path);
+        CP.read_coordinates(path);
     }
     //CP.getGraph().print();
     int n;
@@ -74,8 +78,17 @@ int main() {
             }
 
             case 2: {
+                auto start_time = std::chrono::high_resolution_clock::now();
 
+                CP.triangular_Approximation_Heuristic();
 
+                auto end_time = std::chrono::high_resolution_clock::now();
+                
+                auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+
+                std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
+
+                break;
             }
 
             case 3: {

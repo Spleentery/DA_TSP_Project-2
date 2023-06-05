@@ -6,7 +6,7 @@
 
 /************************* Vertex  **************************/
 
-Vertex::Vertex(std::string id) : id(id) {}
+Vertex::Vertex(long id) : id(id) {}
 
 /*
  * Auxiliary function to add an outgoing edge to a vertex (this),
@@ -24,7 +24,7 @@ Edge *Vertex::addEdge(Vertex *d, double dist) {
  * from a vertex (this).
  * Returns true if successful, and false if such edge does not exist.
  */
-bool Vertex::removeEdge(std::string destID) {
+bool Vertex::removeEdge(long destID) {
     bool removedEdge = false;
     auto it = adj.begin();
     while (it != adj.end()) {
@@ -50,7 +50,7 @@ bool Vertex::removeEdge(std::string destID) {
     return removedEdge;
 }
 
-Edge *Vertex::getEdge(std::string destID){
+Edge *Vertex::getEdge(long destID){
 
     auto it = adj.begin();
     while (it != adj.end()) {
@@ -70,7 +70,7 @@ bool Vertex::operator<(Vertex &vertex) const {
     return this->dist < vertex.dist;
 }
 
-std::string Vertex::getId() const {
+long Vertex::getId() const {
     return this->id;
 }
 
@@ -80,18 +80,6 @@ std::vector<Edge *> Vertex::getAdj() const {
 
 bool Vertex::isVisited() const {
     return this->visited;
-}
-
-bool Vertex::isAdded() const {
-    return this->added;
-}
-
-bool Vertex::isProcessing() const {
-    return this->processing;
-}
-
-unsigned int Vertex::getIndegree() const {
-    return this->indegree;
 }
 
 double Vertex::getDist() const {
@@ -114,18 +102,6 @@ void Vertex::setVisited(bool visited) {
     this->visited = visited;
 }
 
-void Vertex::setAdded(bool added) {
-    this->added = added;
-}
-
-void Vertex::setProcesssing(bool processing) {
-    this->processing = processing;
-}
-
-void Vertex::setIndegree(unsigned int indegree) {
-    this->indegree = indegree;
-}
-
 void Vertex::setDist(double dist) {
     this->dist = dist;
 }
@@ -143,16 +119,26 @@ void Vertex::print() const {
     }
     std::cout << std::endl;
     std::cout << "Visited: " << visited << std::endl;
-    std::cout << "Indegree: " << indegree << std::endl;
     std::cout << "Distance: " << dist << std::endl;
     std::cout << "Path: " << path << std::endl;
+}
+
+void Vertex::eraseChildren() {
+    children.clear();
+}
+
+void Vertex::addChildren(long s) {
+    children.push_back(s);
+}
+
+std::vector<long> Vertex::getChildren() {
+    return children;
 }
 
 
 /********************** Edge  ****************************/
 
-Edge::Edge(Vertex *orig, Vertex *dest, double d) : orig(orig), dest(dest), distance(d),
-                                                                             flow(0) {}
+Edge::Edge(Vertex *orig, Vertex *dest, double d) : orig(orig), dest(dest), distance(d) {}
 
 Vertex *Edge::getDest() const {
     return this->dest;
@@ -166,28 +152,20 @@ Vertex *Edge::getOrig() const {
     return this->orig;
 }
 
-Edge *Edge::getReverse() const {
-    return this->reverse;
+double Vertex::getLatitude() {
+    return latitude;
 }
 
-bool Edge::isSelected() const {
-    return this->selected;
+double Vertex::getLongitude() {
+    return longitude;
 }
 
-double Edge::getFlow() const {
-    return flow;
+void Vertex::setLatitude(double latitude_) {
+    latitude=latitude_;
 }
 
-void Edge::setSelected(bool selected) {
-    this->selected = selected;
-}
-
-void Edge::setReverse(Edge *reverse) {
-    this->reverse = reverse;
-}
-
-void Edge::setFlow(double flow) {
-    this->flow = flow;
+void Vertex::setLongitude(double longitude_) {
+    longitude=longitude_;
 }
 
 

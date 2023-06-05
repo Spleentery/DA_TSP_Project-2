@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include "CPheadquarters.h"
+#include "MutablePriorityQueue.h"
 #include <chrono>
 #include <set>
 #include <cmath>
@@ -36,16 +37,21 @@ void CPheadquarters::read_edges(string path){
 
 
         distance = stod(temp);
-        graph.addVertex(origin);
-        graph.addVertex(destination);
 
-        graph.addEdge(origin, destination, distance);
-        graph.addEdge(destination, origin, distance);
+        long origin_id = std::stol(origin);
+        graph.addVertex(origin_id);
+
+        long destination_id = std::stol(destination);
+        graph.addVertex(destination_id);
+
+        graph.addEdge(origin_id, destination_id, distance);
+        graph.addEdge(destination_id, origin_id, distance);
+        cout << origin << '\n';
     }
 }
 
 
-void CPheadquarters::read_establishments(string path){
+void CPheadquarters::read_coordinates(string path){
     std::ifstream inputFile2(path);
     string line2;
     std::getline(inputFile2, line2); // ignore first line
@@ -69,28 +75,25 @@ void CPheadquarters::read_establishments(string path){
         getline(inputString, temp1, ',');
         getline(inputString, temp2, ',');
 
-
+        long long_id = std::stol(id_);
         longitude_ = stod(temp1);
         latitude_ = stod(temp2);
 
+        auto v = graph.findVertex(long_id);
+        v->setLongitude(longitude_);
+        v->setLatitude(latitude_);
 
-        Establishment station(id_, longitude_, latitude_);
-        stations[id_] = station;
-
-        // print information about the station, to make sure it was imported correctly
-        //cout << "station: " << nome << " distrito: " << distrito << " municipality: " << municipality << " township: " << township << " line: " << line << endl;
+        cout << long_id << '\n';
     }
 }
 
 
-void CPheadquarters::heuristicRec(Vertex *v, string route[], unsigned int currentIndex, double distance, unsigned int &nodesVisited, double &totalDistance){
+void CPheadquarters::heuristicRec(Vertex *v, long route[], unsigned int currentIndex, double distance, unsigned int &nodesVisited, double &totalDistance){
 
     bool nodesStillUnvisited = false;
-    string id1 = v->getId();
-    Establishment st1 = stations.find(id1)->second;
 
-    double long1 = st1.get_longitude();
-    double lat1 = st1.get_latitude();
+    double long1 = v->getLongitude();
+    double lat1 = v->getLatitude();
 
     Vertex *small;
     double smallAngle = 10000;
@@ -104,11 +107,9 @@ void CPheadquarters::heuristicRec(Vertex *v, string route[], unsigned int curren
         double dist2 = edge->getDistance();
         if(v2->isVisited() == false){
             nodesStillUnvisited = true;
-            string id2 = edge->getDest()->getId();
-            Establishment st2 = stations.find(id2)->second;
 
-            double long2 = st2.get_longitude();
-            double lat2 = st2.get_latitude();
+            double long2 = edge->getDest()->getLongitude();
+            double lat2 = edge->getDest()->getLatitude();
 
             x = long1 - long2;
             y = lat1 - lat2;
@@ -146,10 +147,10 @@ void CPheadquarters::heuristicRec(Vertex *v, string route[], unsigned int curren
 
 }
 
-void CPheadquarters::heuristic(string route[], unsigned int &nodesVisited, double &totalDistance, string id) {
+void CPheadquarters::heuristic(long route[], unsigned int &nodesVisited, double &totalDistance, long id) {
 
-    for (const auto &vertex: graph.getVertexSet()) {
-        vertex->setVisited(false);
+    for (const auto vertex: graph.getVertexSet()) {
+        vertex.second->setVisited(false);
 
     }
 
@@ -166,17 +167,18 @@ void CPheadquarters::heuristic(string route[], unsigned int &nodesVisited, doubl
 
 
 void CPheadquarters::chooseRoute(){
-    string id;
-    int pathSize = graph.getNumVertex();
-    string path[pathSize];
+    long id;
+    auto pathSize = graph.getNumVertex();
+    auto vertixes = graph.getVertexSet();
+    long path[pathSize];
     unsigned int nodesVisited = 0;
     double distance = 0;
-    for(auto it =stations.begin(); it != stations.end(); it++){
+    for(auto it =vertixes.begin(); it != vertixes.end(); it++){
         id = it->first;
         heuristic(path, nodesVisited, distance, id);
         if(nodesVisited == pathSize){
-            string sourceId = path[pathSize-1];
-            string destId = path[0];
+            long sourceId = path[pathSize-1];
+            long destId = path[0];
             Vertex *sourceV = graph.findVertex(sourceId);
             Edge *missingEdge = sourceV->getEdge(destId);
             if(missingEdge!= nullptr){
@@ -228,4 +230,89 @@ void CPheadquarters::hamiltonianCycle() {
     else {
         cout << "The graph does not have a Hamiltonian cycle" << endl;
     }
+}
+void CPheadquarters::pathRec(Vertex* vertex){
+    mst_preorder_path.push_back(vertex->getId());
+    for (auto child : vertex->getChildren()) {
+        pathRec(graph.getVertexSet()[child]);
+    }
+    return;
+}
+
+
+void CPheadquarters::triangular_Approximation_Heuristic() {
+    std::unordered_map<long,Vertex *> vertexis = graph.getVertexSet();
+    for (auto v: vertexis) {
+        v.second->setVisited(false);
+        v.second->setDist(std::numeric_limits<double>::max());
+        v.second->eraseChildren();
+    }
+
+    Vertex *root = graph.findVertex(0);
+    root->setDist(0);
+    MutablePriorityQueue<Vertex> q;
+    q.insert(root);
+    while (!q.empty()) {
+        auto v = q.extractMin();
+        cout<<"working on:"<<v->getId()<<'\n';
+        v->setVisited(true);
+        if(v->getId()!=0) {
+            v->getPath()->getOrig()->addChildren(v->getId());
+        }
+        for (auto &e: v->getAdj()) {
+            Vertex *w = e->getDest();
+            if (!w->isVisited()) {
+                auto oldDist = w->getDist();
+                if (e->getDistance() < oldDist) {
+                    w->setDist(e->getDistance());
+                    w->setPath(e);
+                    if (oldDist == std::numeric_limits<double>::max()) {
+                        q.insert(w);
+                    } else {
+                        q.decreaseKey(w);
+                    }
+                }
+            }
+        }
+    }
+
+    mst_preorder_path.clear();
+    pathRec(root);
+
+    double result=0;
+
+    for (int i = 0; i < mst_preorder_path.size()-1; i++) {
+        result+= getDist(mst_preorder_path[i],mst_preorder_path[i+1]);
+    }
+    result+=getDist(mst_preorder_path[mst_preorder_path.size()-1],mst_preorder_path[0]);
+
+    cout<<"Result:"<<result;
+
+}
+
+constexpr double EarthRadius = 6371.0;
+
+double CPheadquarters::getDist(int a,int b){
+    for (auto edge: graph.findVertex(a)->getAdj()){
+        if (edge->getDest()->getId()==b) return edge->getDistance();
+    }
+    return haversineDistance(graph.findVertex(a)->getLatitude(),graph.findVertex(a)->getLongitude(), graph.findVertex(b)->getLatitude(), graph.findVertex(b)->getLongitude());
+}
+
+
+
+double CPheadquarters::degToRad (double degrees) {
+    return degrees*M_PI/180.0;
+}
+
+double CPheadquarters::haversineDistance(double latitude1, double longitude1, double latitude2, double longitude2) {
+    double ang_lat=degToRad(latitude2-latitude1);
+    double ang_lon=degToRad(longitude2-longitude1);
+    double a =sin(ang_lat / 2) * sin(ang_lat / 2) +
+            cos(degToRad (latitude1)) * cos(degToRad (latitude2)) *
+             sin(ang_lon / 2) * sin(ang_lon / 2);
+
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+
+    return EarthRadius * c;
 }
