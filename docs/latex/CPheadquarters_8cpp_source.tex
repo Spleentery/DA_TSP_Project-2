@@ -289,7 +289,7 @@
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00286}00286\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00287}00287\ \ \ \ \ result+=\mbox{\hyperlink{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46}{getDist}}(mst\_preorder\_path[mst\_preorder\_path.size()-\/1],mst\_preorder\_path[0]);}
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00288}00288\ }
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00289}00289\ \ \ \ \ cout<<\textcolor{stringliteral}{"{}Result:"{}}<<result;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00289}00289\ \ \ \ \ cout<<\textcolor{stringliteral}{"{}Result:\ "{}}<<result<<\textcolor{charliteral}{'\(\backslash\)n'};}
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00290}00290\ }
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00291}00291\ \}}
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00292}00292\ }
@@ -319,5 +319,57 @@
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00316}00316\ }
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00317}00317\ \ \ \ \ \textcolor{keywordflow}{return}\ EarthRadius\ *\ c;}
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00318}00318\ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00320}\mbox{\hyperlink{classCPheadquarters_a337cb9e33b9025d7f92967e2ca3bafad}{00320}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_a337cb9e33b9025d7f92967e2ca3bafad}{CPheadquarters::raquel}}()\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00321}00321\ \ \ \ \ \textcolor{keyword}{auto}\ vertixes\ =\ graph.getVertexSet();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00322}00322\ \ \ \ \ \textcolor{keywordtype}{double}\ long1\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00323}00323\ \ \ \ \ \textcolor{keywordtype}{double}\ lat1\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00324}00324\ \ \ \ \ \textcolor{keywordtype}{double}\ count\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00325}00325\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ node\ :\ vertixes)\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ long1+=node.second-\/>getLongitude();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ lat1+=node.second-\/>getLatitude();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ count+=1.0;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00329}00329\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00330}00330\ \ \ \ \ \textcolor{keywordtype}{double}\ final\_long=long1\ /\ count;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00331}00331\ \ \ \ \ \textcolor{keywordtype}{double}\ final\_lat=lat1\ /\ count;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00332}00332\ \ \ \ \ vector<pair<int,double>>\ angles;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00333}00333\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ node\ :\ vertixes)\{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ angles.push\_back(make\_pair(node.second-\/>getId(),\ \mbox{\hyperlink{classCPheadquarters_ae2635c45b71648ed499511f55d514a48}{calculateAngle}}(node.second-\/>getLatitude(),node.second-\/>getLongitude(),final\_lat,\ final\_long,final\_lat+10,final\_long)));}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00335}00335\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00336}00336\ \ \ \ \ std::sort(angles.begin(),\ angles.end(),\ [](\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ a,\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ b)\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ return\ a.second\ <\ b.second;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00338}00338\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00340}00340\ \ \ \ \ \textcolor{keywordtype}{double}\ result\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00341}00341\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00342}00342\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ angles.size()-\/1;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ result+=\ \mbox{\hyperlink{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46}{getDist}}(angles[i].first,angles[i+1].first);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00344}00344\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00345}00345\ \ \ \ \ result+=\mbox{\hyperlink{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46}{getDist}}(angles[angles.size()-\/1].first,angles[0].first);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00347}00347\ \ \ \ \ cout<<\textcolor{stringliteral}{"{}Result:\ "{}}<<result<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00348}00348\ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00350}\mbox{\hyperlink{classCPheadquarters_ae2635c45b71648ed499511f55d514a48}{00350}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classCPheadquarters_ae2635c45b71648ed499511f55d514a48}{CPheadquarters::calculateAngle}}(\textcolor{keywordtype}{double}\ Ax,\ \textcolor{keywordtype}{double}\ Ay,\ \textcolor{keywordtype}{double}\ Bx,\ \textcolor{keywordtype}{double}\ By,\ \textcolor{keywordtype}{double}\ Cx,\ \textcolor{keywordtype}{double}\ Cy)\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00351}00351\ \ \ \ \ \textcolor{keywordtype}{double}\ ABx\ =\ Ax\ -\/\ Bx;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00352}00352\ \ \ \ \ \textcolor{keywordtype}{double}\ ABy\ =\ Ay\ -\/\ By;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00353}00353\ \ \ \ \ \textcolor{keywordtype}{double}\ BCx\ =\ Cx\ -\/\ Bx;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00354}00354\ \ \ \ \ \textcolor{keywordtype}{double}\ BCy\ =\ Cy\ -\/\ By;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00356}00356\ \ \ \ \ \textcolor{keywordtype}{double}\ dotProduct\ =\ ABx\ *\ BCx\ +\ ABy\ *\ BCy;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00357}00357\ \ \ \ \ \textcolor{keywordtype}{double}\ crossProduct\ =\ ABx\ *\ BCy\ -\/\ ABy\ *\ BCx;\ \ \textcolor{comment}{//\ Compute\ the\ cross\ product}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00358}00358\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00359}00359\ \ \ \ \ \textcolor{keywordtype}{double}\ magnitudeAB\ =\ std::sqrt(ABx\ *\ ABx\ +\ ABy\ *\ ABy);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00360}00360\ \ \ \ \ \textcolor{keywordtype}{double}\ magnitudeBC\ =\ std::sqrt(BCx\ *\ BCx\ +\ BCy\ *\ BCy);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00362}00362\ \ \ \ \ \textcolor{keywordtype}{double}\ angle\ =\ std::acos(dotProduct\ /\ (magnitudeAB\ *\ magnitudeBC));}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00363}00363\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00364}00364\ \ \ \ \ \textcolor{comment}{//\ Adjust\ the\ angle\ based\ on\ the\ sign\ of\ the\ cross\ product}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00365}00365\ \ \ \ \ \textcolor{keywordflow}{if}\ (crossProduct\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ angle\ =\ 2\ *\ M\_PI\ -\/\ angle;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00367}00367\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00369}00369\ \ \ \ \ \textcolor{keywordflow}{return}\ angle;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8cpp_source_l00370}00370\ \}}
 
 \end{DoxyCode}

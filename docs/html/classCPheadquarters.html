@@ -133,6 +133,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aca1355c5e5395c335c07ebcaa6444b46"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPheadquarters.html#aca1355c5e5395c335c07ebcaa6444b46">getDist</a> (int a, int b)</td></tr>
 <tr class="memdesc:aca1355c5e5395c335c07ebcaa6444b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the distance between the nodes with indexes id=a and id=b.  <br /></td></tr>
 <tr class="separator:aca1355c5e5395c335c07ebcaa6444b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a337cb9e33b9025d7f92967e2ca3bafad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPheadquarters.html#a337cb9e33b9025d7f92967e2ca3bafad">raquel</a> ()</td></tr>
+<tr class="memdesc:a337cb9e33b9025d7f92967e2ca3bafad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts all the nodes in order of the angle they do with the middle point and calculates the total distance required trough the noddes in that order.  <br /></td></tr>
+<tr class="separator:a337cb9e33b9025d7f92967e2ca3bafad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2635c45b71648ed499511f55d514a48"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCPheadquarters.html#ae2635c45b71648ed499511f55d514a48">calculateAngle</a> (double Ax, double Ay, double Bx, double By, double Cx, double Cy)</td></tr>
+<tr class="memdesc:ae2635c45b71648ed499511f55d514a48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the angle between the vectors BA and BC.  <br /></td></tr>
+<tr class="separator:ae2635c45b71648ed499511f55d514a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -172,6 +178,84 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  218</span>    }</div>
 <div class="line"><span class="lineno">  219</span>}</div>
 <div class="ttc" id="aclassGraph_html_a8efa301f095b8f19ff6bc0d0f9c12fe5"><div class="ttname"><a href="classGraph.html#a8efa301f095b8f19ff6bc0d0f9c12fe5">Graph::TSP</a></div><div class="ttdeci">bool TSP(std::vector&lt; Vertex * &gt; &amp;shortestPath, double &amp;shortestPathCost)</div><div class="ttdoc">Check if the graph has a Hamiltonian cycle.</div><div class="ttdef"><b>Definition:</b> <a href="classGraph.html#l00180">Graph.cpp:180</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae2635c45b71648ed499511f55d514a48" name="ae2635c45b71648ed499511f55d514a48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2635c45b71648ed499511f55d514a48">&#9670;&#160;</a></span>calculateAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CPheadquarters::calculateAngle </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>Ax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>Ay</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>Bx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>By</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>Cx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>Cy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates the angle between the vectors BA and BC. </p>
+<dl class="section attention"><dt>Attention</dt><dd>Time Complexity: O(1) </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00350">350</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  350</span>                                                                                                      {</div>
+<div class="line"><span class="lineno">  351</span>    <span class="keywordtype">double</span> ABx = Ax - Bx;</div>
+<div class="line"><span class="lineno">  352</span>    <span class="keywordtype">double</span> ABy = Ay - By;</div>
+<div class="line"><span class="lineno">  353</span>    <span class="keywordtype">double</span> BCx = Cx - Bx;</div>
+<div class="line"><span class="lineno">  354</span>    <span class="keywordtype">double</span> BCy = Cy - By;</div>
+<div class="line"><span class="lineno">  355</span> </div>
+<div class="line"><span class="lineno">  356</span>    <span class="keywordtype">double</span> dotProduct = ABx * BCx + ABy * BCy;</div>
+<div class="line"><span class="lineno">  357</span>    <span class="keywordtype">double</span> crossProduct = ABx * BCy - ABy * BCx;  <span class="comment">// Compute the cross product</span></div>
+<div class="line"><span class="lineno">  358</span> </div>
+<div class="line"><span class="lineno">  359</span>    <span class="keywordtype">double</span> magnitudeAB = std::sqrt(ABx * ABx + ABy * ABy);</div>
+<div class="line"><span class="lineno">  360</span>    <span class="keywordtype">double</span> magnitudeBC = std::sqrt(BCx * BCx + BCy * BCy);</div>
+<div class="line"><span class="lineno">  361</span> </div>
+<div class="line"><span class="lineno">  362</span>    <span class="keywordtype">double</span> angle = std::acos(dotProduct / (magnitudeAB * magnitudeBC));</div>
+<div class="line"><span class="lineno">  363</span> </div>
+<div class="line"><span class="lineno">  364</span>    <span class="comment">// Adjust the angle based on the sign of the cross product</span></div>
+<div class="line"><span class="lineno">  365</span>    <span class="keywordflow">if</span> (crossProduct &lt; 0) {</div>
+<div class="line"><span class="lineno">  366</span>        angle = 2 * M_PI - angle;</div>
+<div class="line"><span class="lineno">  367</span>    }</div>
+<div class="line"><span class="lineno">  368</span> </div>
+<div class="line"><span class="lineno">  369</span>    <span class="keywordflow">return</span> angle;</div>
+<div class="line"><span class="lineno">  370</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -666,6 +750,59 @@ Public Member Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a337cb9e33b9025d7f92967e2ca3bafad" name="a337cb9e33b9025d7f92967e2ca3bafad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a337cb9e33b9025d7f92967e2ca3bafad">&#9670;&#160;</a></span>raquel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CPheadquarters::raquel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sorts all the nodes in order of the angle they do with the middle point and calculates the total distance required trough the noddes in that order. </p>
+<dl class="section attention"><dt>Attention</dt><dd>Time Complexity: O(nlog(n)) </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="CPheadquarters_8cpp_source.html#l00320">320</a> of file <a class="el" href="CPheadquarters_8cpp_source.html">CPheadquarters.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  320</span>                           {</div>
+<div class="line"><span class="lineno">  321</span>    <span class="keyword">auto</span> vertixes = graph.getVertexSet();</div>
+<div class="line"><span class="lineno">  322</span>    <span class="keywordtype">double</span> long1 = 0.0;</div>
+<div class="line"><span class="lineno">  323</span>    <span class="keywordtype">double</span> lat1 = 0.0;</div>
+<div class="line"><span class="lineno">  324</span>    <span class="keywordtype">double</span> count = 0.0;</div>
+<div class="line"><span class="lineno">  325</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span> node : vertixes){</div>
+<div class="line"><span class="lineno">  326</span>        long1+=node.second-&gt;getLongitude();</div>
+<div class="line"><span class="lineno">  327</span>        lat1+=node.second-&gt;getLatitude();</div>
+<div class="line"><span class="lineno">  328</span>        count+=1.0;</div>
+<div class="line"><span class="lineno">  329</span>    }</div>
+<div class="line"><span class="lineno">  330</span>    <span class="keywordtype">double</span> final_long=long1 / count;</div>
+<div class="line"><span class="lineno">  331</span>    <span class="keywordtype">double</span> final_lat=lat1 / count;</div>
+<div class="line"><span class="lineno">  332</span>    vector&lt;pair&lt;int,double&gt;&gt; angles;</div>
+<div class="line"><span class="lineno">  333</span>    <span class="keywordflow">for</span>(<span class="keyword">auto</span> node : vertixes){</div>
+<div class="line"><span class="lineno">  334</span>        angles.push_back(make_pair(node.second-&gt;getId(), <a class="code hl_function" href="classCPheadquarters.html#ae2635c45b71648ed499511f55d514a48">calculateAngle</a>(node.second-&gt;getLatitude(),node.second-&gt;getLongitude(),final_lat, final_long,final_lat+10,final_long)));</div>
+<div class="line"><span class="lineno">  335</span>    }</div>
+<div class="line"><span class="lineno">  336</span>    std::sort(angles.begin(), angles.end(), [](<span class="keyword">const</span> <span class="keyword">auto</span>&amp; a, <span class="keyword">const</span> <span class="keyword">auto</span>&amp; b) {</div>
+<div class="line"><span class="lineno">  337</span>        return a.second &lt; b.second;</div>
+<div class="line"><span class="lineno">  338</span>    });</div>
+<div class="line"><span class="lineno">  339</span> </div>
+<div class="line"><span class="lineno">  340</span>    <span class="keywordtype">double</span> result = 0;</div>
+<div class="line"><span class="lineno">  341</span> </div>
+<div class="line"><span class="lineno">  342</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; angles.size()-1; i++) {</div>
+<div class="line"><span class="lineno">  343</span>        result+= <a class="code hl_function" href="classCPheadquarters.html#aca1355c5e5395c335c07ebcaa6444b46">getDist</a>(angles[i].first,angles[i+1].first);</div>
+<div class="line"><span class="lineno">  344</span>    }</div>
+<div class="line"><span class="lineno">  345</span>    result+=<a class="code hl_function" href="classCPheadquarters.html#aca1355c5e5395c335c07ebcaa6444b46">getDist</a>(angles[angles.size()-1].first,angles[0].first);</div>
+<div class="line"><span class="lineno">  346</span> </div>
+<div class="line"><span class="lineno">  347</span>    cout&lt;&lt;<span class="stringliteral">&quot;Result: &quot;</span>&lt;&lt;result&lt;&lt;<span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><span class="lineno">  348</span>}</div>
+<div class="ttc" id="aclassCPheadquarters_html_aca1355c5e5395c335c07ebcaa6444b46"><div class="ttname"><a href="classCPheadquarters.html#aca1355c5e5395c335c07ebcaa6444b46">CPheadquarters::getDist</a></div><div class="ttdeci">double getDist(int a, int b)</div><div class="ttdoc">Returns the distance between the nodes with indexes id=a and id=b.</div><div class="ttdef"><b>Definition:</b> <a href="classCPheadquarters.html#l00295">CPheadquarters.cpp:295</a></div></div>
+<div class="ttc" id="aclassCPheadquarters_html_ae2635c45b71648ed499511f55d514a48"><div class="ttname"><a href="classCPheadquarters.html#ae2635c45b71648ed499511f55d514a48">CPheadquarters::calculateAngle</a></div><div class="ttdeci">double calculateAngle(double Ax, double Ay, double Bx, double By, double Cx, double Cy)</div><div class="ttdoc">Calculates the angle between the vectors BA and BC.</div><div class="ttdef"><b>Definition:</b> <a href="classCPheadquarters.html#l00350">CPheadquarters.cpp:350</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a305dbedcfe29a5f3aa308d0cdd6da875" name="a305dbedcfe29a5f3aa308d0cdd6da875"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a305dbedcfe29a5f3aa308d0cdd6da875">&#9670;&#160;</a></span>read_coordinates()</h2>
 
@@ -844,10 +981,9 @@ Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  286</span>    }</div>
 <div class="line"><span class="lineno">  287</span>    result+=<a class="code hl_function" href="classCPheadquarters.html#aca1355c5e5395c335c07ebcaa6444b46">getDist</a>(mst_preorder_path[mst_preorder_path.size()-1],mst_preorder_path[0]);</div>
 <div class="line"><span class="lineno">  288</span> </div>
-<div class="line"><span class="lineno">  289</span>    cout&lt;&lt;<span class="stringliteral">&quot;Result:&quot;</span>&lt;&lt;result;</div>
+<div class="line"><span class="lineno">  289</span>    cout&lt;&lt;<span class="stringliteral">&quot;Result: &quot;</span>&lt;&lt;result&lt;&lt;<span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line"><span class="lineno">  290</span> </div>
 <div class="line"><span class="lineno">  291</span>}</div>
-<div class="ttc" id="aclassCPheadquarters_html_aca1355c5e5395c335c07ebcaa6444b46"><div class="ttname"><a href="classCPheadquarters.html#aca1355c5e5395c335c07ebcaa6444b46">CPheadquarters::getDist</a></div><div class="ttdeci">double getDist(int a, int b)</div><div class="ttdoc">Returns the distance between the nodes with indexes id=a and id=b.</div><div class="ttdef"><b>Definition:</b> <a href="classCPheadquarters.html#l00295">CPheadquarters.cpp:295</a></div></div>
 <div class="ttc" id="aclassMutablePriorityQueue_html"><div class="ttname"><a href="classMutablePriorityQueue.html">MutablePriorityQueue</a></div><div class="ttdoc">class T must have: (i) accessible field int queueIndex; (ii) operator&lt; defined.</div><div class="ttdef"><b>Definition:</b> <a href="classMutablePriorityQueue.html#l00021">MutablePriorityQueue.h:21</a></div></div>
 </div><!-- fragment -->
 </div>
