@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['findvertex_0',['findVertex',['../classGraph.html#a12666658321af4855f1ad691b9840987',1,'Graph']]]
+  ['getdist_0',['getDist',['../classCPheadquarters.html#aca1355c5e5395c335c07ebcaa6444b46',1,'CPheadquarters']]],
+  ['getpathcost_1',['getPathCost',['../classGraph.html#acd2998d22dbf7439f9f251eb1c6b27bc',1,'Graph']]]
 ];

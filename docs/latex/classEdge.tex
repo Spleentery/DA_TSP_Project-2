@@ -9,19 +9,7 @@
 \item 
 double \mbox{\hyperlink{classEdge_afd6d96365c7158f369125bf2958ca511}{get\+Distance}} () const
 \item 
-bool \mbox{\hyperlink{classEdge_a52967cf488bb7185a512cd111420215d}{is\+Selected}} () const
-\item 
 \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ \mbox{\hyperlink{classEdge_a6e8b08e91c0694b40edff0432fb612eb}{get\+Orig}} () const
-\item 
-\mbox{\hyperlink{classEdge}{Edge}} $\ast$ \mbox{\hyperlink{classEdge_a756d2d246aa5445d0f396626c7d4fd56}{get\+Reverse}} () const
-\item 
-double \mbox{\hyperlink{classEdge_a30ff9f3127097db8dce20f5e8b15e6dc}{get\+Flow}} () const
-\item 
-void \mbox{\hyperlink{classEdge_a8ab1cf2fe7fd16152d1dba3822853894}{set\+Selected}} (bool selected)
-\item 
-void \mbox{\hyperlink{classEdge_a64881280015bd83702fe3b2c6234b7e5}{set\+Reverse}} (\mbox{\hyperlink{classEdge}{Edge}} $\ast$reverse)
-\item 
-void \mbox{\hyperlink{classEdge_a788cfe1f98772af4e7bbfe6310d0ccaa}{set\+Flow}} (double flow)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -30,20 +18,14 @@ void \mbox{\hyperlink{classEdge_a788cfe1f98772af4e7bbfe6310d0ccaa}{set\+Flow}} (
 \item 
 double \mbox{\hyperlink{classEdge_a697dbb39235e54e2dce0e85d213bc753}{distance}}
 \item 
-bool \mbox{\hyperlink{classEdge_a3af6d278c4ddcb2589e1aa66e52f4efb}{selected}} = false
-\item 
 \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ \mbox{\hyperlink{classEdge_a48f1521d20ead8492fd1d184656862f5}{orig}}
-\item 
-\mbox{\hyperlink{classEdge}{Edge}} $\ast$ \mbox{\hyperlink{classEdge_abcadfaa8985d0d593a124d0fea39130a}{reverse}} = nullptr
-\item 
-double \mbox{\hyperlink{classEdge_adbe59333b5a49cbb85b39ce1272e6098}{flow}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00088}{88}} of file \mbox{\hyperlink{VertexEdge_8h_source}{Vertex\+Edge.\+h}}.
+Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00093}{93}} of file \mbox{\hyperlink{VertexEdge_8h_source}{Vertex\+Edge.\+h}}.
 
 
 
@@ -56,12 +38,11 @@ Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00088}{88}} of file \m
 
 
 
-Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00154}{154}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
+Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00141}{141}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ orig(orig),\ dest(dest),\ distance(d),}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flow(0)\ \{\}}
+\DoxyCodeLine{00141\ :\ orig(orig),\ dest(dest),\ distance(d)\ \{\}}
 
 \end{DoxyCode}
 
@@ -75,13 +56,13 @@ Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00154}{154}} of file
 
 
 
-Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00157}{157}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
+Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00143}{143}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>dest;}
-\DoxyCodeLine{00159\ \}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>dest;}
+\DoxyCodeLine{00145\ \}}
 
 \end{DoxyCode}
 \Hypertarget{classEdge_afd6d96365c7158f369125bf2958ca511}\label{classEdge_afd6d96365c7158f369125bf2958ca511} 
@@ -92,30 +73,13 @@ Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00157}{157}} of file
 
 
 
-Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00161}{161}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
+Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00147}{147}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>distance;}
-\DoxyCodeLine{00163\ \}}
-
-\end{DoxyCode}
-\Hypertarget{classEdge_a30ff9f3127097db8dce20f5e8b15e6dc}\label{classEdge_a30ff9f3127097db8dce20f5e8b15e6dc} 
-\index{Edge@{Edge}!getFlow@{getFlow}}
-\index{getFlow@{getFlow}!Edge@{Edge}}
-\doxysubsubsection{\texorpdfstring{getFlow()}{getFlow()}}
-{\footnotesize\ttfamily double Edge\+::get\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00177}{177}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{return}\ flow;}
-\DoxyCodeLine{00179\ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>distance;}
+\DoxyCodeLine{00149\ \}}
 
 \end{DoxyCode}
 \Hypertarget{classEdge_a6e8b08e91c0694b40edff0432fb612eb}\label{classEdge_a6e8b08e91c0694b40edff0432fb612eb} 
@@ -126,98 +90,13 @@ Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00177}{177}} of file
 
 
 
-Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00165}{165}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
+Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00151}{151}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>orig;}
-\DoxyCodeLine{00167\ \}}
-
-\end{DoxyCode}
-\Hypertarget{classEdge_a756d2d246aa5445d0f396626c7d4fd56}\label{classEdge_a756d2d246aa5445d0f396626c7d4fd56} 
-\index{Edge@{Edge}!getReverse@{getReverse}}
-\index{getReverse@{getReverse}!Edge@{Edge}}
-\doxysubsubsection{\texorpdfstring{getReverse()}{getReverse()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} $\ast$ Edge\+::get\+Reverse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00169}{169}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>reverse;}
-\DoxyCodeLine{00171\ \}}
-
-\end{DoxyCode}
-\Hypertarget{classEdge_a52967cf488bb7185a512cd111420215d}\label{classEdge_a52967cf488bb7185a512cd111420215d} 
-\index{Edge@{Edge}!isSelected@{isSelected}}
-\index{isSelected@{isSelected}!Edge@{Edge}}
-\doxysubsubsection{\texorpdfstring{isSelected()}{isSelected()}}
-{\footnotesize\ttfamily bool Edge\+::is\+Selected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00173}{173}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>selected;}
-\DoxyCodeLine{00175\ \}}
-
-\end{DoxyCode}
-\Hypertarget{classEdge_a788cfe1f98772af4e7bbfe6310d0ccaa}\label{classEdge_a788cfe1f98772af4e7bbfe6310d0ccaa} 
-\index{Edge@{Edge}!setFlow@{setFlow}}
-\index{setFlow@{setFlow}!Edge@{Edge}}
-\doxysubsubsection{\texorpdfstring{setFlow()}{setFlow()}}
-{\footnotesize\ttfamily void Edge\+::set\+Flow (\begin{DoxyParamCaption}\item[{double}]{flow }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00189}{189}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00190\ \ \ \ \ this-\/>flow\ =\ flow;}
-\DoxyCodeLine{00191\ \}}
-
-\end{DoxyCode}
-\Hypertarget{classEdge_a64881280015bd83702fe3b2c6234b7e5}\label{classEdge_a64881280015bd83702fe3b2c6234b7e5} 
-\index{Edge@{Edge}!setReverse@{setReverse}}
-\index{setReverse@{setReverse}!Edge@{Edge}}
-\doxysubsubsection{\texorpdfstring{setReverse()}{setReverse()}}
-{\footnotesize\ttfamily void Edge\+::set\+Reverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{reverse }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00185}{185}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00186\ \ \ \ \ this-\/>reverse\ =\ reverse;}
-\DoxyCodeLine{00187\ \}}
-
-\end{DoxyCode}
-\Hypertarget{classEdge_a8ab1cf2fe7fd16152d1dba3822853894}\label{classEdge_a8ab1cf2fe7fd16152d1dba3822853894} 
-\index{Edge@{Edge}!setSelected@{setSelected}}
-\index{setSelected@{setSelected}!Edge@{Edge}}
-\doxysubsubsection{\texorpdfstring{setSelected()}{setSelected()}}
-{\footnotesize\ttfamily void Edge\+::set\+Selected (\begin{DoxyParamCaption}\item[{bool}]{selected }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00181}{181}} of file \mbox{\hyperlink{VertexEdge_8cpp_source}{Vertex\+Edge.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00182\ \ \ \ \ this-\/>selected\ =\ selected;}
-\DoxyCodeLine{00183\ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>orig;}
+\DoxyCodeLine{00153\ \}}
 
 \end{DoxyCode}
 
@@ -231,7 +110,7 @@ Definition at line \mbox{\hyperlink{VertexEdge_8cpp_source_l00181}{181}} of file
 
 
 
-Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00115}{115}} of file \mbox{\hyperlink{VertexEdge_8h_source}{Vertex\+Edge.\+h}}.
+Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00104}{104}} of file \mbox{\hyperlink{VertexEdge_8h_source}{Vertex\+Edge.\+h}}.
 
 \Hypertarget{classEdge_a697dbb39235e54e2dce0e85d213bc753}\label{classEdge_a697dbb39235e54e2dce0e85d213bc753} 
 \index{Edge@{Edge}!distance@{distance}}
@@ -241,17 +120,7 @@ Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00115}{115}} of file \
 
 
 
-Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00116}{116}} of file \mbox{\hyperlink{VertexEdge_8h_source}{Vertex\+Edge.\+h}}.
-
-\Hypertarget{classEdge_adbe59333b5a49cbb85b39ce1272e6098}\label{classEdge_adbe59333b5a49cbb85b39ce1272e6098} 
-\index{Edge@{Edge}!flow@{flow}}
-\index{flow@{flow}!Edge@{Edge}}
-\doxysubsubsection{\texorpdfstring{flow}{flow}}
-{\footnotesize\ttfamily double Edge\+::flow\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00126}{126}} of file \mbox{\hyperlink{VertexEdge_8h_source}{Vertex\+Edge.\+h}}.
+Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00105}{105}} of file \mbox{\hyperlink{VertexEdge_8h_source}{Vertex\+Edge.\+h}}.
 
 \Hypertarget{classEdge_a48f1521d20ead8492fd1d184656862f5}\label{classEdge_a48f1521d20ead8492fd1d184656862f5} 
 \index{Edge@{Edge}!orig@{orig}}
@@ -261,27 +130,7 @@ Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00126}{126}} of file \
 
 
 
-Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00123}{123}} of file \mbox{\hyperlink{VertexEdge_8h_source}{Vertex\+Edge.\+h}}.
-
-\Hypertarget{classEdge_abcadfaa8985d0d593a124d0fea39130a}\label{classEdge_abcadfaa8985d0d593a124d0fea39130a} 
-\index{Edge@{Edge}!reverse@{reverse}}
-\index{reverse@{reverse}!Edge@{Edge}}
-\doxysubsubsection{\texorpdfstring{reverse}{reverse}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}}$\ast$ Edge\+::reverse = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00124}{124}} of file \mbox{\hyperlink{VertexEdge_8h_source}{Vertex\+Edge.\+h}}.
-
-\Hypertarget{classEdge_a3af6d278c4ddcb2589e1aa66e52f4efb}\label{classEdge_a3af6d278c4ddcb2589e1aa66e52f4efb} 
-\index{Edge@{Edge}!selected@{selected}}
-\index{selected@{selected}!Edge@{Edge}}
-\doxysubsubsection{\texorpdfstring{selected}{selected}}
-{\footnotesize\ttfamily bool Edge\+::selected = false\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00120}{120}} of file \mbox{\hyperlink{VertexEdge_8h_source}{Vertex\+Edge.\+h}}.
+Definition at line \mbox{\hyperlink{VertexEdge_8h_source_l00108}{108}} of file \mbox{\hyperlink{VertexEdge_8h_source}{Vertex\+Edge.\+h}}.
 
 
 

@@ -1,0 +1,120 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Class Index}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Class List}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}File Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}File List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Class Documentation}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}CPheadquarters Class Reference}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Detailed Description}{5}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Member Function Documentation}{6}{subsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.1}backtrack()}{6}{subsubsection.3.1.2.1}%
+\contentsline {subsubsection}{\numberline {3.1.2.2}chooseRoute()}{6}{subsubsection.3.1.2.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.3}degToRad()}{7}{subsubsection.3.1.2.3}%
+\contentsline {subsubsection}{\numberline {3.1.2.4}getDist()}{8}{subsubsection.3.1.2.4}%
+\contentsline {subsubsection}{\numberline {3.1.2.5}getGraph()}{8}{subsubsection.3.1.2.5}%
+\contentsline {subsubsection}{\numberline {3.1.2.6}hamiltonianCycle()}{9}{subsubsection.3.1.2.6}%
+\contentsline {subsubsection}{\numberline {3.1.2.7}haversineDistance()}{9}{subsubsection.3.1.2.7}%
+\contentsline {subsubsection}{\numberline {3.1.2.8}heuristic()}{10}{subsubsection.3.1.2.8}%
+\contentsline {subsubsection}{\numberline {3.1.2.9}heuristicRec()}{10}{subsubsection.3.1.2.9}%
+\contentsline {subsubsection}{\numberline {3.1.2.10}pathRec()}{11}{subsubsection.3.1.2.10}%
+\contentsline {subsubsection}{\numberline {3.1.2.11}read\_coordinates()}{12}{subsubsection.3.1.2.11}%
+\contentsline {subsubsection}{\numberline {3.1.2.12}read\_edges()}{12}{subsubsection.3.1.2.12}%
+\contentsline {subsubsection}{\numberline {3.1.2.13}triangular\_Approximation\_Heuristic()}{13}{subsubsection.3.1.2.13}%
+\contentsline {section}{\numberline {3.2}Edge Class Reference}{14}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Detailed Description}{14}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Constructor \& Destructor Documentation}{14}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}Edge()}{14}{subsubsection.3.2.2.1}%
+\contentsline {subsection}{\numberline {3.2.3}Member Function Documentation}{15}{subsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.3.1}getDest()}{15}{subsubsection.3.2.3.1}%
+\contentsline {subsubsection}{\numberline {3.2.3.2}getDistance()}{15}{subsubsection.3.2.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.3.3}getOrig()}{15}{subsubsection.3.2.3.3}%
+\contentsline {subsection}{\numberline {3.2.4}Member Data Documentation}{15}{subsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.4.1}dest}{15}{subsubsection.3.2.4.1}%
+\contentsline {subsubsection}{\numberline {3.2.4.2}distance}{15}{subsubsection.3.2.4.2}%
+\contentsline {subsubsection}{\numberline {3.2.4.3}orig}{15}{subsubsection.3.2.4.3}%
+\contentsline {section}{\numberline {3.3}Graph Class Reference}{16}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Detailed Description}{17}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Constructor \& Destructor Documentation}{17}{subsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}$\sim $Graph()}{17}{subsubsection.3.3.2.1}%
+\contentsline {subsection}{\numberline {3.3.3}Member Function Documentation}{17}{subsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.3.1}addEdge()}{17}{subsubsection.3.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.3.2}addVertex()}{17}{subsubsection.3.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3.3}deleteVertex()}{18}{subsubsection.3.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.3.4}findVertex()}{18}{subsubsection.3.3.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.3.5}getNumVertex()}{19}{subsubsection.3.3.3.5}%
+\contentsline {subsubsection}{\numberline {3.3.3.6}getPathCost()}{19}{subsubsection.3.3.3.6}%
+\contentsline {subsubsection}{\numberline {3.3.3.7}getVertexSet()}{19}{subsubsection.3.3.3.7}%
+\contentsline {subsubsection}{\numberline {3.3.3.8}hasArticulationPoint()}{20}{subsubsection.3.3.3.8}%
+\contentsline {subsubsection}{\numberline {3.3.3.9}hasArticulationPointUtil()}{20}{subsubsection.3.3.3.9}%
+\contentsline {subsubsection}{\numberline {3.3.3.10}hasHamiltonianCycle()}{21}{subsubsection.3.3.3.10}%
+\contentsline {subsubsection}{\numberline {3.3.3.11}hasHamiltonianCycleUtil()}{22}{subsubsection.3.3.3.11}%
+\contentsline {subsubsection}{\numberline {3.3.3.12}hasPendantVertex()}{23}{subsubsection.3.3.3.12}%
+\contentsline {subsubsection}{\numberline {3.3.3.13}print()}{23}{subsubsection.3.3.3.13}%
+\contentsline {subsubsection}{\numberline {3.3.3.14}TSP()}{24}{subsubsection.3.3.3.14}%
+\contentsline {subsubsection}{\numberline {3.3.3.15}TSPUtil()}{25}{subsubsection.3.3.3.15}%
+\contentsline {subsection}{\numberline {3.3.4}Member Data Documentation}{26}{subsection.3.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.4.1}ap}{26}{subsubsection.3.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.3.4.2}disc}{26}{subsubsection.3.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.3.4.3}distMatrix}{26}{subsubsection.3.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.3.4.4}low}{26}{subsubsection.3.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.3.4.5}parent}{26}{subsubsection.3.3.4.5}%
+\contentsline {subsubsection}{\numberline {3.3.4.6}pathMatrix}{26}{subsubsection.3.3.4.6}%
+\contentsline {subsubsection}{\numberline {3.3.4.7}vertexSet}{27}{subsubsection.3.3.4.7}%
+\contentsline {subsubsection}{\numberline {3.3.4.8}visited}{27}{subsubsection.3.3.4.8}%
+\contentsline {section}{\numberline {3.4}Mutable\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Priority\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Queue$<$ T $>$ Class Template Reference}{27}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Detailed Description}{27}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Constructor \& Destructor Documentation}{27}{subsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.2.1}MutablePriorityQueue()}{27}{subsubsection.3.4.2.1}%
+\contentsline {subsection}{\numberline {3.4.3}Member Function Documentation}{28}{subsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.3.1}decreaseKey()}{28}{subsubsection.3.4.3.1}%
+\contentsline {subsubsection}{\numberline {3.4.3.2}empty()}{28}{subsubsection.3.4.3.2}%
+\contentsline {subsubsection}{\numberline {3.4.3.3}extractMin()}{28}{subsubsection.3.4.3.3}%
+\contentsline {subsubsection}{\numberline {3.4.3.4}insert()}{28}{subsubsection.3.4.3.4}%
+\contentsline {section}{\numberline {3.5}Vertex Class Reference}{29}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Detailed Description}{29}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Constructor \& Destructor Documentation}{30}{subsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.2.1}Vertex()}{30}{subsubsection.3.5.2.1}%
+\contentsline {subsection}{\numberline {3.5.3}Member Function Documentation}{30}{subsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.3.1}addChildren()}{30}{subsubsection.3.5.3.1}%
+\contentsline {subsubsection}{\numberline {3.5.3.2}addEdge()}{30}{subsubsection.3.5.3.2}%
+\contentsline {subsubsection}{\numberline {3.5.3.3}eraseChildren()}{30}{subsubsection.3.5.3.3}%
+\contentsline {subsubsection}{\numberline {3.5.3.4}getAdj()}{30}{subsubsection.3.5.3.4}%
+\contentsline {subsubsection}{\numberline {3.5.3.5}getChildren()}{31}{subsubsection.3.5.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.3.6}getDist()}{31}{subsubsection.3.5.3.6}%
+\contentsline {subsubsection}{\numberline {3.5.3.7}getEdge()}{31}{subsubsection.3.5.3.7}%
+\contentsline {subsubsection}{\numberline {3.5.3.8}getId()}{31}{subsubsection.3.5.3.8}%
+\contentsline {subsubsection}{\numberline {3.5.3.9}getIncoming()}{31}{subsubsection.3.5.3.9}%
+\contentsline {subsubsection}{\numberline {3.5.3.10}getLatitude()}{32}{subsubsection.3.5.3.10}%
+\contentsline {subsubsection}{\numberline {3.5.3.11}getLongitude()}{32}{subsubsection.3.5.3.11}%
+\contentsline {subsubsection}{\numberline {3.5.3.12}getPath()}{32}{subsubsection.3.5.3.12}%
+\contentsline {subsubsection}{\numberline {3.5.3.13}isVisited()}{32}{subsubsection.3.5.3.13}%
+\contentsline {subsubsection}{\numberline {3.5.3.14}operator$<$()}{32}{subsubsection.3.5.3.14}%
+\contentsline {subsubsection}{\numberline {3.5.3.15}print()}{32}{subsubsection.3.5.3.15}%
+\contentsline {subsubsection}{\numberline {3.5.3.16}removeEdge()}{33}{subsubsection.3.5.3.16}%
+\contentsline {subsubsection}{\numberline {3.5.3.17}setDist()}{33}{subsubsection.3.5.3.17}%
+\contentsline {subsubsection}{\numberline {3.5.3.18}setId()}{33}{subsubsection.3.5.3.18}%
+\contentsline {subsubsection}{\numberline {3.5.3.19}setLatitude()}{33}{subsubsection.3.5.3.19}%
+\contentsline {subsubsection}{\numberline {3.5.3.20}setLongitude()}{34}{subsubsection.3.5.3.20}%
+\contentsline {subsubsection}{\numberline {3.5.3.21}setPath()}{34}{subsubsection.3.5.3.21}%
+\contentsline {subsubsection}{\numberline {3.5.3.22}setVisited()}{34}{subsubsection.3.5.3.22}%
+\contentsline {subsection}{\numberline {3.5.4}Member Data Documentation}{34}{subsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.4.1}adj}{34}{subsubsection.3.5.4.1}%
+\contentsline {subsubsection}{\numberline {3.5.4.2}children}{34}{subsubsection.3.5.4.2}%
+\contentsline {subsubsection}{\numberline {3.5.4.3}dist}{34}{subsubsection.3.5.4.3}%
+\contentsline {subsubsection}{\numberline {3.5.4.4}id}{35}{subsubsection.3.5.4.4}%
+\contentsline {subsubsection}{\numberline {3.5.4.5}incoming}{35}{subsubsection.3.5.4.5}%
+\contentsline {subsubsection}{\numberline {3.5.4.6}latitude}{35}{subsubsection.3.5.4.6}%
+\contentsline {subsubsection}{\numberline {3.5.4.7}longitude}{35}{subsubsection.3.5.4.7}%
+\contentsline {subsubsection}{\numberline {3.5.4.8}path}{35}{subsubsection.3.5.4.8}%
+\contentsline {subsubsection}{\numberline {3.5.4.9}queueIndex}{35}{subsubsection.3.5.4.9}%
+\contentsline {subsubsection}{\numberline {3.5.4.10}visited}{35}{subsubsection.3.5.4.10}%
+\contentsline {chapter}{\numberline {4}File Documentation}{37}{chapter.4}%
+\contentsline {section}{\numberline {4.1}CPheadquarters.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{37}{section.4.1}%
+\contentsline {section}{\numberline {4.2}CPheadquarters.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{41}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Graph.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{41}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Graph.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{45}{section.4.4}%
+\contentsline {section}{\numberline {4.5}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{46}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Mutable\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Priority\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Queue.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{48}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Vertex\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Edge.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{49}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Vertex\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Edge.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{51}{section.4.8}%
+\contentsline {chapter}{Index}{53}{section*.13}%

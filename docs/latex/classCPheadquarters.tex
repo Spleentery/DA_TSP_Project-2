@@ -5,26 +5,36 @@
 \item 
 void \mbox{\hyperlink{classCPheadquarters_af19f86c71d34629af4cf500b6df8c217}{read\+\_\+edges}} (std\+::string path)
 \item 
-void \mbox{\hyperlink{classCPheadquarters_af54590d5d39d7384af64f5f640abbac8}{read\+\_\+establishments}} (std\+::string path)
+void \mbox{\hyperlink{classCPheadquarters_a305dbedcfe29a5f3aa308d0cdd6da875}{read\+\_\+coordinates}} (std\+::string path)
 \item 
 \mbox{\hyperlink{classGraph}{Graph}} \mbox{\hyperlink{classCPheadquarters_a73011d75a85ed5cbf9f98f86922507d7}{get\+Graph}} () const
 \item 
-void \mbox{\hyperlink{classCPheadquarters_a0f572443d0f8ecbcc58a820f6f182dc3}{heuristic}} (string path\mbox{[}$\,$\mbox{]}, unsigned int \&nodes\+Visited, double \&total\+Distance, string id)
+void \mbox{\hyperlink{classCPheadquarters_adbbee09abadc3e9c3ad02982111a687d}{heuristic}} (long path\mbox{[}$\,$\mbox{]}, unsigned int \&nodes\+Visited, double \&total\+Distance, long id)
 \begin{DoxyCompactList}\small\item\em Initial part of the algorithm, finds the route of the vertex with the given id, calling the recursive function. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classCPheadquarters_a509a9c98faa33a6d13ce7aa552581051}{heuristic\+Rec}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$v, string path\mbox{[}$\,$\mbox{]}, unsigned int current\+Index, double distance, unsigned int \&nodes\+Visited, double \&total\+Distance)
+void \mbox{\hyperlink{classCPheadquarters_ac41cf7ea8902590c3b69faae98e3b7eb}{heuristic\+Rec}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$v, long path\mbox{[}$\,$\mbox{]}, unsigned int current\+Index, double distance, unsigned int \&nodes\+Visited, double \&total\+Distance)
 \begin{DoxyCompactList}\small\item\em Recursive part of the heuristic that looks for the closest vertex to the actual one, the closest vertex is determine using the angle, so this heuristic uses geological information from the vertex. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCPheadquarters_ad421ca872f51bb6a49446d3de4ef559c}{choose\+Route}} ()
 \begin{DoxyCompactList}\small\item\em Iterates through all vertex to determine with which one to starts. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCPheadquarters_a784e9b774ff0cfc479846b4fb7840399}{backtrack}} ()
 \begin{DoxyCompactList}\small\item\em Use a backtracking exhaustive approach for TSP Applicable only for very small graphs. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classCPheadquarters_ae174f891df30f510cbb07ef68cc6eba3}{hamiltonian\+Cycle}} ()
-\end{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classCPheadquarters_a35b97bd9d6a09dc3d72b84afb29a5ae1}{triangular\+\_\+\+Approximation\+\_\+\+Heuristic}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the total cost of the TSP problem using a 2-\/approximation strategy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCPheadquarters_af82de974813192045d026553f91ce18a}{path\+Rec}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$vertex)
+\begin{DoxyCompactList}\small\item\em Generates a pre-\/order path of the MST using a DFS strategy, storing their indexes in a vector. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCPheadquarters_a4a8636b2dba749a21a51d7a19ab3196f}{deg\+To\+Rad}} (double degrees)
+\begin{DoxyCompactList}\small\item\em Translates degrees to radians. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCPheadquarters_af930f9e502d3c0d0bc6d96df94c416f3}{haversine\+Distance}} (double latitude1, double longitude1, double latitude2, double longitude2)
+\begin{DoxyCompactList}\small\item\em Returns the distance between two points using their coordinates in kilometers. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46}{get\+Dist}} (int a, int b)
+\begin{DoxyCompactList}\small\item\em Returns the distance between the nodes with indexes id=a and id=b. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{CPheadquarters_8h_source_l00012}{12}} of file \mbox{\hyperlink{CPheadquarters_8h_source}{CPheadquarters.\+h}}.
+Definition at line \mbox{\hyperlink{CPheadquarters_8h_source_l00013}{13}} of file \mbox{\hyperlink{CPheadquarters_8h_source}{CPheadquarters.\+h}}.
 
 
 
@@ -41,25 +51,25 @@ Use a backtracking exhaustive approach for TSP Applicable only for very small gr
 
 
 
-Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00202}{202}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00205}{205}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00203\ \ \ \ \ std::vector<Vertex*>\ shortestPath;}
-\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{double}\ shortestPathCost\ =\ 0;}
-\DoxyCodeLine{00205\ }
-\DoxyCodeLine{00206\ }
-\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>graph.\mbox{\hyperlink{classGraph_a8efa301f095b8f19ff6bc0d0f9c12fe5}{TSP}}(shortestPath,\ shortestPathCost))\ \{}
-\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Shortest\ Hamiltonian\ cycle:\ "{}};}
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ vertex\ :\ shortestPath)}
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ vertex-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
-\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nCost:\ "{}}\ <<\ shortestPathCost\ <<\ endl;}
-\DoxyCodeLine{00212\ \ \ \ \ \}}
-\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}The\ graph\ does\ not\ have\ a\ Hamiltonian\ cycle"{}}\ <<\ endl;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00206\ \ \ \ \ std::vector<Vertex*>\ shortestPath;}
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keywordtype}{double}\ shortestPathCost\ =\ 0;}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>graph.\mbox{\hyperlink{classGraph_a8efa301f095b8f19ff6bc0d0f9c12fe5}{TSP}}(shortestPath,\ shortestPathCost))\ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Shortest\ Hamiltonian\ cycle:\ "{}};}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ vertex\ :\ shortestPath)}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ vertex-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nCost:\ "{}}\ <<\ shortestPathCost\ <<\ endl;}
 \DoxyCodeLine{00215\ \ \ \ \ \}}
-\DoxyCodeLine{00216\ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}The\ graph\ does\ not\ have\ a\ Hamiltonian\ cycle"{}}\ <<\ endl;}
+\DoxyCodeLine{00218\ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \}}
 
 \end{DoxyCode}
 \Hypertarget{classCPheadquarters_ad421ca872f51bb6a49446d3de4ef559c}\label{classCPheadquarters_ad421ca872f51bb6a49446d3de4ef559c} 
@@ -80,36 +90,106 @@ since this parte of the heuristic iterates through all vertex and call the recur
 \end{DoxyAttention}
 
 
-Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00169}{169}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{string}\ id;}
-\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{int}\ pathSize\ =\ graph.getNumVertex();}
-\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordtype}{string}\ path[pathSize];}
-\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nodesVisited\ =\ 0;}
-\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordtype}{double}\ distance\ =\ 0;}
-\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ it\ =stations.begin();\ it\ !=\ stations.end();\ it++)\{}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ it-\/>first;}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCPheadquarters_a0f572443d0f8ecbcc58a820f6f182dc3}{heuristic}}(path,\ nodesVisited,\ distance,\ \textcolor{keywordtype}{id});}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(nodesVisited\ ==\ pathSize)\{}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ sourceId\ =\ path[pathSize-\/1];}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ destId\ =\ path[0];}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *sourceV\ =\ graph.\mbox{\hyperlink{classGraph_a12666658321af4855f1ad691b9840987}{findVertex}}(sourceId);}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge}{Edge}}\ *missingEdge\ =\ sourceV-\/>getEdge(destId);}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(missingEdge!=\ \textcolor{keyword}{nullptr})\{}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ distance\ +=\ missingEdge-\/>getDistance();}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ pathSize;\ i++)\{}
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ path[i]\ <<\ \textcolor{stringliteral}{"{}-\/>"{}};}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ destId;}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nTotal\ distance:\ "{}}\ <<\ distance\ <<\ endl;}
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00191\ \ \ \ \ \}}
-\DoxyCodeLine{00192\ \}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordtype}{long}\ id;}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keyword}{auto}\ pathSize\ =\ graph.getNumVertex();}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keyword}{auto}\ vertixes\ =\ graph.getVertexSet();}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{long}\ path[pathSize];}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ nodesVisited\ =\ 0;}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{double}\ distance\ =\ 0;}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ it\ =vertixes.begin();\ it\ !=\ vertixes.end();\ it++)\{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ it-\/>first;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCPheadquarters_adbbee09abadc3e9c3ad02982111a687d}{heuristic}}(path,\ nodesVisited,\ distance,\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(nodesVisited\ ==\ pathSize)\{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ sourceId\ =\ path[pathSize-\/1];}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ destId\ =\ path[0];}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *sourceV\ =\ graph.\mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{findVertex}}(sourceId);}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge}{Edge}}\ *missingEdge\ =\ sourceV-\/>getEdge(destId);}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(missingEdge!=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ distance\ +=\ missingEdge-\/>getDistance();}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ pathSize;\ i++)\{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ path[i]\ <<\ \textcolor{stringliteral}{"{}-\/>"{}};}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ destId;}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nTotal\ distance:\ "{}}\ <<\ distance\ <<\ endl;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \}}
+\DoxyCodeLine{00195\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classCPheadquarters_a4a8636b2dba749a21a51d7a19ab3196f}\label{classCPheadquarters_a4a8636b2dba749a21a51d7a19ab3196f} 
+\index{CPheadquarters@{CPheadquarters}!degToRad@{degToRad}}
+\index{degToRad@{degToRad}!CPheadquarters@{CPheadquarters}}
+\doxysubsubsection{\texorpdfstring{degToRad()}{degToRad()}}
+{\footnotesize\ttfamily double CPheadquarters\+::deg\+To\+Rad (\begin{DoxyParamCaption}\item[{double}]{degrees }\end{DoxyParamCaption})}
+
+
+
+Translates degrees to radians. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em degrees} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+Time Complexity\+: O(1) 
+\end{DoxyAttention}
+
+
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00304}{304}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keywordflow}{return}\ degrees*M\_PI/180.0;}
+\DoxyCodeLine{00306\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46}\label{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46} 
+\index{CPheadquarters@{CPheadquarters}!getDist@{getDist}}
+\index{getDist@{getDist}!CPheadquarters@{CPheadquarters}}
+\doxysubsubsection{\texorpdfstring{getDist()}{getDist()}}
+{\footnotesize\ttfamily double CPheadquarters\+::get\+Dist (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+
+
+Returns the distance between the nodes with indexes id=a and id=b. 
+
+If their distance is not explicit in the edges, then it is calculated using the \doxylink{classCPheadquarters_af930f9e502d3c0d0bc6d96df94c416f3}{haversine\+Distance()} function, if possible. 
+\begin{DoxyParams}{Parameters}
+{\em a} & \\
+\hline
+{\em b} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+Time Complexity\+: O(\+E) 
+\end{DoxyAttention}
+
+
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00295}{295}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge:\ graph.findVertex(a)-\/>getAdj())\{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (edge-\/>getDest()-\/>getId()==b)\ \textcolor{keywordflow}{return}\ edge-\/>getDistance();}
+\DoxyCodeLine{00298\ \ \ \ \ \}}
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classCPheadquarters_af930f9e502d3c0d0bc6d96df94c416f3}{haversineDistance}}(graph.\mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{findVertex}}(a)-\/>getLatitude(),graph.\mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{findVertex}}(a)-\/>getLongitude(),\ graph.\mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{findVertex}}(b)-\/>getLatitude(),\ graph.\mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{findVertex}}(b)-\/>getLongitude());}
+\DoxyCodeLine{00300\ \}}
 
 \end{DoxyCode}
 \Hypertarget{classCPheadquarters_a73011d75a85ed5cbf9f98f86922507d7}\label{classCPheadquarters_a73011d75a85ed5cbf9f98f86922507d7} 
@@ -120,13 +200,13 @@ Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00167}{167}} of 
 
 
 
-Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00196}{196}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00199}{199}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>graph;}
-\DoxyCodeLine{00198\ \}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>graph;}
+\DoxyCodeLine{00201\ \}}
 
 \end{DoxyCode}
 \Hypertarget{classCPheadquarters_ae174f891df30f510cbb07ef68cc6eba3}\label{classCPheadquarters_ae174f891df30f510cbb07ef68cc6eba3} 
@@ -137,30 +217,76 @@ Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00196}{196}} of 
 
 
 
-Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00218}{218}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00221}{221}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00219\ \ \ \ \ std::vector<Vertex*>\ path;}
-\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordtype}{double}\ cost\ =\ 0;}
-\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>graph.\mbox{\hyperlink{classGraph_a665423851066546828e7112afcfa8633}{hasHamiltonianCycle}}(path,\ cost))\ \{}
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Hamiltonian\ cycle:\ "{}};}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ vertex\ :\ path)}
-\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ vertex-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nCost:\ "{}}\ <<\ cost\ <<\ endl;}
-\DoxyCodeLine{00226\ \ \ \ \ \}}
-\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}The\ graph\ does\ not\ have\ a\ Hamiltonian\ cycle"{}}\ <<\ endl;}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ std::vector<Vertex*>\ path;}
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{keywordtype}{double}\ cost\ =\ 0;}
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>graph.\mbox{\hyperlink{classGraph_a665423851066546828e7112afcfa8633}{hasHamiltonianCycle}}(path,\ cost))\ \{}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Hamiltonian\ cycle:\ "{}};}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ vertex\ :\ path)}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ vertex-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nCost:\ "{}}\ <<\ cost\ <<\ endl;}
 \DoxyCodeLine{00229\ \ \ \ \ \}}
-\DoxyCodeLine{00230\ \}}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}The\ graph\ does\ not\ have\ a\ Hamiltonian\ cycle"{}}\ <<\ endl;}
+\DoxyCodeLine{00232\ \ \ \ \ \}}
+\DoxyCodeLine{00233\ \}}
 
 \end{DoxyCode}
-\Hypertarget{classCPheadquarters_a0f572443d0f8ecbcc58a820f6f182dc3}\label{classCPheadquarters_a0f572443d0f8ecbcc58a820f6f182dc3} 
+\Hypertarget{classCPheadquarters_af930f9e502d3c0d0bc6d96df94c416f3}\label{classCPheadquarters_af930f9e502d3c0d0bc6d96df94c416f3} 
+\index{CPheadquarters@{CPheadquarters}!haversineDistance@{haversineDistance}}
+\index{haversineDistance@{haversineDistance}!CPheadquarters@{CPheadquarters}}
+\doxysubsubsection{\texorpdfstring{haversineDistance()}{haversineDistance()}}
+{\footnotesize\ttfamily double CPheadquarters\+::haversine\+Distance (\begin{DoxyParamCaption}\item[{double}]{latitude1,  }\item[{double}]{longitude1,  }\item[{double}]{latitude2,  }\item[{double}]{longitude2 }\end{DoxyParamCaption})}
+
+
+
+Returns the distance between two points using their coordinates in kilometers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em latitude1} & \\
+\hline
+{\em longitude1} & \\
+\hline
+{\em latitude2} & \\
+\hline
+{\em longitude2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+Time Complexity\+: O(1) 
+\end{DoxyAttention}
+
+
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00308}{308}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keywordtype}{double}\ ang\_lat=\mbox{\hyperlink{classCPheadquarters_a4a8636b2dba749a21a51d7a19ab3196f}{degToRad}}(latitude2-\/latitude1);}
+\DoxyCodeLine{00310\ \ \ \ \ \textcolor{keywordtype}{double}\ ang\_lon=\mbox{\hyperlink{classCPheadquarters_a4a8636b2dba749a21a51d7a19ab3196f}{degToRad}}(longitude2-\/longitude1);}
+\DoxyCodeLine{00311\ \ \ \ \ \textcolor{keywordtype}{double}\ a\ =sin(ang\_lat\ /\ 2)\ *\ sin(ang\_lat\ /\ 2)\ +}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ cos(\mbox{\hyperlink{classCPheadquarters_a4a8636b2dba749a21a51d7a19ab3196f}{degToRad}}\ (latitude1))\ *\ cos(\mbox{\hyperlink{classCPheadquarters_a4a8636b2dba749a21a51d7a19ab3196f}{degToRad}}\ (latitude2))\ *}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ sin(ang\_lon\ /\ 2)\ *\ sin(ang\_lon\ /\ 2);}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{keywordtype}{double}\ c\ =\ 2\ *\ atan2(sqrt(a),\ sqrt(1\ -\/\ a));}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00317\ \ \ \ \ \textcolor{keywordflow}{return}\ EarthRadius\ *\ c;}
+\DoxyCodeLine{00318\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classCPheadquarters_adbbee09abadc3e9c3ad02982111a687d}\label{classCPheadquarters_adbbee09abadc3e9c3ad02982111a687d} 
 \index{CPheadquarters@{CPheadquarters}!heuristic@{heuristic}}
 \index{heuristic@{heuristic}!CPheadquarters@{CPheadquarters}}
 \doxysubsubsection{\texorpdfstring{heuristic()}{heuristic()}}
-{\footnotesize\ttfamily void CPheadquarters\+::heuristic (\begin{DoxyParamCaption}\item[{string}]{path\mbox{[}$\,$\mbox{]},  }\item[{unsigned int \&}]{nodes\+Visited,  }\item[{double \&}]{total\+Distance,  }\item[{string}]{id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void CPheadquarters\+::heuristic (\begin{DoxyParamCaption}\item[{long}]{path\mbox{[}$\,$\mbox{]},  }\item[{unsigned int \&}]{nodes\+Visited,  }\item[{double \&}]{total\+Distance,  }\item[{long}]{id }\end{DoxyParamCaption})}
 
 
 
@@ -179,34 +305,34 @@ Initial part of the algorithm, finds the route of the vertex with the given id, 
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00148}{148}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00150}{150}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00149\ }
-\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&vertex:\ graph.getVertexSet())\ \{}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ vertex-\/>setVisited(\textcolor{keyword}{false});}
-\DoxyCodeLine{00152\ }
-\DoxyCodeLine{00153\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ vertex:\ graph.getVertexSet())\ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ vertex.second-\/>setVisited(\textcolor{keyword}{false});}
 \DoxyCodeLine{00154\ }
-\DoxyCodeLine{00155\ }
-\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *actual\ =\ graph.\mbox{\hyperlink{classGraph_a12666658321af4855f1ad691b9840987}{findVertex}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00155\ \ \ \ \ \}}
+\DoxyCodeLine{00156\ }
 \DoxyCodeLine{00157\ }
-\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{double}\ distance\ =\ 0;}
-\DoxyCodeLine{00159\ \ \ \ \ route[0]\ =\ actual-\/>getId();}
-\DoxyCodeLine{00160\ }
-\DoxyCodeLine{00161\ \ \ \ \ actual-\/>setVisited(\textcolor{keyword}{true});}
+\DoxyCodeLine{00158\ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *actual\ =\ graph.\mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{findVertex}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{double}\ distance\ =\ 0;}
+\DoxyCodeLine{00161\ \ \ \ \ route[0]\ =\ actual-\/>getId();}
 \DoxyCodeLine{00162\ }
-\DoxyCodeLine{00163\ \ \ \ \ \mbox{\hyperlink{classCPheadquarters_a509a9c98faa33a6d13ce7aa552581051}{heuristicRec}}(actual,\ route,\ 1,\ distance,\ nodesVisited,\ totalDistance);}
-\DoxyCodeLine{00164\ \}}
+\DoxyCodeLine{00163\ \ \ \ \ actual-\/>setVisited(\textcolor{keyword}{true});}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{classCPheadquarters_ac41cf7ea8902590c3b69faae98e3b7eb}{heuristicRec}}(actual,\ route,\ 1,\ distance,\ nodesVisited,\ totalDistance);}
+\DoxyCodeLine{00166\ \}}
 
 \end{DoxyCode}
-\Hypertarget{classCPheadquarters_a509a9c98faa33a6d13ce7aa552581051}\label{classCPheadquarters_a509a9c98faa33a6d13ce7aa552581051} 
+\Hypertarget{classCPheadquarters_ac41cf7ea8902590c3b69faae98e3b7eb}\label{classCPheadquarters_ac41cf7ea8902590c3b69faae98e3b7eb} 
 \index{CPheadquarters@{CPheadquarters}!heuristicRec@{heuristicRec}}
 \index{heuristicRec@{heuristicRec}!CPheadquarters@{CPheadquarters}}
 \doxysubsubsection{\texorpdfstring{heuristicRec()}{heuristicRec()}}
-{\footnotesize\ttfamily void CPheadquarters\+::heuristic\+Rec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{v,  }\item[{string}]{path\mbox{[}$\,$\mbox{]},  }\item[{unsigned int}]{current\+Index,  }\item[{double}]{distance,  }\item[{unsigned int \&}]{nodes\+Visited,  }\item[{double \&}]{total\+Distance }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void CPheadquarters\+::heuristic\+Rec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{v,  }\item[{long}]{path\mbox{[}$\,$\mbox{]},  }\item[{unsigned int}]{current\+Index,  }\item[{double}]{distance,  }\item[{unsigned int \&}]{nodes\+Visited,  }\item[{double \&}]{total\+Distance }\end{DoxyParamCaption})}
 
 
 
@@ -232,72 +358,150 @@ the time complexity of this part of the heuristic is O(\+E)
 \end{DoxyAttention}
 
 
-Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00085}{85}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ nodesStillUnvisited\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{string}\ id1\ =\ v-\/>getId();}
-\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{classEstablishment}{Establishment}}\ st1\ =\ stations.find(id1)-\/>second;}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{double}\ long1\ =\ st1.\mbox{\hyperlink{classEstablishment_a22c35b8a308a5bcf7073747360e55589}{get\_longitude}}();}
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{double}\ lat1\ =\ st1.\mbox{\hyperlink{classEstablishment_a26b39d87696320d0d18108847302fcef}{get\_latitude}}();}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *small;}
-\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{double}\ smallAngle\ =\ 10000;}
-\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{double}\ x;}
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{double}\ y;}
-\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{double}\ angle;}
-\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{double}\ dist;}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&edge:\ v-\/>getAdj())\ \{}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *v2\ =\ edge-\/>getDest();}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dist2\ =\ edge-\/>getDistance();}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(v2-\/>isVisited()\ ==\ \textcolor{keyword}{false})\{}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ nodesStillUnvisited\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ id2\ =\ edge-\/>getDest()-\/>getId();}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEstablishment}{Establishment}}\ st2\ =\ stations.find(id2)-\/>second;}
-\DoxyCodeLine{00108\ }
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ long2\ =\ st2.\mbox{\hyperlink{classEstablishment_a22c35b8a308a5bcf7073747360e55589}{get\_longitude}}();}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ lat2\ =\ st2.\mbox{\hyperlink{classEstablishment_a26b39d87696320d0d18108847302fcef}{get\_latitude}}();}
-\DoxyCodeLine{00111\ }
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ long1\ -\/\ long2;}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ lat1\ -\/\ lat2;}
-\DoxyCodeLine{00114\ }
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ angle\ =\ atan2(y,x);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{bool}\ nodesStillUnvisited\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{double}\ long1\ =\ v-\/>getLongitude();}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{double}\ lat1\ =\ v-\/>getLatitude();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *small;}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{double}\ smallAngle\ =\ 10000;}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{double}\ x;}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{double}\ y;}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{double}\ angle;}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{double}\ dist;}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&edge:\ v-\/>getAdj())\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *v2\ =\ edge-\/>getDest();}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dist2\ =\ edge-\/>getDistance();}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(v2-\/>isVisited()\ ==\ \textcolor{keyword}{false})\{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ nodesStillUnvisited\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ long2\ =\ edge-\/>getDest()-\/>getLongitude();}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ lat2\ =\ edge-\/>getDest()-\/>getLatitude();}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ long1\ -\/\ long2;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ y\ =\ lat1\ -\/\ lat2;}
 \DoxyCodeLine{00116\ }
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(angle\ <\ smallAngle)\{}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smallAngle\ =\ angle;}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ small\ =\ v2;}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dist\ =\ dist2;}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00122\ }
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00124\ \ \ \ \ \}}
-\DoxyCodeLine{00125\ }
-\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{bool}\ inRoute\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ currentIndex;\ i++)\{}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(route[i]\ ==\ v-\/>getId())\{}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ inRoute\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00131\ \ \ \ \ \}}
-\DoxyCodeLine{00132\ }
-\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{if}(nodesStillUnvisited)\{}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ route[currentIndex]\ =\ small-\/>getId();}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ small-\/>setVisited(\textcolor{keyword}{true});}
-\DoxyCodeLine{00136\ }
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCPheadquarters_a509a9c98faa33a6d13ce7aa552581051}{heuristicRec}}(small,\ route,\ currentIndex+1,\ distance\ +\ dist,\ nodesVisited,\ totalDistance);}
-\DoxyCodeLine{00138\ \ \ \ \ \}}
-\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ nodesVisited\ =\ currentIndex;}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ totalDistance\ =\ distance;}
-\DoxyCodeLine{00142\ }
-\DoxyCodeLine{00143\ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ angle\ =\ atan2(y,x);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(angle\ <\ smallAngle)\{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smallAngle\ =\ angle;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ small\ =\ v2;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dist\ =\ dist2;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{bool}\ inRoute\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ currentIndex;\ i++)\{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(route[i]\ ==\ v-\/>getId())\{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ inRoute\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordflow}{if}(nodesStillUnvisited)\{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ route[currentIndex]\ =\ small-\/>getId();}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ small-\/>setVisited(\textcolor{keyword}{true});}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCPheadquarters_ac41cf7ea8902590c3b69faae98e3b7eb}{heuristicRec}}(small,\ route,\ currentIndex+1,\ distance\ +\ dist,\ nodesVisited,\ totalDistance);}
+\DoxyCodeLine{00140\ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ nodesVisited\ =\ currentIndex;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ totalDistance\ =\ distance;}
 \DoxyCodeLine{00144\ }
-\DoxyCodeLine{00145\ }
-\DoxyCodeLine{00146\ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classCPheadquarters_af82de974813192045d026553f91ce18a}\label{classCPheadquarters_af82de974813192045d026553f91ce18a} 
+\index{CPheadquarters@{CPheadquarters}!pathRec@{pathRec}}
+\index{pathRec@{pathRec}!CPheadquarters@{CPheadquarters}}
+\doxysubsubsection{\texorpdfstring{pathRec()}{pathRec()}}
+{\footnotesize\ttfamily void CPheadquarters\+::path\+Rec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{vertex }\end{DoxyParamCaption})}
+
+
+
+Generates a pre-\/order path of the MST using a DFS strategy, storing their indexes in a vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyAttention}{Attention}
+Time Complexity\+: O(\+E) 
+\end{DoxyAttention}
+
+
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00234}{234}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00235\ \ \ \ \ mst\_preorder\_path.push\_back(vertex-\/>getId());}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ child\ :\ vertex-\/>getChildren())\ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCPheadquarters_af82de974813192045d026553f91ce18a}{pathRec}}(graph.getVertexSet()[child]);}
+\DoxyCodeLine{00238\ \ \ \ \ \}}
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00240\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classCPheadquarters_a305dbedcfe29a5f3aa308d0cdd6da875}\label{classCPheadquarters_a305dbedcfe29a5f3aa308d0cdd6da875} 
+\index{CPheadquarters@{CPheadquarters}!read\_coordinates@{read\_coordinates}}
+\index{read\_coordinates@{read\_coordinates}!CPheadquarters@{CPheadquarters}}
+\doxysubsubsection{\texorpdfstring{read\_coordinates()}{read\_coordinates()}}
+{\footnotesize\ttfamily void CPheadquarters\+::read\+\_\+coordinates (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ std::ifstream\ inputFile2(path);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{string}\ line2;}
+\DoxyCodeLine{00057\ \ \ \ \ std::getline(inputFile2,\ line2);\ \textcolor{comment}{//\ ignore\ first\ line}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(inputFile2,\ line2,\ \textcolor{charliteral}{'\(\backslash\)n'}))\ \{}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!line2.empty()\ \&\&\ line2.back()\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{\ \textcolor{comment}{//\ Check\ if\ the\ last\ character\ is\ '\(\backslash\)r'}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ line2.pop\_back();\ \textcolor{comment}{//\ Remove\ the\ '\(\backslash\)r'\ character}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ id\_;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ temp1;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ temp2;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ longitude\_;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ latitude\_;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ stringstream\ inputString(line2);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ getline(inputString,\ id\_,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ getline(inputString,\ temp1,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ getline(inputString,\ temp2,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ long\_id\ =\ std::stol(id\_);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ longitude\_\ =\ stod(temp1);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ latitude\_\ =\ stod(temp2);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ v\ =\ graph.\mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{findVertex}}(long\_id);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ v-\/>setLongitude(longitude\_);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ v-\/>setLatitude(latitude\_);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ cout\ <<\ long\_id\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \}}
 
 \end{DoxyCode}
 \Hypertarget{classCPheadquarters_af19f86c71d34629af4cf500b6df8c217}\label{classCPheadquarters_af19f86c71d34629af4cf500b6df8c217} 
@@ -308,91 +512,116 @@ Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00085}{85}} of f
 
 
 
-Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00016\ \ \ \ \ std::ifstream\ inputFile1(path);}
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{string}\ line1;}
-\DoxyCodeLine{00018\ \ \ \ \ std::getline(inputFile1,\ line1);\ \textcolor{comment}{//\ ignore\ first\ line}}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(inputFile1,\ line1,\ \textcolor{charliteral}{'\(\backslash\)n'}))\ \{}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!line1.empty()\ \&\&\ line1.back()\ ==\ \textcolor{charliteral}{'\(\backslash\)r'})\ \{\ \textcolor{comment}{//\ Check\ if\ the\ last\ character\ is\ '\(\backslash\)r'}}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ line1.pop\_back();\ \textcolor{comment}{//\ Remove\ the\ '\(\backslash\)r'\ character}}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ origin;}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ destination;}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ temp;}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ distance;}
-\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ std::ifstream\ inputFile1(path);}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{string}\ line1;}
+\DoxyCodeLine{00019\ \ \ \ \ std::getline(inputFile1,\ line1);\ \textcolor{comment}{//\ ignore\ first\ line}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(inputFile1,\ line1,\ \textcolor{charliteral}{'\(\backslash\)n'}))\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!line1.empty()\ \&\&\ line1.back()\ ==\ \textcolor{charliteral}{'\(\backslash\)r'})\ \{\ \textcolor{comment}{//\ Check\ if\ the\ last\ character\ is\ '\(\backslash\)r'}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ line1.pop\_back();\ \textcolor{comment}{//\ Remove\ the\ '\(\backslash\)r'\ character}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ origin;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ destination;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ temp;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ distance;}
 \DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ stringstream\ inputString(line1);}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ getline(inputString,\ origin,\ \textcolor{charliteral}{','});}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ getline(inputString,\ destination,\ \textcolor{charliteral}{','});}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ getline(inputString,\ temp,\ \textcolor{charliteral}{','});}
-\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ stringstream\ inputString(line1);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ getline(inputString,\ origin,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ getline(inputString,\ destination,\ \textcolor{charliteral}{','});}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ getline(inputString,\ temp,\ \textcolor{charliteral}{','});}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ distance\ =\ stod(temp);}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ graph.\mbox{\hyperlink{classGraph_aa265fe199ebbac978b8a954ea754b0c2}{addVertex}}(origin);}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ graph.\mbox{\hyperlink{classGraph_aa265fe199ebbac978b8a954ea754b0c2}{addVertex}}(destination);}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ graph.\mbox{\hyperlink{classGraph_a4e313f729119695142478dd97026e747}{addEdge}}(origin,\ destination,\ distance);}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ graph.\mbox{\hyperlink{classGraph_a4e313f729119695142478dd97026e747}{addEdge}}(destination,\ origin,\ distance);}
-\DoxyCodeLine{00044\ \ \ \ \ \}}
-\DoxyCodeLine{00045\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ distance\ =\ stod(temp);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ origin\_id\ =\ std::stol(origin);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ graph.\mbox{\hyperlink{classGraph_a264209d7b77762b5a6a5939b768c8492}{addVertex}}(origin\_id);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ destination\_id\ =\ std::stol(destination);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ graph.\mbox{\hyperlink{classGraph_a264209d7b77762b5a6a5939b768c8492}{addVertex}}(destination\_id);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ graph.\mbox{\hyperlink{classGraph_aa53f95207e2218c6b08da37bf41271be}{addEdge}}(origin\_id,\ destination\_id,\ distance);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ graph.\mbox{\hyperlink{classGraph_aa53f95207e2218c6b08da37bf41271be}{addEdge}}(destination\_id,\ origin\_id,\ distance);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ cout\ <<\ origin\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \}}
 
 \end{DoxyCode}
-\Hypertarget{classCPheadquarters_af54590d5d39d7384af64f5f640abbac8}\label{classCPheadquarters_af54590d5d39d7384af64f5f640abbac8} 
-\index{CPheadquarters@{CPheadquarters}!read\_establishments@{read\_establishments}}
-\index{read\_establishments@{read\_establishments}!CPheadquarters@{CPheadquarters}}
-\doxysubsubsection{\texorpdfstring{read\_establishments()}{read\_establishments()}}
-{\footnotesize\ttfamily void CPheadquarters\+::read\+\_\+establishments (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+\Hypertarget{classCPheadquarters_a35b97bd9d6a09dc3d72b84afb29a5ae1}\label{classCPheadquarters_a35b97bd9d6a09dc3d72b84afb29a5ae1} 
+\index{CPheadquarters@{CPheadquarters}!triangular\_Approximation\_Heuristic@{triangular\_Approximation\_Heuristic}}
+\index{triangular\_Approximation\_Heuristic@{triangular\_Approximation\_Heuristic}!CPheadquarters@{CPheadquarters}}
+\doxysubsubsection{\texorpdfstring{triangular\_Approximation\_Heuristic()}{triangular\_Approximation\_Heuristic()}}
+{\footnotesize\ttfamily void CPheadquarters\+::triangular\+\_\+\+Approximation\+\_\+\+Heuristic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+Calculates the total cost of the TSP problem using a 2-\/approximation strategy. 
+
+Firstly running a variation of prim\textquotesingle{}s algorithn with complexity O((V+E)logV). Then running a DFS algorithm (\doxylink{classCPheadquarters_af82de974813192045d026553f91ce18a}{path\+Rec()}) with complexity O(\+E) And finally adding the distances between all the nodes, worst case complexity O(\+E$\ast$\+E) \begin{DoxyAttention}{Attention}
+Time Complexity\+: O((V+E)logV + 2E) 
+\end{DoxyAttention}
+
+
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00243}{243}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00048\ \ \ \ \ std::ifstream\ inputFile2(R\textcolor{stringliteral}{"{}(../stations.csv)"{});}}
-\DoxyCodeLine{00049\ \textcolor{stringliteral}{\ \ \ \ }\textcolor{keywordtype}{string}\ line2;}
-\DoxyCodeLine{00050\ \ \ \ \ std::getline(inputFile2,\ line2);\ \textcolor{comment}{//\ ignore\ first\ line}}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(inputFile2,\ line2,\ \textcolor{charliteral}{'\(\backslash\)n'}))\ \{}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!line2.empty()\ \&\&\ line2.back()\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{\ \textcolor{comment}{//\ Check\ if\ the\ last\ character\ is\ '\(\backslash\)r'}}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ line2.pop\_back();\ \textcolor{comment}{//\ Remove\ the\ '\(\backslash\)r'\ character}}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ id\_;}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ temp1;}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ temp2;}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ longitude\_;}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ latitude\_;}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ stringstream\ inputString(line2);}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ getline(inputString,\ id\_,\ \textcolor{charliteral}{','});}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ getline(inputString,\ temp1,\ \textcolor{charliteral}{','});}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ getline(inputString,\ temp2,\ \textcolor{charliteral}{','});}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ longitude\_\ =\ stod(temp1);}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ latitude\_\ =\ stod(temp2);}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEstablishment}{Establishment}}\ station(id\_,\ longitude\_,\ latitude\_);}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ stations[id\_]\ =\ station;}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ print\ information\ about\ the\ station,\ to\ make\ sure\ it\ was\ imported\ correctly}}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//cout\ <<\ "{}station:\ "{}\ <<\ nome\ <<\ "{}\ distrito:\ "{}\ <<\ distrito\ <<\ "{}\ municipality:\ "{}\ <<\ municipality\ <<\ "{}\ township:\ "{}\ <<\ township\ <<\ "{}\ line:\ "{}\ <<\ line\ <<\ endl;}}
-\DoxyCodeLine{00081\ \ \ \ \ \}}
-\DoxyCodeLine{00082\ \}}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00244\ \ \ \ \ std::unordered\_map<long,Vertex\ *>\ vertexis\ =\ graph.getVertexSet();}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ v:\ vertexis)\ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ v.second-\/>setVisited(\textcolor{keyword}{false});}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ v.second-\/>setDist(std::numeric\_limits<double>::max());}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ v.second-\/>eraseChildren();}
+\DoxyCodeLine{00249\ \ \ \ \ \}}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *root\ =\ graph.\mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{findVertex}}(0);}
+\DoxyCodeLine{00252\ \ \ \ \ root-\/>setDist(0);}
+\DoxyCodeLine{00253\ \ \ \ \ \mbox{\hyperlink{classMutablePriorityQueue}{MutablePriorityQueue<Vertex>}}\ q;}
+\DoxyCodeLine{00254\ \ \ \ \ q.insert(root);}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordflow}{while}\ (!q.empty())\ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ v\ =\ q.extractMin();}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ cout<<\textcolor{stringliteral}{"{}working\ on:"{}}<<v-\/>getId()<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ v-\/>setVisited(\textcolor{keyword}{true});}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(v-\/>getId()!=0)\ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ v-\/>getPath()-\/>getOrig()-\/>addChildren(v-\/>getId());}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&e:\ v-\/>getAdj())\ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *w\ =\ e-\/>getDest();}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!w-\/>isVisited())\ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ oldDist\ =\ w-\/>getDist();}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (e-\/>getDistance()\ <\ oldDist)\ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w-\/>setDist(e-\/>getDistance());}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w-\/>setPath(e);}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oldDist\ ==\ std::numeric\_limits<double>::max())\ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q.insert(w);}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ q.decreaseKey(w);}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00277\ \ \ \ \ \}}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00279\ \ \ \ \ mst\_preorder\_path.clear();}
+\DoxyCodeLine{00280\ \ \ \ \ \mbox{\hyperlink{classCPheadquarters_af82de974813192045d026553f91ce18a}{pathRec}}(root);}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keywordtype}{double}\ result=0;}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ mst\_preorder\_path.size()-\/1;\ i++)\ \{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ result+=\ \mbox{\hyperlink{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46}{getDist}}(mst\_preorder\_path[i],mst\_preorder\_path[i+1]);}
+\DoxyCodeLine{00286\ \ \ \ \ \}}
+\DoxyCodeLine{00287\ \ \ \ \ result+=\mbox{\hyperlink{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46}{getDist}}(mst\_preorder\_path[mst\_preorder\_path.size()-\/1],mst\_preorder\_path[0]);}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \ \ \ \ cout<<\textcolor{stringliteral}{"{}Result:"{}}<<result;}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00291\ \}}
 
 \end{DoxyCode}
 
