@@ -208,7 +208,7 @@ bool Graph::TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost) {
     double currentCost = 0;
     shortestPathCost = std::numeric_limits<double>::max(); // initialize to maximum possible double
     auto res = TSPUtil(vertexSet[0], path, shortestPath, shortestPathCost, numOfPossiblePaths, currentCost);
-    std::cout << "Number of possible paths: " << numOfPossiblePaths << std::endl;
+    std::cout << "Number of calculated paths: " << numOfPossiblePaths << std::endl;
     // End the timer
     auto end_time = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
