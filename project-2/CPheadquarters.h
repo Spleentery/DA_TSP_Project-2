@@ -61,14 +61,50 @@ public:
 
     void hamiltonianCycle();
 
+
+    /**
+     * Calculates the total cost of the TSP problem using a 2-approximation strategy.
+     * Firstly running a variation of prim's algorithn with complexity O((V+E)logV).
+     * Then running a DFS algorithm (pathRec()) with complexity O(E)
+     * And finally adding the distances between all the nodes, worst case complexity O(E*E)
+     * @attention Time Complexity: O((V+E)logV + 2E)
+     */
     void triangular_Approximation_Heuristic();
 
+    /**
+     * Generates a pre-order path of the MST using a DFS strategy, storing their indexes in a vector
+     * @param vertex
+     * @attention Time Complexity: O(E)
+     */
     void pathRec(Vertex *vertex);
 
+    /**
+     * Translates degrees to radians
+     * @param degrees
+     * @return
+     * @attention Time Complexity: O(1)
+     */
     double degToRad(double degrees);
 
-    double haversineDistance(double lat1, double lon1, double lat2, double lon2);
+    /**
+     * Returns the distance between two points using their coordinates in kilometers
+     * @param latitude1
+     * @param longitude1
+     * @param latitude2
+     * @param longitude2
+     * @return
+     * @attention Time Complexity: O(1)
+     */
+    double haversineDistance(double latitude1, double longitude1, double latitude2, double longitude2);
 
+    /**
+     * Returns the distance between the nodes with indexes id=a and id=b.
+     * If their distance is not explicit in the edges, then it is calculated using the haversineDistance() function, if possible.
+     * @param a
+     * @param b
+     * @return
+     * @attention Time Complexity: O(E)
+     */
     double getDist(int a, int b);
 };
 

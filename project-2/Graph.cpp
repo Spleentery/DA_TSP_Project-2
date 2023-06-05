@@ -131,24 +131,26 @@ double Graph::getPathCost(const std::vector<Vertex *> &path) {
 
 
 bool Graph::TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *> &shortestPath, double &shortestPathCost,
-               int &numOfPossiblePaths) {
+                    int &numOfPossiblePaths, double &currentCost) {
     if (path.size() == vertexSet.size()) {
         for (auto edge: v->getAdj()) {
             if (edge->getDest() == path[0]) {
                 path.push_back(path[0]);
-                double pathCost = getPathCost(path);
+                currentCost += edge->getDistance();  // Add the cost of returning to the start vertex
 
-                // Print path and its cost
-                std::cout << "Path: ";
-                for (auto vertex: path)
-                    std::cout << vertex->getId() << " ";
-                std::cout << "Cost: " << pathCost << std::endl;
-                numOfPossiblePaths++;
-                if (shortestPath.empty() || pathCost < shortestPathCost) {
+                if (currentCost < shortestPathCost) {  // Only consider path if it's the shortest so far
+                    // Print path and its cost
+                    std::cout << "Path: ";
+                    for (auto vertex: path)
+                        std::cout << vertex->getId() << " ";
+                    std::cout << "Cost: " << currentCost << std::endl;
+                    numOfPossiblePaths++;
                     shortestPath = path;
-                    shortestPathCost = pathCost;
+                    shortestPathCost = currentCost;
                 }
+
                 path.pop_back();
+                currentCost -= edge->getDistance();  // Remove the cost of returning to the start vertex
                 return true;
             }
         }
@@ -159,9 +161,16 @@ bool Graph::TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *
         Vertex *w = edge->getDest();
         if (std::find(path.begin(), path.end(), w) != path.end())
             continue;
+
+        // If the current path cost plus the cost of the edge is already greater than the shortest path cost, skip
+        if (currentCost + edge->getDistance() >= shortestPathCost)
+            continue;
+
         path.push_back(w);
-        TSPUtil(w, path, shortestPath, shortestPathCost, numOfPossiblePaths);
+        currentCost += edge->getDistance();
+        TSPUtil(w, path, shortestPath, shortestPathCost, numOfPossiblePaths, currentCost);
         path.pop_back();
+        currentCost -= edge->getDistance();
     }
 
     return !shortestPath.empty();
@@ -196,7 +205,9 @@ bool Graph::TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost) {
     int numOfPossiblePaths = 0;
     std::vector<Vertex *> path;
     path.push_back(vertexSet[0]); // Start from any vertex
-    auto res = TSPUtil(vertexSet[0], path, shortestPath, shortestPathCost, numOfPossiblePaths);
+    double currentCost = 0;
+    shortestPathCost = std::numeric_limits<double>::max(); // initialize to maximum possible double
+    auto res = TSPUtil(vertexSet[0], path, shortestPath, shortestPathCost, numOfPossiblePaths, currentCost);
     std::cout << "Number of possible paths: " << numOfPossiblePaths << std::endl;
     // End the timer
     auto end_time = std::chrono::high_resolution_clock::now();
@@ -204,7 +215,6 @@ bool Graph::TSP(std::vector<Vertex *> &shortestPath, double &shortestPathCost) {
     std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
     return res;
 }
-
 
 double Graph::hasHamiltonianCycleUtil(Vertex *v, std::vector<Vertex *> &path, double &pathCost) {
     if (path.size() == vertexSet.size()) {

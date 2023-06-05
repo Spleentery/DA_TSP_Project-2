@@ -121,7 +121,7 @@ protected:
      * @return
      */
     bool TSPUtil(Vertex *v, std::vector<Vertex *> &path, std::vector<Vertex *> &shortestPath, double &shortestPathCost,
-                 int &numOfPossiblePaths);
+                 int &numOfPossiblePaths, double &currentCost);
     /**
      * Utility function to check if the graph has a Hamiltonian cycle.
      * @param v

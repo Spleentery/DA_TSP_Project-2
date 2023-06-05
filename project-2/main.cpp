@@ -82,6 +82,12 @@ int main() {
 
                 CP.triangular_Approximation_Heuristic();
 
+                auto end_time = std::chrono::high_resolution_clock::now();
+                
+                auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+
+                std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
+
                 break;
             }
 

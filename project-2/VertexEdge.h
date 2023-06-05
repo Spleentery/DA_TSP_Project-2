@@ -31,8 +31,6 @@ public:
 
     bool isVisited() const;
 
-    bool isAdded() const;
-
     double getDist() const;
 
     Edge *getPath() const;
