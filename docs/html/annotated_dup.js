@@ -2,7 +2,7 @@ var annotated_dup =
 [
     [ "CPheadquarters", "classCPheadquarters.html", "classCPheadquarters" ],
     [ "Edge", "classEdge.html", null ],
-    [ "Establishment", "classEstablishment.html", "classEstablishment" ],
     [ "Graph", "classGraph.html", "classGraph" ],
+    [ "MutablePriorityQueue", "classMutablePriorityQueue.html", null ],
     [ "Vertex", "classVertex.html", null ]
 ];

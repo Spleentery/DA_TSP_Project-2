@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['deletevertex_0',['deleteVertex',['../classGraph.html#ade95ce0f9cf736c26bec53c84322c127',1,'Graph']]]
+  ['degtorad_0',['degToRad',['../classCPheadquarters.html#a4a8636b2dba749a21a51d7a19ab3196f',1,'CPheadquarters']]],
+  ['deletevertex_1',['deleteVertex',['../classGraph.html#aa3c505f1e76e59ce3ddf88befaca375f',1,'Graph']]]
 ];

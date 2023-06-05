@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['addedge_0',['addEdge',['../classGraph.html#a4e313f729119695142478dd97026e747',1,'Graph']]],
-  ['addvertex_1',['addVertex',['../classGraph.html#aa265fe199ebbac978b8a954ea754b0c2',1,'Graph']]]
+  ['addedge_0',['addEdge',['../classGraph.html#aa53f95207e2218c6b08da37bf41271be',1,'Graph']]],
+  ['addvertex_1',['addVertex',['../classGraph.html#a264209d7b77762b5a6a5939b768c8492',1,'Graph']]]
 ];

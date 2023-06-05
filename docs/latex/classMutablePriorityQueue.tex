@@ -1,0 +1,140 @@
+\hypertarget{classMutablePriorityQueue}{}\doxysection{Mutable\+Priority\+Queue\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classMutablePriorityQueue}\index{MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}}
+
+
+class T must have\+: (i) accessible field int queue\+Index; (ii) operator\texorpdfstring{$<$}{<} defined.  
+
+
+
+
+{\ttfamily \#include $<$Mutable\+Priority\+Queue.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMutablePriorityQueue_a058fc182052af82e10cc3719e448b62d}{insert}} (T $\ast$x)
+\item 
+T $\ast$ \mbox{\hyperlink{classMutablePriorityQueue_a3880874d7364279ac0d6d31302b28853}{extract\+Min}} ()
+\item 
+void \mbox{\hyperlink{classMutablePriorityQueue_a0878839cc1d2dba2b8ab2e589ecc6405}{decrease\+Key}} (T $\ast$x)
+\item 
+bool \mbox{\hyperlink{classMutablePriorityQueue_a2edbb1f4a6fa3ff735700dfcebebe8d4}{empty}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Mutable\+Priority\+Queue$<$ T $>$}
+class T must have\+: (i) accessible field int queue\+Index; (ii) operator\texorpdfstring{$<$}{<} defined. 
+
+Definition at line \mbox{\hyperlink{MutablePriorityQueue_8h_source_l00021}{21}} of file \mbox{\hyperlink{MutablePriorityQueue_8h_source}{Mutable\+Priority\+Queue.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMutablePriorityQueue_aba8ebedcbe659f2680bac229cfaca526}\label{classMutablePriorityQueue_aba8ebedcbe659f2680bac229cfaca526} 
+\index{MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}!MutablePriorityQueue@{MutablePriorityQueue}}
+\index{MutablePriorityQueue@{MutablePriorityQueue}!MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MutablePriorityQueue()}{MutablePriorityQueue()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classMutablePriorityQueue}{Mutable\+Priority\+Queue}}$<$ T $>$\mbox{\hyperlink{classMutablePriorityQueue}{\+::\+Mutable\+Priority\+Queue}}}
+
+
+
+Definition at line \mbox{\hyperlink{MutablePriorityQueue_8h_source_l00039}{39}} of file \mbox{\hyperlink{MutablePriorityQueue_8h_source}{Mutable\+Priority\+Queue.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ H.push\_back(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ indices\ will\ be\ used\ starting\ in\ 1}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ to\ facilitate\ parent/child\ calculations}}
+\DoxyCodeLine{00043\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMutablePriorityQueue_a0878839cc1d2dba2b8ab2e589ecc6405}\label{classMutablePriorityQueue_a0878839cc1d2dba2b8ab2e589ecc6405} 
+\index{MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}!decreaseKey@{decreaseKey}}
+\index{decreaseKey@{decreaseKey}!MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{decreaseKey()}{decreaseKey()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classMutablePriorityQueue}{Mutable\+Priority\+Queue}}$<$ T $>$\+::decrease\+Key (\begin{DoxyParamCaption}\item[{T $\ast$}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{MutablePriorityQueue_8h_source_l00067}{67}} of file \mbox{\hyperlink{MutablePriorityQueue_8h_source}{Mutable\+Priority\+Queue.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ heapifyUp(x-\/>queueIndex);}
+\DoxyCodeLine{00069\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classMutablePriorityQueue_a2edbb1f4a6fa3ff735700dfcebebe8d4}\label{classMutablePriorityQueue_a2edbb1f4a6fa3ff735700dfcebebe8d4} 
+\index{MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}!empty@{empty}}
+\index{empty@{empty}!MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classMutablePriorityQueue}{Mutable\+Priority\+Queue}}$<$ T $>$\+::empty}
+
+
+
+Definition at line \mbox{\hyperlink{MutablePriorityQueue_8h_source_l00046}{46}} of file \mbox{\hyperlink{MutablePriorityQueue_8h_source}{Mutable\+Priority\+Queue.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{return}\ H.size()\ ==\ 1;}
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classMutablePriorityQueue_a3880874d7364279ac0d6d31302b28853}\label{classMutablePriorityQueue_a3880874d7364279ac0d6d31302b28853} 
+\index{MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}!extractMin@{extractMin}}
+\index{extractMin@{extractMin}!MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{extractMin()}{extractMin()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T $\ast$ \mbox{\hyperlink{classMutablePriorityQueue}{Mutable\+Priority\+Queue}}$<$ T $>$\+::extract\+Min}
+
+
+
+Definition at line \mbox{\hyperlink{MutablePriorityQueue_8h_source_l00051}{51}} of file \mbox{\hyperlink{MutablePriorityQueue_8h_source}{Mutable\+Priority\+Queue.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{auto}\ x\ =\ H[1];}
+\DoxyCodeLine{00053\ \ \ \ \ H[1]\ =\ H.back();}
+\DoxyCodeLine{00054\ \ \ \ \ H.pop\_back();}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{if}(H.size()\ >\ 1)\ heapifyDown(1);}
+\DoxyCodeLine{00056\ \ \ \ \ x-\/>queueIndex\ =\ 0;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{return}\ x;}
+\DoxyCodeLine{00058\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classMutablePriorityQueue_a058fc182052af82e10cc3719e448b62d}\label{classMutablePriorityQueue_a058fc182052af82e10cc3719e448b62d} 
+\index{MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}!insert@{insert}}
+\index{insert@{insert}!MutablePriorityQueue$<$ T $>$@{MutablePriorityQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classMutablePriorityQueue}{Mutable\+Priority\+Queue}}$<$ T $>$\+::insert (\begin{DoxyParamCaption}\item[{T $\ast$}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{MutablePriorityQueue_8h_source_l00061}{61}} of file \mbox{\hyperlink{MutablePriorityQueue_8h_source}{Mutable\+Priority\+Queue.\+h}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ H.push\_back(x);}
+\DoxyCodeLine{00063\ \ \ \ \ heapifyUp(H.size()-\/1);}
+\DoxyCodeLine{00064\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Mutable\+Priority\+Queue.\+h\end{DoxyCompactItemize}

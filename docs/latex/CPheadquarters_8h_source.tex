@@ -10,33 +10,45 @@
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00007}00007\ }
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00008}00008\ }
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}Graph.h"{}}}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}Establishment.h"{}}}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00011}00011\ }
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00012}\mbox{\hyperlink{classCPheadquarters}{00012}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCPheadquarters}{CPheadquarters}}\ \{}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}\ graph;}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00014}00014\ \ \ \ \ unordered\_map<string,\ Establishment>\ stations;}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00015}00015\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00016}00016\ }
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{void}\ read\_edges(std::string\ path);}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00018}00018\ }
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{void}\ read\_establishments(std::string\ path);}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00011}00011\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00013}\mbox{\hyperlink{classCPheadquarters}{00013}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCPheadquarters}{CPheadquarters}}\ \{}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}\ graph;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00015}00015\ \ \ \ \ vector<long>\ mst\_preorder\_path;}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00016}00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{void}\ read\_edges(std::string\ path);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{void}\ read\_coordinates(std::string\ path);}
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00021}00021\ }
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}\ getGraph()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00023}00023\ }
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00031}00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_a0f572443d0f8ecbcc58a820f6f182dc3}{heuristic}}(\textcolor{keywordtype}{string}\ path[],\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \&nodesVisited,\ \textcolor{keywordtype}{double}\ \&totalDistance,\ \textcolor{keywordtype}{string}\ \textcolor{keywordtype}{id});}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00032}00032\ }
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_a509a9c98faa33a6d13ce7aa552581051}{heuristicRec}}(\mbox{\hyperlink{classVertex}{Vertex}}\ *v,\ \textcolor{keywordtype}{string}\ path[],\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ currentIndex,\ \textcolor{keywordtype}{double}\ distance,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \&nodesVisited,\ \textcolor{keywordtype}{double}\ \&totalDistance);}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00045}00045\ }
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00052}00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_ad421ca872f51bb6a49446d3de4ef559c}{chooseRoute}}();}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}\ getGraph()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_adbbee09abadc3e9c3ad02982111a687d}{heuristic}}(\textcolor{keywordtype}{long}\ path[],\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \&nodesVisited,\ \textcolor{keywordtype}{double}\ \&totalDistance,\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_ac41cf7ea8902590c3b69faae98e3b7eb}{heuristicRec}}(\mbox{\hyperlink{classVertex}{Vertex}}\ *v,\ \textcolor{keywordtype}{long}\ path[],\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ currentIndex,\ \textcolor{keywordtype}{double}\ distance,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \&nodesVisited,\ \textcolor{keywordtype}{double}\ \&totalDistance);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00053}00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_ad421ca872f51bb6a49446d3de4ef559c}{chooseRoute}}();}
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00054}00054\ }
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_a784e9b774ff0cfc479846b4fb7840399}{backtrack}}();}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00060}00060\ }
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00061}00061\ \ \ \ \ \textcolor{keywordtype}{void}\ hamiltonianCycle();}
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00062}00062\ \};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00060}00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_a784e9b774ff0cfc479846b4fb7840399}{backtrack}}();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00062}00062\ \ \ \ \ \textcolor{keywordtype}{void}\ hamiltonianCycle();}
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00063}00063\ }
 \DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00064}00064\ }
-\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00065}00065\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PROJECT\_2\_CPHEADQUARTERS\_H}}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00072}00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_a35b97bd9d6a09dc3d72b84afb29a5ae1}{triangular\_Approximation\_Heuristic}}();}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00079}00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCPheadquarters_af82de974813192045d026553f91ce18a}{pathRec}}(\mbox{\hyperlink{classVertex}{Vertex}}\ *vertex);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classCPheadquarters_a4a8636b2dba749a21a51d7a19ab3196f}{degToRad}}(\textcolor{keywordtype}{double}\ degrees);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classCPheadquarters_af930f9e502d3c0d0bc6d96df94c416f3}{haversineDistance}}(\textcolor{keywordtype}{double}\ latitude1,\ \textcolor{keywordtype}{double}\ longitude1,\ \textcolor{keywordtype}{double}\ latitude2,\ \textcolor{keywordtype}{double}\ longitude2);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00108}00108\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46}{getDist}}(\textcolor{keywordtype}{int}\ a,\ \textcolor{keywordtype}{int}\ b);}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00109}00109\ \};}
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{CPheadquarters_8h_source_l00112}00112\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PROJECT\_2\_CPHEADQUARTERS\_H}}
 
 \end{DoxyCode}

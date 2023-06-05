@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vertex_0',['Vertex',['../classVertex.html',1,'']]]
+  ['mutablepriorityqueue_0',['MutablePriorityQueue',['../classMutablePriorityQueue.html',1,'']]]
 ];

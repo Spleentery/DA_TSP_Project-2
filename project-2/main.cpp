@@ -93,21 +93,17 @@ int main() {
 
             case 3: {
 
-                //CP.print3();
                 auto start_time = std::chrono::high_resolution_clock::now();
 
 
                 CP.chooseRoute();
 
-// Code block to measure goes here
-
-// End the timer
+                // Code block to measure goes here
+                // End the timer
                 auto end_time = std::chrono::high_resolution_clock::now();
-
-// Compute the duration
+                // Compute the duration
                 auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
-
-// Print the duration
+                // Print the duration
                 std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
 
 

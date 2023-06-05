@@ -3,15 +3,15 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classVertex}{Vertex}} $\ast$ \mbox{\hyperlink{classGraph_a12666658321af4855f1ad691b9840987}{find\+Vertex}} (const std\+::string \&id) const
+\mbox{\hyperlink{classVertex}{Vertex}} $\ast$ \mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{find\+Vertex}} (long id) const
 \begin{DoxyCompactList}\small\item\em Auxiliary function to find a vertex with a given ID. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classGraph_aa265fe199ebbac978b8a954ea754b0c2}{add\+Vertex}} (const std\+::string \&id)
+bool \mbox{\hyperlink{classGraph_a264209d7b77762b5a6a5939b768c8492}{add\+Vertex}} (long id)
 \begin{DoxyCompactList}\small\item\em Adds a vertex with a given content or info (in) to a graph (this). \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classGraph_a4e313f729119695142478dd97026e747}{add\+Edge}} (const std\+::string \&sourc, const std\+::string \&dest, double d)
+bool \mbox{\hyperlink{classGraph_aa53f95207e2218c6b08da37bf41271be}{add\+Edge}} (long sourc, long dest, double d)
 \begin{DoxyCompactList}\small\item\em Adds an edge to a graph (this), given the contents of the source and destination vertices and the edge weight (w). \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classGraph_abb5e0517e2979c54eebdafc2a9875e8f}{get\+Num\+Vertex}} () const
 \item 
-std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classGraph_a619ac583094079134074658e29463c0e}{get\+Vertex\+Set}} () const
+std\+::unordered\+\_\+map$<$ long, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classGraph_a4dfdb8498b458c54a7f56ee6a55d9836}{get\+Vertex\+Set}} () const
 \item 
 void \mbox{\hyperlink{classGraph_aeeede3cb48be5d8cac08ea05ce54bd52}{print}} () const
 \begin{DoxyCompactList}\small\item\em prints the graph \end{DoxyCompactList}\item 
@@ -22,13 +22,11 @@ bool \mbox{\hyperlink{classGraph_a665423851066546828e7112afcfa8633}{has\+Hamilto
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{classGraph_a40b50a1c37201c3f1b889f31e783b6dd}{is\+In}} (std\+::string n, std\+::vector$<$ std\+::string $>$ vec)
-\item 
-void \mbox{\hyperlink{classGraph_ade95ce0f9cf736c26bec53c84322c127}{delete\+Vertex}} (std\+::string name)
+void \mbox{\hyperlink{classGraph_aa3c505f1e76e59ce3ddf88befaca375f}{delete\+Vertex}} (long name)
 \begin{DoxyCompactList}\small\item\em delete a vertex from the graph, making a subgraph from a graph \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classGraph_acd2998d22dbf7439f9f251eb1c6b27bc}{get\+Path\+Cost}} (const std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&path)
 \begin{DoxyCompactList}\small\item\em calculate the cost of the path \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classGraph_a31b37a7d0f375245920e7cbe69ef8e6f}{TSPUtil}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$v, std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&path, std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&shortest\+Path, double \&shortest\+Path\+Cost, int \&num\+Of\+Possible\+Paths)
+bool \mbox{\hyperlink{classGraph_aa6ea3c90e9c6aaf38c27b8939c2bd92d}{TSPUtil}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$v, std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&path, std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&shortest\+Path, double \&shortest\+Path\+Cost, int \&num\+Of\+Possible\+Paths, double \&current\+Cost)
 \begin{DoxyCompactList}\small\item\em Utility function to solve the TSP problem. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classGraph_a93770fbd73f9e5a4ea9556de351c4346}{has\+Hamiltonian\+Cycle\+Util}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$v, std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&path, double \&path\+Cost)
 \begin{DoxyCompactList}\small\item\em Utility function to check if the graph has a Hamiltonian cycle. \end{DoxyCompactList}\item 
@@ -41,7 +39,7 @@ bool \mbox{\hyperlink{classGraph_a85565c3b8b96bd5ba34b2fe8542a57cb}{has\+Articul
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classGraph_aa9b0a6d8ad43c5eabaca5a7140bcc8b6}{vertex\+Set}}
+std\+::unordered\+\_\+map$<$ long, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classGraph_ab818d14d6411246cb25a93d617b8dd5a}{vertex\+Set}}
 \item 
 double $\ast$$\ast$ \mbox{\hyperlink{classGraph_a9e61864da69191c1896a25a708d1a02d}{dist\+Matrix}} = nullptr
 \item 
@@ -88,11 +86,11 @@ Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00063}{63}} of file \mbox
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classGraph_a4e313f729119695142478dd97026e747}\label{classGraph_a4e313f729119695142478dd97026e747} 
+\Hypertarget{classGraph_aa53f95207e2218c6b08da37bf41271be}\label{classGraph_aa53f95207e2218c6b08da37bf41271be} 
 \index{Graph@{Graph}!addEdge@{addEdge}}
 \index{addEdge@{addEdge}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
-{\footnotesize\ttfamily bool Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{sourc,  }\item[{const std\+::string \&}]{dest,  }\item[{double}]{d }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{long}]{sourc,  }\item[{long}]{dest,  }\item[{double}]{d }\end{DoxyParamCaption})}
 
 
 
@@ -116,9 +114,9 @@ Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00034}{34}} of file \mbox
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{auto}\ v1\ =\ \mbox{\hyperlink{classGraph_a12666658321af4855f1ad691b9840987}{findVertex}}(sourc);}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{auto}\ v2\ =\ \mbox{\hyperlink{classGraph_a12666658321af4855f1ad691b9840987}{findVertex}}(dest);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{auto}\ v1\ =\ \mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{findVertex}}(sourc);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{auto}\ v2\ =\ \mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{findVertex}}(dest);}
 \DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{if}\ (v1\ ==\ \textcolor{keyword}{nullptr}\ ||\ v2\ ==\ \textcolor{keyword}{nullptr})}
 \DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00039\ \ \ \ \ v1-\/>addEdge(v2,\ d);}
@@ -127,11 +125,11 @@ Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00034}{34}} of file \mbox
 \DoxyCodeLine{00042\ \}}
 
 \end{DoxyCode}
-\Hypertarget{classGraph_aa265fe199ebbac978b8a954ea754b0c2}\label{classGraph_aa265fe199ebbac978b8a954ea754b0c2} 
+\Hypertarget{classGraph_a264209d7b77762b5a6a5939b768c8492}\label{classGraph_a264209d7b77762b5a6a5939b768c8492} 
 \index{Graph@{Graph}!addVertex@{addVertex}}
 \index{addVertex@{addVertex}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}}
-{\footnotesize\ttfamily bool Graph\+::add\+Vertex (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Graph\+::add\+Vertex (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption})}
 
 
 
@@ -151,19 +149,19 @@ Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00026}{26}} of file \mbox
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a12666658321af4855f1ad691b9840987}{findVertex}}(\textcolor{keywordtype}{id})\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{findVertex}}(\textcolor{keywordtype}{id})\ !=\ \textcolor{keyword}{nullptr})}
 \DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00029\ \ \ \ \ vertexSet.push\_back(\textcolor{keyword}{new}\ \mbox{\hyperlink{classVertex}{Vertex}}(\textcolor{keywordtype}{id}));}
+\DoxyCodeLine{00029\ \ \ \ \ vertexSet[id]=(\textcolor{keyword}{new}\ \mbox{\hyperlink{classVertex}{Vertex}}(\textcolor{keywordtype}{id}));}
 \DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00031\ \}}
 
 \end{DoxyCode}
-\Hypertarget{classGraph_ade95ce0f9cf736c26bec53c84322c127}\label{classGraph_ade95ce0f9cf736c26bec53c84322c127} 
+\Hypertarget{classGraph_aa3c505f1e76e59ce3ddf88befaca375f}\label{classGraph_aa3c505f1e76e59ce3ddf88befaca375f} 
 \index{Graph@{Graph}!deleteVertex@{deleteVertex}}
 \index{deleteVertex@{deleteVertex}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{deleteVertex()}{deleteVertex()}}
-{\footnotesize\ttfamily void Graph\+::delete\+Vertex (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily void Graph\+::delete\+Vertex (\begin{DoxyParamCaption}\item[{long}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -176,36 +174,36 @@ delete a vertex from the graph, making a subgraph from a graph
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{auto}\ v\ =\ \mbox{\hyperlink{classGraph_a12666658321af4855f1ad691b9840987}{findVertex}}(name);}
-\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ e:\ v-\/>getAdj())\ \{}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ s\ =\ e-\/>getDest()-\/>getId();}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ v-\/>removeEdge(s);}
-\DoxyCodeLine{00099\ \ \ \ \ \}}
-\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ e:\ v-\/>getIncoming())\ \{}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ e-\/>getOrig()-\/>removeEdge(name);}
-\DoxyCodeLine{00102\ \ \ \ \ \}}
-\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ vertexSet.begin();}
-\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{while}\ (it\ !=\ vertexSet.end())\ \{}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *currentVertex\ =\ *it;}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentVertex-\/>getId()\ ==\ name)\ \{}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ it\ =\ vertexSet.erase(it);}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ it++;}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00111\ \ \ \ \ \}}
-\DoxyCodeLine{00112\ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{auto}\ v\ =\ \mbox{\hyperlink{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}{findVertex}}(name);}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ e:\ v-\/>getAdj())\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ s\ =\ e-\/>getDest()-\/>getId();}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ v-\/>removeEdge(s);}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ e:\ v-\/>getIncoming())\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ e-\/>getOrig()-\/>removeEdge(name);}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ vertexSet.begin();}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{while}\ (it\ !=\ vertexSet.end())\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ currentVertex\ =\ *it;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentVertex.second-\/>getId()\ ==\ name)\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ it\ =\ vertexSet.erase(it);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ it++;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \}}
 
 \end{DoxyCode}
-\Hypertarget{classGraph_a12666658321af4855f1ad691b9840987}\label{classGraph_a12666658321af4855f1ad691b9840987} 
+\Hypertarget{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918}\label{classGraph_a93b6fdb0d0e3ee8eaae06045a90be918} 
 \index{Graph@{Graph}!findVertex@{findVertex}}
 \index{findVertex@{findVertex}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{findVertex()}{findVertex()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ Graph\+::find\+Vertex (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{id }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ Graph\+::find\+Vertex (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption}) const}
 
 
 
@@ -225,10 +223,10 @@ Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00017}{17}} of file \mbox
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ v:\ vertexSet)\ \{}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (v-\/>getId()\ ==\ \textcolor{keywordtype}{id})}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ vertexSet.find(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{if}(it!=vertexSet.end())\{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
 \DoxyCodeLine{00021\ \ \ \ \ \}}
 \DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{00023\ \}}
@@ -271,29 +269,29 @@ double
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00127}{127}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00119}{119}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{double}\ totalCost\ =\ 0;}
-\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ path.size()\ -\/\ 1;\ ++i)\ \{}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge:\ path[i]-\/>getAdj())\ \{}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (edge-\/>getDest()\ ==\ path[i\ +\ 1])\ \{}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ totalCost\ +=\ edge-\/>getDistance();}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00136\ \ \ \ \ \}}
-\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordflow}{return}\ totalCost;}
-\DoxyCodeLine{00138\ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{double}\ totalCost\ =\ 0;}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ path.size()\ -\/\ 1;\ ++i)\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge:\ path[i]-\/>getAdj())\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (edge-\/>getDest()\ ==\ path[i\ +\ 1])\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ totalCost\ +=\ edge-\/>getDistance();}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordflow}{return}\ totalCost;}
+\DoxyCodeLine{00130\ \}}
 
 \end{DoxyCode}
-\Hypertarget{classGraph_a619ac583094079134074658e29463c0e}\label{classGraph_a619ac583094079134074658e29463c0e} 
+\Hypertarget{classGraph_a4dfdb8498b458c54a7f56ee6a55d9836}\label{classGraph_a4dfdb8498b458c54a7f56ee6a55d9836} 
 \index{Graph@{Graph}!getVertexSet@{getVertexSet}}
 \index{getVertexSet@{getVertexSet}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{getVertexSet()}{getVertexSet()}}
-{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ Graph\+::get\+Vertex\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ long, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ Graph\+::get\+Vertex\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
@@ -301,7 +299,7 @@ Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00012}{12}} of file \mbox
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordflow}{return}\ vertexSet;}
 \DoxyCodeLine{00014\ \}}
 
@@ -324,27 +322,27 @@ true/false
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00319}{319}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00321}{321}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keywordtype}{int}\ V\ =\ vertexSet.size();}
-\DoxyCodeLine{00321\ \ \ \ \ disc.assign(V,\ -\/1);}
-\DoxyCodeLine{00322\ \ \ \ \ low.assign(V,\ -\/1);}
-\DoxyCodeLine{00323\ \ \ \ \ parent.assign(V,\ -\/1);}
-\DoxyCodeLine{00324\ \ \ \ \ visited.assign(V,\ \textcolor{keyword}{false});}
-\DoxyCodeLine{00325\ \ \ \ \ ap.assign(V,\ \textcolor{keyword}{false});}
-\DoxyCodeLine{00326\ }
-\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ vertex\ :\ vertexSet)\ \{}
-\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!visited[std::stoi(vertex-\/>getId())])\ \{}
-\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a85565c3b8b96bd5ba34b2fe8542a57cb}{hasArticulationPointUtil}}(vertex,\ 0))}
-\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00332\ \ \ \ \ \}}
-\DoxyCodeLine{00333\ }
-\DoxyCodeLine{00334\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00335\ \}}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordtype}{int}\ V\ =\ vertexSet.size();}
+\DoxyCodeLine{00323\ \ \ \ \ disc.assign(V,\ -\/1);}
+\DoxyCodeLine{00324\ \ \ \ \ low.assign(V,\ -\/1);}
+\DoxyCodeLine{00325\ \ \ \ \ parent.assign(V,\ -\/1);}
+\DoxyCodeLine{00326\ \ \ \ \ visited.assign(V,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00327\ \ \ \ \ ap.assign(V,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ vertex\ :\ vertexSet)\ \{}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!visited[vertex.second-\/>getId()])\ \{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a85565c3b8b96bd5ba34b2fe8542a57cb}{hasArticulationPointUtil}}(vertex.second,\ 0))}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00334\ \ \ \ \ \}}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00337\ \}}
 
 \end{DoxyCode}
 \Hypertarget{classGraph_a85565c3b8b96bd5ba34b2fe8542a57cb}\label{classGraph_a85565c3b8b96bd5ba34b2fe8542a57cb} 
@@ -369,47 +367,47 @@ true/false
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00280}{280}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00282}{282}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordtype}{int}\ children\ =\ 0;}
-\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keywordtype}{int}\ currentVertexIdInt\ =\ std::stoi(pCurrentVertex-\/>getId());}
-\DoxyCodeLine{00283\ \ \ \ \ visited[currentVertexIdInt]\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00284\ \ \ \ \ visited[currentVertexIdInt]\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00285\ }
-\DoxyCodeLine{00286\ \ \ \ \ disc[currentVertexIdInt]\ =\ low[currentVertexIdInt]\ =\ ++time;}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \textcolor{keywordtype}{int}\ children\ =\ 0;}
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordtype}{long}\ currentVertexIdInt\ =\ pCurrentVertex-\/>getId();}
+\DoxyCodeLine{00285\ \ \ \ \ visited[currentVertexIdInt]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00286\ \ \ \ \ visited[currentVertexIdInt]\ =\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00287\ }
-\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge\ :\ pCurrentVertex-\/>getAdj())\ \{}
-\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}*\ pAdjacentVertex\ =\ edge-\/>getDest();}
-\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ adjacentVertexIdInt\ =\ std::stoi(pAdjacentVertex-\/>getId());}
-\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!visited[adjacentVertexIdInt])\ \{}
-\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ children++;}
-\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ parent[adjacentVertexIdInt]\ =\ currentVertexIdInt;}
-\DoxyCodeLine{00294\ }
-\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a85565c3b8b96bd5ba34b2fe8542a57cb}{hasArticulationPointUtil}}(pAdjacentVertex,\ time))}
-\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00297\ }
-\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ low[currentVertexIdInt]\ =\ std::min(low[currentVertexIdInt],\ low[adjacentVertexIdInt]);}
+\DoxyCodeLine{00288\ \ \ \ \ disc[currentVertexIdInt]\ =\ low[currentVertexIdInt]\ =\ ++time;}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge\ :\ pCurrentVertex-\/>getAdj())\ \{}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}*\ pAdjacentVertex\ =\ edge-\/>getDest();}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ adjacentVertexIdInt\ =\ pAdjacentVertex-\/>getId();}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!visited[adjacentVertexIdInt])\ \{}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ children++;}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ parent[adjacentVertexIdInt]\ =\ currentVertexIdInt;}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a85565c3b8b96bd5ba34b2fe8542a57cb}{hasArticulationPointUtil}}(pAdjacentVertex,\ time))}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00299\ }
-\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parent[currentVertexIdInt]\ ==\ -\/1\ \&\&\ children\ >\ 1)\ \{}
-\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ap[currentVertexIdInt]\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00304\ }
-\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parent[currentVertexIdInt]\ !=\ -\/1\ \&\&\ low[adjacentVertexIdInt]\ >=\ disc[currentVertexIdInt])\ \{}
-\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ap[currentVertexIdInt]\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (adjacentVertexIdInt\ !=\ parent[currentVertexIdInt])\ \{}
-\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ low[currentVertexIdInt]\ =\ std::min(low[currentVertexIdInt],\ disc[adjacentVertexIdInt]);}
-\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00313\ \ \ \ \ \}}
-\DoxyCodeLine{00314\ }
-\DoxyCodeLine{00315\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00316\ \}}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ low[currentVertexIdInt]\ =\ std::min(low[currentVertexIdInt],\ low[adjacentVertexIdInt]);}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parent[currentVertexIdInt]\ ==\ -\/1\ \&\&\ children\ >\ 1)\ \{}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ap[currentVertexIdInt]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parent[currentVertexIdInt]\ !=\ -\/1\ \&\&\ low[adjacentVertexIdInt]\ >=\ disc[currentVertexIdInt])\ \{}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ap[currentVertexIdInt]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (adjacentVertexIdInt\ !=\ parent[currentVertexIdInt])\ \{}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ low[currentVertexIdInt]\ =\ std::min(low[currentVertexIdInt],\ disc[adjacentVertexIdInt]);}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00315\ \ \ \ \ \}}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00317\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00318\ \}}
 
 \end{DoxyCode}
 \Hypertarget{classGraph_a665423851066546828e7112afcfa8633}\label{classGraph_a665423851066546828e7112afcfa8633} 
@@ -445,43 +443,43 @@ Hamiltonian Cycle problem is NP-\/complete
 
 \end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00244}{244}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00246}{246}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00245\ }
-\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>vertexSet.empty())\ \{}
-\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ is\ empty"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00249\ \ \ \ \ \}}
-\DoxyCodeLine{00250\ }
-\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a88604050032ee23c31cb384a970056ff}{hasPendantVertex}}())\ \{}
-\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ has\ a\ pendant\ vertex"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00254\ \ \ \ \ \}}
-\DoxyCodeLine{00255\ }
-\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classGraph_a10ad435106e86c877cec43cb2822690d}{hasArticulationPoint}}())\{}
-\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ has\ an\ articulation\ point"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00259\ \ \ \ \ \}}
-\DoxyCodeLine{00260\ }
-\DoxyCodeLine{00261\ \ \ \ \ \textcolor{comment}{//\ Start\ the\ timer}}
-\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keyword}{auto}\ start\_time\ =\ std::chrono::high\_resolution\_clock::now();}
-\DoxyCodeLine{00263\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Searching\ for\ a\ Hamiltonian\ Cycle..."{}}\ <<\ std::endl;}
-\DoxyCodeLine{00264\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ stand\ by..."{}}\ <<\ std::endl;}
-\DoxyCodeLine{00265\ }
-\DoxyCodeLine{00266\ \ \ \ \ \textcolor{comment}{//\ Measure\ execution\ time}}
-\DoxyCodeLine{00267\ \ \ \ \ \textcolor{comment}{//\ ...}}
-\DoxyCodeLine{00268\ \ \ \ \ path.push\_back(this-\/>vertexSet[0]);}
-\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keyword}{auto}\ res\ =\ \mbox{\hyperlink{classGraph_a93770fbd73f9e5a4ea9556de351c4346}{hasHamiltonianCycleUtil}}(this-\/>vertexSet[0],\ path,\ pathCost);}
-\DoxyCodeLine{00270\ }
-\DoxyCodeLine{00271\ \ \ \ \ \textcolor{comment}{//\ End\ the\ timer}}
-\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keyword}{auto}\ end\_time\ =\ std::chrono::high\_resolution\_clock::now();}
-\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keyword}{auto}\ duration\ =\ std::chrono::duration\_cast<std::chrono::milliseconds>(end\_time\ -\/\ start\_time);}
-\DoxyCodeLine{00274\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Time\ taken:\ "{}}\ <<\ duration.count()\ <<\ \textcolor{stringliteral}{"{}\ ms"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
-\DoxyCodeLine{00276\ \}}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>vertexSet.empty())\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ is\ empty"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00251\ \ \ \ \ \}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a88604050032ee23c31cb384a970056ff}{hasPendantVertex}}())\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ has\ a\ pendant\ vertex"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00256\ \ \ \ \ \}}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classGraph_a10ad435106e86c877cec43cb2822690d}{hasArticulationPoint}}())\{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ has\ an\ articulation\ point"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00261\ \ \ \ \ \}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{comment}{//\ Start\ the\ timer}}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keyword}{auto}\ start\_time\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{00265\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Searching\ for\ a\ Hamiltonian\ Cycle..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00266\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ stand\ by..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{comment}{//\ Measure\ execution\ time}}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{00270\ \ \ \ \ path.push\_back(this-\/>vertexSet[0]);}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keyword}{auto}\ res\ =\ \mbox{\hyperlink{classGraph_a93770fbd73f9e5a4ea9556de351c4346}{hasHamiltonianCycleUtil}}(this-\/>vertexSet[0],\ path,\ pathCost);}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{comment}{//\ End\ the\ timer}}
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keyword}{auto}\ end\_time\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keyword}{auto}\ duration\ =\ std::chrono::duration\_cast<std::chrono::milliseconds>(end\_time\ -\/\ start\_time);}
+\DoxyCodeLine{00276\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Time\ taken:\ "{}}\ <<\ duration.count()\ <<\ \textcolor{stringliteral}{"{}\ ms"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00278\ \}}
 
 \end{DoxyCode}
 \Hypertarget{classGraph_a93770fbd73f9e5a4ea9556de351c4346}\label{classGraph_a93770fbd73f9e5a4ea9556de351c4346} 
@@ -508,35 +506,35 @@ double
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00217}{217}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00219}{219}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keywordflow}{if}\ (path.size()\ ==\ vertexSet.size())\ \{}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge:\ v-\/>getAdj())\ \{}
-\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (edge-\/>getDest()\ ==\ path[0])\ \{}
-\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.push\_back(path[0]);\ \textcolor{comment}{//\ Closing\ the\ cycle}}
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathCost\ =\ \mbox{\hyperlink{classGraph_acd2998d22dbf7439f9f251eb1c6b27bc}{getPathCost}}(path);}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.pop\_back();\ \textcolor{comment}{//\ Revert\ the\ cycle\ closing}}
-\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ found\ a\ Hamiltonian\ cycle}}
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00228\ \ \ \ \ \}}
-\DoxyCodeLine{00229\ }
-\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge:\ v-\/>getAdj())\ \{}
-\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *w\ =\ edge-\/>getDest();}
-\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(path.begin(),\ path.end(),\ w)\ !=\ path.end())}
-\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ path.push\_back(w);}
-\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a93770fbd73f9e5a4ea9556de351c4346}{hasHamiltonianCycleUtil}}(w,\ path,\ pathCost))}
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ propagate\ the\ success\ up\ the\ call\ stack}}
-\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ path.pop\_back();}
-\DoxyCodeLine{00238\ \ \ \ \ \}}
-\DoxyCodeLine{00239\ }
-\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00241\ \}}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordflow}{if}\ (path.size()\ ==\ vertexSet.size())\ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge:\ v-\/>getAdj())\ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (edge-\/>getDest()\ ==\ path[0])\ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.push\_back(path[0]);\ \textcolor{comment}{//\ Closing\ the\ cycle}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathCost\ =\ \mbox{\hyperlink{classGraph_acd2998d22dbf7439f9f251eb1c6b27bc}{getPathCost}}(path);}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.pop\_back();\ \textcolor{comment}{//\ Revert\ the\ cycle\ closing}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ found\ a\ Hamiltonian\ cycle}}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00230\ \ \ \ \ \}}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge:\ v-\/>getAdj())\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *w\ =\ edge-\/>getDest();}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(path.begin(),\ path.end(),\ w)\ !=\ path.end())}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ path.push\_back(w);}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a93770fbd73f9e5a4ea9556de351c4346}{hasHamiltonianCycleUtil}}(w,\ path,\ pathCost))}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ propagate\ the\ success\ up\ the\ call\ stack}}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ path.pop\_back();}
+\DoxyCodeLine{00240\ \ \ \ \ \}}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00243\ \}}
 
 \end{DoxyCode}
 \Hypertarget{classGraph_a88604050032ee23c31cb384a970056ff}\label{classGraph_a88604050032ee23c31cb384a970056ff} 
@@ -557,38 +555,18 @@ true if the graph has pendant vertices, false otherwise
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00108}{108}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ v:\ vertexSet)}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ if\ (v-\/>getAdj().size()\ ==\ 1)\ \{}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ has\ pendant\ vertex:\ "{}}\ <<\ v-\/>getId()\ <<\ std::endl;}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00123\ \}}
-
-\end{DoxyCode}
-\Hypertarget{classGraph_a40b50a1c37201c3f1b889f31e783b6dd}\label{classGraph_a40b50a1c37201c3f1b889f31e783b6dd} 
-\index{Graph@{Graph}!isIn@{isIn}}
-\index{isIn@{isIn}!Graph@{Graph}}
-\doxysubsubsection{\texorpdfstring{isIn()}{isIn()}}
-{\footnotesize\ttfamily bool Graph\+::is\+In (\begin{DoxyParamCaption}\item[{std\+::string}]{n,  }\item[{std\+::vector$<$ std\+::string $>$}]{vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::string\ s:\ vec)\ \{}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s\ ==\ n)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00089\ \ \ \ \ \}}
-\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00091\ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ v:\ vertexSet)}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ if\ (v.second-\/>getAdj().size()\ ==\ 1)\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ has\ pendant\ vertex:\ "{}}\ <<\ v.second-\/>getId()\ <<\ std::endl;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00115\ \}}
 
 \end{DoxyCode}
 \Hypertarget{classGraph_aeeede3cb48be5d8cac08ea05ce54bd52}\label{classGraph_aeeede3cb48be5d8cac08ea05ce54bd52} 
@@ -612,12 +590,12 @@ Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00069}{69}} of file \mbox
 \DoxyCodeLine{00071\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Number\ of\ vertices:\ "{}}\ <<\ vertexSet.size()\ <<\ std::endl;}
 \DoxyCodeLine{00072\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Vertices:\(\backslash\)n"{}};}
 \DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&vertex:\ vertexSet)\ \{}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ std::cout\ <<\ vertex-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ std::cout\ <<\ vertex.second-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
 \DoxyCodeLine{00075\ \ \ \ \ \}}
 \DoxyCodeLine{00076\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)nEdges:\(\backslash\)n"{}};}
 \DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&vertex:\ vertexSet)\ \{}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&edge:\ vertex-\/>getAdj())\ \{}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ vertex-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ -\/>\ "{}}\ <<\ edge-\/>getDest()-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ (distance:\ "{}}\ <<\ edge-\/>getDistance()}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&edge:\ vertex.second-\/>getAdj())\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ vertex.second-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ -\/>\ "{}}\ <<\ edge-\/>getDest()-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ (distance:\ "{}}\ <<\ edge-\/>getDistance()}
 \DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{})"{}}\ <<\ std::endl;}
 \DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00082\ \ \ \ \ \}}
@@ -657,53 +635,55 @@ true if the graph has a Hamiltonian cycle, false otherwise
 
 \end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00179}{179}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00180}{180}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordflow}{if}\ (vertexSet.empty())\ \{}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ is\ empty"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00183\ \ \ \ \ \}}
-\DoxyCodeLine{00184\ }
-\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a88604050032ee23c31cb384a970056ff}{hasPendantVertex}}())\ \{}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ has\ a\ pendant\ vertex"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00188\ \ \ \ \ \}}
-\DoxyCodeLine{00189\ }
-\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classGraph_a10ad435106e86c877cec43cb2822690d}{hasArticulationPoint}}())\{}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ has\ an\ articulation\ point"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00193\ \ \ \ \ \}}
-\DoxyCodeLine{00194\ }
-\DoxyCodeLine{00195\ \ \ \ \ \textcolor{comment}{//\ Start\ the\ timer}}
-\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keyword}{auto}\ start\_time\ =\ std::chrono::high\_resolution\_clock::now();}
-\DoxyCodeLine{00197\ }
-\DoxyCodeLine{00198\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Calculating\ TSP\ using\ backtracking..."{}}\ <<\ std::endl;}
-\DoxyCodeLine{00199\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ stand\ by..."{}}\ <<\ std::endl;}
-\DoxyCodeLine{00200\ }
-\DoxyCodeLine{00201\ \ \ \ \ \textcolor{comment}{//\ Measure\ execution\ time}}
-\DoxyCodeLine{00202\ \ \ \ \ \textcolor{comment}{//\ ...}}
-\DoxyCodeLine{00203\ }
-\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfPossiblePaths\ =\ 0;}
-\DoxyCodeLine{00205\ \ \ \ \ std::vector<Vertex\ *>\ path;}
-\DoxyCodeLine{00206\ \ \ \ \ path.push\_back(vertexSet[0]);\ \textcolor{comment}{//\ Start\ from\ any\ vertex}}
-\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keyword}{auto}\ res\ =\ \mbox{\hyperlink{classGraph_a31b37a7d0f375245920e7cbe69ef8e6f}{TSPUtil}}(vertexSet[0],\ path,\ shortestPath,\ shortestPathCost,\ numOfPossiblePaths);}
-\DoxyCodeLine{00208\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Number\ of\ possible\ paths:\ "{}}\ <<\ numOfPossiblePaths\ <<\ std::endl;}
-\DoxyCodeLine{00209\ \ \ \ \ \textcolor{comment}{//\ End\ the\ timer}}
-\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{auto}\ end\_time\ =\ std::chrono::high\_resolution\_clock::now();}
-\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keyword}{auto}\ duration\ =\ std::chrono::duration\_cast<std::chrono::milliseconds>(end\_time\ -\/\ start\_time);}
-\DoxyCodeLine{00212\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Time\ taken:\ "{}}\ <<\ duration.count()\ <<\ \textcolor{stringliteral}{"{}\ ms"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
-\DoxyCodeLine{00214\ \}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordflow}{if}\ (vertexSet.empty())\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ is\ empty"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00184\ \ \ \ \ \}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classGraph_a88604050032ee23c31cb384a970056ff}{hasPendantVertex}}())\ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ has\ a\ pendant\ vertex"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00189\ \ \ \ \ \}}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classGraph_a10ad435106e86c877cec43cb2822690d}{hasArticulationPoint}}())\{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Graph\ has\ an\ articulation\ point"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00194\ \ \ \ \ \}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{comment}{//\ Start\ the\ timer}}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keyword}{auto}\ start\_time\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Calculating\ TSP\ using\ backtracking..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00200\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Please\ stand\ by..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{comment}{//\ Measure\ execution\ time}}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{int}\ numOfPossiblePaths\ =\ 0;}
+\DoxyCodeLine{00206\ \ \ \ \ std::vector<Vertex\ *>\ path;}
+\DoxyCodeLine{00207\ \ \ \ \ path.push\_back(vertexSet[0]);\ \textcolor{comment}{//\ Start\ from\ any\ vertex}}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{double}\ currentCost\ =\ 0;}
+\DoxyCodeLine{00209\ \ \ \ \ shortestPathCost\ =\ std::numeric\_limits<double>::max();\ \textcolor{comment}{//\ initialize\ to\ maximum\ possible\ double}}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{auto}\ res\ =\ \mbox{\hyperlink{classGraph_aa6ea3c90e9c6aaf38c27b8939c2bd92d}{TSPUtil}}(vertexSet[0],\ path,\ shortestPath,\ shortestPathCost,\ numOfPossiblePaths,\ currentCost);}
+\DoxyCodeLine{00211\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Number\ of\ calculated\ paths:\ "{}}\ <<\ numOfPossiblePaths\ <<\ std::endl;}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{comment}{//\ End\ the\ timer}}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keyword}{auto}\ end\_time\ =\ std::chrono::high\_resolution\_clock::now();}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keyword}{auto}\ duration\ =\ std::chrono::duration\_cast<std::chrono::milliseconds>(end\_time\ -\/\ start\_time);}
+\DoxyCodeLine{00215\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Time\ taken:\ "{}}\ <<\ duration.count()\ <<\ \textcolor{stringliteral}{"{}\ ms"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00217\ \}}
 
 \end{DoxyCode}
-\Hypertarget{classGraph_a31b37a7d0f375245920e7cbe69ef8e6f}\label{classGraph_a31b37a7d0f375245920e7cbe69ef8e6f} 
+\Hypertarget{classGraph_aa6ea3c90e9c6aaf38c27b8939c2bd92d}\label{classGraph_aa6ea3c90e9c6aaf38c27b8939c2bd92d} 
 \index{Graph@{Graph}!TSPUtil@{TSPUtil}}
 \index{TSPUtil@{TSPUtil}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{TSPUtil()}{TSPUtil()}}
-{\footnotesize\ttfamily bool Graph\+::\+TSPUtil (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{v,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&}]{path,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&}]{shortest\+Path,  }\item[{double \&}]{shortest\+Path\+Cost,  }\item[{int \&}]{num\+Of\+Possible\+Paths }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily bool Graph\+::\+TSPUtil (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{v,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&}]{path,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&}]{shortest\+Path,  }\item[{double \&}]{shortest\+Path\+Cost,  }\item[{int \&}]{num\+Of\+Possible\+Paths,  }\item[{double \&}]{current\+Cost }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -727,45 +707,54 @@ Utility function to solve the TSP problem.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00141}{141}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00133}{133}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordflow}{if}\ (path.size()\ ==\ vertexSet.size())\ \{}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge:\ v-\/>getAdj())\ \{}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (edge-\/>getDest()\ ==\ path[0])\ \{}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.push\_back(path[0]);}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ pathCost\ =\ \mbox{\hyperlink{classGraph_acd2998d22dbf7439f9f251eb1c6b27bc}{getPathCost}}(path);}
-\DoxyCodeLine{00148\ }
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ path\ and\ its\ cost}}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Path:\ "{}};}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ vertex:\ path)}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ vertex-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Cost:\ "{}}\ <<\ pathCost\ <<\ std::endl;}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfPossiblePaths++;}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (shortestPath.empty()\ ||\ pathCost\ <\ shortestPathCost)\ \{}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shortestPath\ =\ path;}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shortestPathCost\ =\ pathCost;}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.pop\_back();}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00164\ \ \ \ \ \}}
-\DoxyCodeLine{00165\ }
-\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge:\ v-\/>getAdj())\ \{}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *w\ =\ edge-\/>getDest();}
-\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(path.begin(),\ path.end(),\ w)\ !=\ path.end())}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ path.push\_back(w);}
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraph_a31b37a7d0f375245920e7cbe69ef8e6f}{TSPUtil}}(w,\ path,\ shortestPath,\ shortestPathCost,\ numOfPossiblePaths);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordflow}{if}\ (path.size()\ ==\ vertexSet.size())\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge:\ v-\/>getAdj())\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (edge-\/>getDest()\ ==\ path[0])\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.push\_back(path[0]);}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentCost\ +=\ edge-\/>getDistance();\ \ \textcolor{comment}{//\ Add\ the\ cost\ of\ returning\ to\ the\ start\ vertex}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentCost\ <\ shortestPathCost)\ \{\ \ \textcolor{comment}{//\ Only\ consider\ path\ if\ it's\ the\ shortest\ so\ far}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ path\ and\ its\ cost}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Path:\ "{}};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ vertex:\ path)}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ vertex-\/>getId()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Cost:\ "{}}\ <<\ currentCost\ <<\ std::endl;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ numOfPossiblePaths++;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shortestPath\ =\ path;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shortestPathCost\ =\ currentCost;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ path.pop\_back();}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentCost\ -\/=\ edge-\/>getDistance();\ \ \textcolor{comment}{//\ Remove\ the\ cost\ of\ returning\ to\ the\ start\ vertex}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00158\ \ \ \ \ \}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ edge:\ v-\/>getAdj())\ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\ *w\ =\ edge-\/>getDest();}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::find(path.begin(),\ path.end(),\ w)\ !=\ path.end())}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ current\ path\ cost\ plus\ the\ cost\ of\ the\ edge\ is\ already\ greater\ than\ the\ shortest\ path\ cost,\ skip}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentCost\ +\ edge-\/>getDistance()\ >=\ shortestPathCost)}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ path.push\_back(w);}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ currentCost\ +=\ edge-\/>getDistance();}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGraph_aa6ea3c90e9c6aaf38c27b8939c2bd92d}{TSPUtil}}(w,\ path,\ shortestPath,\ shortestPathCost,\ numOfPossiblePaths,\ currentCost);}
 \DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ path.pop\_back();}
-\DoxyCodeLine{00173\ \ \ \ \ \}}
-\DoxyCodeLine{00174\ }
-\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordflow}{return}\ !shortestPath.empty();}
-\DoxyCodeLine{00176\ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ currentCost\ -\/=\ edge-\/>getDistance();}
+\DoxyCodeLine{00174\ \ \ \ \ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordflow}{return}\ !shortestPath.empty();}
+\DoxyCodeLine{00177\ \}}
 
 \end{DoxyCode}
 
@@ -831,11 +820,11 @@ Definition at line \mbox{\hyperlink{Graph_8h_source_l00098}{98}} of file \mbox{\
 
 Definition at line \mbox{\hyperlink{Graph_8h_source_l00095}{95}} of file \mbox{\hyperlink{Graph_8h_source}{Graph.\+h}}.
 
-\Hypertarget{classGraph_aa9b0a6d8ad43c5eabaca5a7140bcc8b6}\label{classGraph_aa9b0a6d8ad43c5eabaca5a7140bcc8b6} 
+\Hypertarget{classGraph_ab818d14d6411246cb25a93d617b8dd5a}\label{classGraph_ab818d14d6411246cb25a93d617b8dd5a} 
 \index{Graph@{Graph}!vertexSet@{vertexSet}}
 \index{vertexSet@{vertexSet}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{vertexSet}{vertexSet}}
-{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classVertex}{Vertex}} $\ast$$>$ Graph\+::vertex\+Set\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$long,\mbox{\hyperlink{classVertex}{Vertex}} $\ast$$>$ Graph\+::vertex\+Set\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
