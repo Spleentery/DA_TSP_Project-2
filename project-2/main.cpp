@@ -48,7 +48,8 @@ int main() {
     do {
         cout << "\n1 - T2.1 Backtracking Algorithm\n";
         cout << "2 - T2.2 Triangular Approximation Heuristic\n";
-        cout << "3 - T2.3 other heuristic algorithms\n";
+        cout << "3 - T2.3 Third Heuristic Algorithm\n";
+        cout << "4 - T2.3 Forth Heuristic Algorithm\n";
         cout << "8 - Exit\n";
 
 
@@ -104,6 +105,29 @@ int main() {
                 // Compute the duration
                 auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
                 // Print the duration
+                std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
+
+
+                break;
+            }
+
+            case 4: {
+
+                //CP.print3();
+                auto start_time = std::chrono::high_resolution_clock::now();
+
+
+                CP.raquel();
+
+// Code block to measure goes here
+
+// End the timer
+                auto end_time = std::chrono::high_resolution_clock::now();
+
+// Compute the duration
+                auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+
+// Print the duration
                 std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
 
 

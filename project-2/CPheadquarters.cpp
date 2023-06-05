@@ -286,7 +286,7 @@ void CPheadquarters::triangular_Approximation_Heuristic() {
     }
     result+=getDist(mst_preorder_path[mst_preorder_path.size()-1],mst_preorder_path[0]);
 
-    cout<<"Result:"<<result;
+    cout<<"Result: "<<result<<'\n';
 
 }
 
@@ -315,4 +315,56 @@ double CPheadquarters::haversineDistance(double latitude1, double longitude1, do
     double c = 2 * atan2(sqrt(a), sqrt(1 - a));
 
     return EarthRadius * c;
+}
+
+void CPheadquarters::raquel(){
+    auto vertixes = graph.getVertexSet();
+    double long1 = 0.0;
+    double lat1 = 0.0;
+    double count = 0.0;
+    for(auto node : vertixes){
+        long1+=node.second->getLongitude();
+        lat1+=node.second->getLatitude();
+        count+=1.0;
+    }
+    double final_long=long1 / count;
+    double final_lat=lat1 / count;
+    vector<pair<int,double>> angles;
+    for(auto node : vertixes){
+        angles.push_back(make_pair(node.second->getId(), calculateAngle(node.second->getLatitude(),node.second->getLongitude(),final_lat, final_long,final_lat+10,final_long)));
+    }
+    std::sort(angles.begin(), angles.end(), [](const auto& a, const auto& b) {
+        return a.second < b.second;
+    });
+
+    double result = 0;
+
+    for (int i = 0; i < angles.size()-1; i++) {
+        result+= getDist(angles[i].first,angles[i+1].first);
+    }
+    result+=getDist(angles[angles.size()-1].first,angles[0].first);
+
+    cout<<"Result: "<<result<<'\n';
+}
+
+double CPheadquarters::calculateAngle(double Ax, double Ay, double Bx, double By, double Cx, double Cy) {
+    double ABx = Ax - Bx;
+    double ABy = Ay - By;
+    double BCx = Cx - Bx;
+    double BCy = Cy - By;
+
+    double dotProduct = ABx * BCx + ABy * BCy;
+    double crossProduct = ABx * BCy - ABy * BCx;  // Compute the cross product
+
+    double magnitudeAB = std::sqrt(ABx * ABx + ABy * ABy);
+    double magnitudeBC = std::sqrt(BCx * BCx + BCy * BCy);
+
+    double angle = std::acos(dotProduct / (magnitudeAB * magnitudeBC));
+
+    // Adjust the angle based on the sign of the cross product
+    if (crossProduct < 0) {
+        angle = 2 * M_PI - angle;
+    }
+
+    return angle;
 }
