@@ -107,8 +107,16 @@ public:
      */
     double getDist(int a, int b);
 
+    /**
+     * Sorts all the nodes in order of the angle they do with the middle point and calculates the total distance required trough the noddes in that order
+     * @attention Time Complexity: O(nlog(n))
+     */
     void raquel();
 
+    /**
+     * Calculates the angle between the vectors BA and BC
+     * @attention Time Complexity: O(1)
+     */
     double calculateAngle(double Ax, double Ay, double Bx, double By, double Cx, double Cy);
 };
 
