@@ -6,16 +6,16 @@
   \indexspace
 
   \item {addChildren}
-    \subitem {Vertex}, \hyperpage{30}
+    \subitem {Vertex}, \hyperpage{31}
   \item {addEdge}
     \subitem {Graph}, \hyperpage{17}
-    \subitem {Vertex}, \hyperpage{30}
+    \subitem {Vertex}, \hyperpage{31}
   \item {addVertex}
-    \subitem {Graph}, \hyperpage{17}
+    \subitem {Graph}, \hyperpage{18}
   \item {adj}
-    \subitem {Vertex}, \hyperpage{34}
+    \subitem {Vertex}, \hyperpage{35}
   \item {ap}
-    \subitem {Graph}, \hyperpage{26}
+    \subitem {Graph}, \hyperpage{27}
 
   \indexspace
 
@@ -24,14 +24,17 @@
 
   \indexspace
 
+  \item {calculateAngle}
+    \subitem {CPheadquarters}, \hyperpage{6}
   \item {children}
-    \subitem {Vertex}, \hyperpage{34}
+    \subitem {Vertex}, \hyperpage{35}
   \item {chooseRoute}
     \subitem {CPheadquarters}, \hyperpage{6}
   \item {CPheadquarters}, \hyperpage{5}
     \subitem {backtrack}, \hyperpage{6}
+    \subitem {calculateAngle}, \hyperpage{6}
     \subitem {chooseRoute}, \hyperpage{6}
-    \subitem {degToRad}, \hyperpage{6}
+    \subitem {degToRad}, \hyperpage{7}
     \subitem {getDist}, \hyperpage{8}
     \subitem {getGraph}, \hyperpage{8}
     \subitem {hamiltonianCycle}, \hyperpage{8}
@@ -39,126 +42,127 @@
     \subitem {heuristic}, \hyperpage{9}
     \subitem {heuristicRec}, \hyperpage{10}
     \subitem {pathRec}, \hyperpage{11}
+    \subitem {raquel}, \hyperpage{12}
     \subitem {read\_coordinates}, \hyperpage{12}
-    \subitem {read\_edges}, \hyperpage{12}
+    \subitem {read\_edges}, \hyperpage{13}
     \subitem {triangular\_Approximation\_Heuristic}, \hyperpage{13}
 
   \indexspace
 
   \item {decreaseKey}
-    \subitem {MutablePriorityQueue$<$ T $>$}, \hyperpage{28}
+    \subitem {MutablePriorityQueue$<$ T $>$}, \hyperpage{29}
   \item {degToRad}
-    \subitem {CPheadquarters}, \hyperpage{6}
+    \subitem {CPheadquarters}, \hyperpage{7}
   \item {deleteVertex}
     \subitem {Graph}, \hyperpage{18}
   \item {dest}
-    \subitem {Edge}, \hyperpage{15}
+    \subitem {Edge}, \hyperpage{16}
   \item {disc}
-    \subitem {Graph}, \hyperpage{26}
+    \subitem {Graph}, \hyperpage{27}
   \item {dist}
-    \subitem {Vertex}, \hyperpage{34}
+    \subitem {Vertex}, \hyperpage{35}
   \item {distance}
-    \subitem {Edge}, \hyperpage{15}
+    \subitem {Edge}, \hyperpage{16}
   \item {distMatrix}
-    \subitem {Graph}, \hyperpage{26}
+    \subitem {Graph}, \hyperpage{27}
 
   \indexspace
 
   \item {Edge}, \hyperpage{14}
-    \subitem {dest}, \hyperpage{15}
-    \subitem {distance}, \hyperpage{15}
-    \subitem {Edge}, \hyperpage{14}
+    \subitem {dest}, \hyperpage{16}
+    \subitem {distance}, \hyperpage{16}
+    \subitem {Edge}, \hyperpage{15}
     \subitem {getDest}, \hyperpage{15}
     \subitem {getDistance}, \hyperpage{15}
     \subitem {getOrig}, \hyperpage{15}
-    \subitem {orig}, \hyperpage{15}
+    \subitem {orig}, \hyperpage{16}
   \item {empty}
-    \subitem {MutablePriorityQueue$<$ T $>$}, \hyperpage{28}
+    \subitem {MutablePriorityQueue$<$ T $>$}, \hyperpage{29}
   \item {eraseChildren}
-    \subitem {Vertex}, \hyperpage{30}
+    \subitem {Vertex}, \hyperpage{31}
   \item {extractMin}
-    \subitem {MutablePriorityQueue$<$ T $>$}, \hyperpage{28}
+    \subitem {MutablePriorityQueue$<$ T $>$}, \hyperpage{29}
 
   \indexspace
 
   \item {findVertex}
-    \subitem {Graph}, \hyperpage{18}
+    \subitem {Graph}, \hyperpage{19}
 
   \indexspace
 
   \item {getAdj}
-    \subitem {Vertex}, \hyperpage{30}
+    \subitem {Vertex}, \hyperpage{31}
   \item {getChildren}
-    \subitem {Vertex}, \hyperpage{30}
+    \subitem {Vertex}, \hyperpage{31}
   \item {getDest}
     \subitem {Edge}, \hyperpage{15}
   \item {getDist}
     \subitem {CPheadquarters}, \hyperpage{8}
-    \subitem {Vertex}, \hyperpage{31}
+    \subitem {Vertex}, \hyperpage{32}
   \item {getDistance}
     \subitem {Edge}, \hyperpage{15}
   \item {getEdge}
-    \subitem {Vertex}, \hyperpage{31}
+    \subitem {Vertex}, \hyperpage{32}
   \item {getGraph}
     \subitem {CPheadquarters}, \hyperpage{8}
   \item {getId}
-    \subitem {Vertex}, \hyperpage{31}
-  \item {getIncoming}
-    \subitem {Vertex}, \hyperpage{31}
-  \item {getLatitude}
-    \subitem {Vertex}, \hyperpage{31}
-  \item {getLongitude}
     \subitem {Vertex}, \hyperpage{32}
+  \item {getIncoming}
+    \subitem {Vertex}, \hyperpage{32}
+  \item {getLatitude}
+    \subitem {Vertex}, \hyperpage{32}
+  \item {getLongitude}
+    \subitem {Vertex}, \hyperpage{33}
   \item {getNumVertex}
     \subitem {Graph}, \hyperpage{19}
   \item {getOrig}
     \subitem {Edge}, \hyperpage{15}
   \item {getPath}
-    \subitem {Vertex}, \hyperpage{32}
+    \subitem {Vertex}, \hyperpage{33}
   \item {getPathCost}
     \subitem {Graph}, \hyperpage{19}
   \item {getVertexSet}
-    \subitem {Graph}, \hyperpage{19}
+    \subitem {Graph}, \hyperpage{20}
   \item {Graph}, \hyperpage{16}
     \subitem {$\sim$Graph}, \hyperpage{17}
     \subitem {addEdge}, \hyperpage{17}
-    \subitem {addVertex}, \hyperpage{17}
-    \subitem {ap}, \hyperpage{26}
+    \subitem {addVertex}, \hyperpage{18}
+    \subitem {ap}, \hyperpage{27}
     \subitem {deleteVertex}, \hyperpage{18}
-    \subitem {disc}, \hyperpage{26}
-    \subitem {distMatrix}, \hyperpage{26}
-    \subitem {findVertex}, \hyperpage{18}
+    \subitem {disc}, \hyperpage{27}
+    \subitem {distMatrix}, \hyperpage{27}
+    \subitem {findVertex}, \hyperpage{19}
     \subitem {getNumVertex}, \hyperpage{19}
     \subitem {getPathCost}, \hyperpage{19}
-    \subitem {getVertexSet}, \hyperpage{19}
-    \subitem {hasArticulationPoint}, \hyperpage{19}
+    \subitem {getVertexSet}, \hyperpage{20}
+    \subitem {hasArticulationPoint}, \hyperpage{20}
     \subitem {hasArticulationPointUtil}, \hyperpage{20}
-    \subitem {hasHamiltonianCycle}, \hyperpage{21}
-    \subitem {hasHamiltonianCycleUtil}, \hyperpage{22}
-    \subitem {hasPendantVertex}, \hyperpage{23}
-    \subitem {low}, \hyperpage{26}
-    \subitem {parent}, \hyperpage{26}
-    \subitem {pathMatrix}, \hyperpage{26}
-    \subitem {print}, \hyperpage{23}
-    \subitem {TSP}, \hyperpage{23}
-    \subitem {TSPUtil}, \hyperpage{25}
-    \subitem {vertexSet}, \hyperpage{26}
-    \subitem {visited}, \hyperpage{27}
+    \subitem {hasHamiltonianCycle}, \hyperpage{22}
+    \subitem {hasHamiltonianCycleUtil}, \hyperpage{23}
+    \subitem {hasPendantVertex}, \hyperpage{24}
+    \subitem {low}, \hyperpage{27}
+    \subitem {parent}, \hyperpage{27}
+    \subitem {pathMatrix}, \hyperpage{27}
+    \subitem {print}, \hyperpage{24}
+    \subitem {TSP}, \hyperpage{24}
+    \subitem {TSPUtil}, \hyperpage{26}
+    \subitem {vertexSet}, \hyperpage{27}
+    \subitem {visited}, \hyperpage{28}
 
   \indexspace
 
   \item {hamiltonianCycle}
     \subitem {CPheadquarters}, \hyperpage{8}
   \item {hasArticulationPoint}
-    \subitem {Graph}, \hyperpage{19}
+    \subitem {Graph}, \hyperpage{20}
   \item {hasArticulationPointUtil}
     \subitem {Graph}, \hyperpage{20}
   \item {hasHamiltonianCycle}
-    \subitem {Graph}, \hyperpage{21}
-  \item {hasHamiltonianCycleUtil}
     \subitem {Graph}, \hyperpage{22}
-  \item {hasPendantVertex}
+  \item {hasHamiltonianCycleUtil}
     \subitem {Graph}, \hyperpage{23}
+  \item {hasPendantVertex}
+    \subitem {Graph}, \hyperpage{24}
   \item {haversineDistance}
     \subitem {CPheadquarters}, \hyperpage{9}
   \item {heuristic}
@@ -169,133 +173,135 @@
   \indexspace
 
   \item {id}
-    \subitem {Vertex}, \hyperpage{34}
-  \item {incoming}
     \subitem {Vertex}, \hyperpage{35}
+  \item {incoming}
+    \subitem {Vertex}, \hyperpage{36}
   \item {insert}
-    \subitem {MutablePriorityQueue$<$ T $>$}, \hyperpage{28}
+    \subitem {MutablePriorityQueue$<$ T $>$}, \hyperpage{29}
   \item {isVisited}
-    \subitem {Vertex}, \hyperpage{32}
+    \subitem {Vertex}, \hyperpage{33}
 
   \indexspace
 
   \item {latitude}
-    \subitem {Vertex}, \hyperpage{35}
+    \subitem {Vertex}, \hyperpage{36}
   \item {longitude}
-    \subitem {Vertex}, \hyperpage{35}
+    \subitem {Vertex}, \hyperpage{36}
   \item {low}
-    \subitem {Graph}, \hyperpage{26}
+    \subitem {Graph}, \hyperpage{27}
 
   \indexspace
 
   \item {MutablePriorityQueue}
-    \subitem {MutablePriorityQueue$<$ T $>$}, \hyperpage{27}
-  \item {MutablePriorityQueue$<$ T $>$}, \hyperpage{27}
-    \subitem {decreaseKey}, \hyperpage{28}
-    \subitem {empty}, \hyperpage{28}
-    \subitem {extractMin}, \hyperpage{28}
-    \subitem {insert}, \hyperpage{28}
-    \subitem {MutablePriorityQueue}, \hyperpage{27}
+    \subitem {MutablePriorityQueue$<$ T $>$}, \hyperpage{28}
+  \item {MutablePriorityQueue$<$ T $>$}, \hyperpage{28}
+    \subitem {decreaseKey}, \hyperpage{29}
+    \subitem {empty}, \hyperpage{29}
+    \subitem {extractMin}, \hyperpage{29}
+    \subitem {insert}, \hyperpage{29}
+    \subitem {MutablePriorityQueue}, \hyperpage{28}
 
   \indexspace
 
   \item {operator$<$}
-    \subitem {Vertex}, \hyperpage{32}
+    \subitem {Vertex}, \hyperpage{33}
   \item {orig}
-    \subitem {Edge}, \hyperpage{15}
+    \subitem {Edge}, \hyperpage{16}
 
   \indexspace
 
   \item {parent}
-    \subitem {Graph}, \hyperpage{26}
+    \subitem {Graph}, \hyperpage{27}
   \item {path}
-    \subitem {Vertex}, \hyperpage{35}
+    \subitem {Vertex}, \hyperpage{36}
   \item {pathMatrix}
-    \subitem {Graph}, \hyperpage{26}
+    \subitem {Graph}, \hyperpage{27}
   \item {pathRec}
     \subitem {CPheadquarters}, \hyperpage{11}
   \item {print}
-    \subitem {Graph}, \hyperpage{23}
-    \subitem {Vertex}, \hyperpage{32}
+    \subitem {Graph}, \hyperpage{24}
+    \subitem {Vertex}, \hyperpage{33}
 
   \indexspace
 
   \item {queueIndex}
-    \subitem {Vertex}, \hyperpage{35}
+    \subitem {Vertex}, \hyperpage{36}
 
   \indexspace
 
+  \item {raquel}
+    \subitem {CPheadquarters}, \hyperpage{12}
   \item {read\_coordinates}
     \subitem {CPheadquarters}, \hyperpage{12}
   \item {read\_edges}
-    \subitem {CPheadquarters}, \hyperpage{12}
+    \subitem {CPheadquarters}, \hyperpage{13}
   \item {removeEdge}
-    \subitem {Vertex}, \hyperpage{32}
+    \subitem {Vertex}, \hyperpage{33}
 
   \indexspace
 
   \item {setDist}
-    \subitem {Vertex}, \hyperpage{33}
+    \subitem {Vertex}, \hyperpage{34}
   \item {setId}
-    \subitem {Vertex}, \hyperpage{33}
+    \subitem {Vertex}, \hyperpage{34}
   \item {setLatitude}
-    \subitem {Vertex}, \hyperpage{33}
+    \subitem {Vertex}, \hyperpage{34}
   \item {setLongitude}
-    \subitem {Vertex}, \hyperpage{33}
+    \subitem {Vertex}, \hyperpage{34}
   \item {setPath}
-    \subitem {Vertex}, \hyperpage{34}
+    \subitem {Vertex}, \hyperpage{35}
   \item {setVisited}
-    \subitem {Vertex}, \hyperpage{34}
+    \subitem {Vertex}, \hyperpage{35}
 
   \indexspace
 
   \item {triangular\_Approximation\_Heuristic}
     \subitem {CPheadquarters}, \hyperpage{13}
   \item {TSP}
-    \subitem {Graph}, \hyperpage{23}
+    \subitem {Graph}, \hyperpage{24}
   \item {TSPUtil}
-    \subitem {Graph}, \hyperpage{25}
+    \subitem {Graph}, \hyperpage{26}
 
   \indexspace
 
-  \item {Vertex}, \hyperpage{29}
-    \subitem {addChildren}, \hyperpage{30}
-    \subitem {addEdge}, \hyperpage{30}
-    \subitem {adj}, \hyperpage{34}
-    \subitem {children}, \hyperpage{34}
-    \subitem {dist}, \hyperpage{34}
-    \subitem {eraseChildren}, \hyperpage{30}
-    \subitem {getAdj}, \hyperpage{30}
-    \subitem {getChildren}, \hyperpage{30}
-    \subitem {getDist}, \hyperpage{31}
-    \subitem {getEdge}, \hyperpage{31}
-    \subitem {getId}, \hyperpage{31}
-    \subitem {getIncoming}, \hyperpage{31}
-    \subitem {getLatitude}, \hyperpage{31}
-    \subitem {getLongitude}, \hyperpage{32}
-    \subitem {getPath}, \hyperpage{32}
-    \subitem {id}, \hyperpage{34}
-    \subitem {incoming}, \hyperpage{35}
-    \subitem {isVisited}, \hyperpage{32}
-    \subitem {latitude}, \hyperpage{35}
-    \subitem {longitude}, \hyperpage{35}
-    \subitem {operator$<$}, \hyperpage{32}
-    \subitem {path}, \hyperpage{35}
-    \subitem {print}, \hyperpage{32}
-    \subitem {queueIndex}, \hyperpage{35}
-    \subitem {removeEdge}, \hyperpage{32}
-    \subitem {setDist}, \hyperpage{33}
-    \subitem {setId}, \hyperpage{33}
-    \subitem {setLatitude}, \hyperpage{33}
-    \subitem {setLongitude}, \hyperpage{33}
-    \subitem {setPath}, \hyperpage{34}
-    \subitem {setVisited}, \hyperpage{34}
-    \subitem {Vertex}, \hyperpage{30}
-    \subitem {visited}, \hyperpage{35}
+  \item {Vertex}, \hyperpage{30}
+    \subitem {addChildren}, \hyperpage{31}
+    \subitem {addEdge}, \hyperpage{31}
+    \subitem {adj}, \hyperpage{35}
+    \subitem {children}, \hyperpage{35}
+    \subitem {dist}, \hyperpage{35}
+    \subitem {eraseChildren}, \hyperpage{31}
+    \subitem {getAdj}, \hyperpage{31}
+    \subitem {getChildren}, \hyperpage{31}
+    \subitem {getDist}, \hyperpage{32}
+    \subitem {getEdge}, \hyperpage{32}
+    \subitem {getId}, \hyperpage{32}
+    \subitem {getIncoming}, \hyperpage{32}
+    \subitem {getLatitude}, \hyperpage{32}
+    \subitem {getLongitude}, \hyperpage{33}
+    \subitem {getPath}, \hyperpage{33}
+    \subitem {id}, \hyperpage{35}
+    \subitem {incoming}, \hyperpage{36}
+    \subitem {isVisited}, \hyperpage{33}
+    \subitem {latitude}, \hyperpage{36}
+    \subitem {longitude}, \hyperpage{36}
+    \subitem {operator$<$}, \hyperpage{33}
+    \subitem {path}, \hyperpage{36}
+    \subitem {print}, \hyperpage{33}
+    \subitem {queueIndex}, \hyperpage{36}
+    \subitem {removeEdge}, \hyperpage{33}
+    \subitem {setDist}, \hyperpage{34}
+    \subitem {setId}, \hyperpage{34}
+    \subitem {setLatitude}, \hyperpage{34}
+    \subitem {setLongitude}, \hyperpage{34}
+    \subitem {setPath}, \hyperpage{35}
+    \subitem {setVisited}, \hyperpage{35}
+    \subitem {Vertex}, \hyperpage{31}
+    \subitem {visited}, \hyperpage{36}
   \item {vertexSet}
-    \subitem {Graph}, \hyperpage{26}
-  \item {visited}
     \subitem {Graph}, \hyperpage{27}
-    \subitem {Vertex}, \hyperpage{35}
+  \item {visited}
+    \subitem {Graph}, \hyperpage{28}
+    \subitem {Vertex}, \hyperpage{36}
 
 \end{theindex}

@@ -1,6 +1,7 @@
 var classCPheadquarters =
 [
     [ "backtrack", "classCPheadquarters.html#a784e9b774ff0cfc479846b4fb7840399", null ],
+    [ "calculateAngle", "classCPheadquarters.html#ae2635c45b71648ed499511f55d514a48", null ],
     [ "chooseRoute", "classCPheadquarters.html#ad421ca872f51bb6a49446d3de4ef559c", null ],
     [ "degToRad", "classCPheadquarters.html#a4a8636b2dba749a21a51d7a19ab3196f", null ],
     [ "getDist", "classCPheadquarters.html#aca1355c5e5395c335c07ebcaa6444b46", null ],
@@ -8,5 +9,6 @@ var classCPheadquarters =
     [ "heuristic", "classCPheadquarters.html#adbbee09abadc3e9c3ad02982111a687d", null ],
     [ "heuristicRec", "classCPheadquarters.html#ac41cf7ea8902590c3b69faae98e3b7eb", null ],
     [ "pathRec", "classCPheadquarters.html#af82de974813192045d026553f91ce18a", null ],
+    [ "raquel", "classCPheadquarters.html#a337cb9e33b9025d7f92967e2ca3bafad", null ],
     [ "triangular_Approximation_Heuristic", "classCPheadquarters.html#a35b97bd9d6a09dc3d72b84afb29a5ae1", null ]
 ];

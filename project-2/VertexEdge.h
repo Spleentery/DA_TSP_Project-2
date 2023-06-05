@@ -72,7 +72,7 @@ protected:
     std::vector<long> children;
 
     // auxiliary fields
-    bool visited = false; // used by DFS, BFS, Prim ...
+    bool visited = false;
     double dist = 0;
     double longitude=0;
     double latitude=0;

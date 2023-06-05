@@ -28,7 +28,11 @@ double \mbox{\hyperlink{classCPheadquarters_a4a8636b2dba749a21a51d7a19ab3196f}{d
 double \mbox{\hyperlink{classCPheadquarters_af930f9e502d3c0d0bc6d96df94c416f3}{haversine\+Distance}} (double latitude1, double longitude1, double latitude2, double longitude2)
 \begin{DoxyCompactList}\small\item\em Returns the distance between two points using their coordinates in kilometers. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46}{get\+Dist}} (int a, int b)
-\begin{DoxyCompactList}\small\item\em Returns the distance between the nodes with indexes id=a and id=b. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the distance between the nodes with indexes id=a and id=b. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCPheadquarters_a337cb9e33b9025d7f92967e2ca3bafad}{raquel}} ()
+\begin{DoxyCompactList}\small\item\em Sorts all the nodes in order of the angle they do with the middle point and calculates the total distance required trough the noddes in that order. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCPheadquarters_ae2635c45b71648ed499511f55d514a48}{calculate\+Angle}} (double Ax, double Ay, double Bx, double By, double Cx, double Cy)
+\begin{DoxyCompactList}\small\item\em Calculates the angle between the vectors BA and BC. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -70,6 +74,48 @@ Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00205}{205}} of 
 \DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}The\ graph\ does\ not\ have\ a\ Hamiltonian\ cycle"{}}\ <<\ endl;}
 \DoxyCodeLine{00218\ \ \ \ \ \}}
 \DoxyCodeLine{00219\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classCPheadquarters_ae2635c45b71648ed499511f55d514a48}\label{classCPheadquarters_ae2635c45b71648ed499511f55d514a48} 
+\index{CPheadquarters@{CPheadquarters}!calculateAngle@{calculateAngle}}
+\index{calculateAngle@{calculateAngle}!CPheadquarters@{CPheadquarters}}
+\doxysubsubsection{\texorpdfstring{calculateAngle()}{calculateAngle()}}
+{\footnotesize\ttfamily double CPheadquarters\+::calculate\+Angle (\begin{DoxyParamCaption}\item[{double}]{Ax,  }\item[{double}]{Ay,  }\item[{double}]{Bx,  }\item[{double}]{By,  }\item[{double}]{Cx,  }\item[{double}]{Cy }\end{DoxyParamCaption})}
+
+
+
+Calculates the angle between the vectors BA and BC. 
+
+\begin{DoxyAttention}{Attention}
+Time Complexity\+: O(1) 
+\end{DoxyAttention}
+
+
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00350}{350}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \textcolor{keywordtype}{double}\ ABx\ =\ Ax\ -\/\ Bx;}
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keywordtype}{double}\ ABy\ =\ Ay\ -\/\ By;}
+\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keywordtype}{double}\ BCx\ =\ Cx\ -\/\ Bx;}
+\DoxyCodeLine{00354\ \ \ \ \ \textcolor{keywordtype}{double}\ BCy\ =\ Cy\ -\/\ By;}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keywordtype}{double}\ dotProduct\ =\ ABx\ *\ BCx\ +\ ABy\ *\ BCy;}
+\DoxyCodeLine{00357\ \ \ \ \ \textcolor{keywordtype}{double}\ crossProduct\ =\ ABx\ *\ BCy\ -\/\ ABy\ *\ BCx;\ \ \textcolor{comment}{//\ Compute\ the\ cross\ product}}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00359\ \ \ \ \ \textcolor{keywordtype}{double}\ magnitudeAB\ =\ std::sqrt(ABx\ *\ ABx\ +\ ABy\ *\ ABy);}
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keywordtype}{double}\ magnitudeBC\ =\ std::sqrt(BCx\ *\ BCx\ +\ BCy\ *\ BCy);}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \ \ \textcolor{keywordtype}{double}\ angle\ =\ std::acos(dotProduct\ /\ (magnitudeAB\ *\ magnitudeBC));}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \ \ \ \ \textcolor{comment}{//\ Adjust\ the\ angle\ based\ on\ the\ sign\ of\ the\ cross\ product}}
+\DoxyCodeLine{00365\ \ \ \ \ \textcolor{keywordflow}{if}\ (crossProduct\ <\ 0)\ \{}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ angle\ =\ 2\ *\ M\_PI\ -\/\ angle;}
+\DoxyCodeLine{00367\ \ \ \ \ \}}
+\DoxyCodeLine{00368\ }
+\DoxyCodeLine{00369\ \ \ \ \ \textcolor{keywordflow}{return}\ angle;}
+\DoxyCodeLine{00370\ \}}
 
 \end{DoxyCode}
 \Hypertarget{classCPheadquarters_ad421ca872f51bb6a49446d3de4ef559c}\label{classCPheadquarters_ad421ca872f51bb6a49446d3de4ef559c} 
@@ -455,6 +501,56 @@ Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00234}{234}} of 
 \DoxyCodeLine{00240\ \}}
 
 \end{DoxyCode}
+\Hypertarget{classCPheadquarters_a337cb9e33b9025d7f92967e2ca3bafad}\label{classCPheadquarters_a337cb9e33b9025d7f92967e2ca3bafad} 
+\index{CPheadquarters@{CPheadquarters}!raquel@{raquel}}
+\index{raquel@{raquel}!CPheadquarters@{CPheadquarters}}
+\doxysubsubsection{\texorpdfstring{raquel()}{raquel()}}
+{\footnotesize\ttfamily void CPheadquarters\+::raquel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sorts all the nodes in order of the angle they do with the middle point and calculates the total distance required trough the noddes in that order. 
+
+\begin{DoxyAttention}{Attention}
+Time Complexity\+: O(nlog(n)) 
+\end{DoxyAttention}
+
+
+Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00320}{320}} of file \mbox{\hyperlink{CPheadquarters_8cpp_source}{CPheadquarters.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keyword}{auto}\ vertixes\ =\ graph.getVertexSet();}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordtype}{double}\ long1\ =\ 0.0;}
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{keywordtype}{double}\ lat1\ =\ 0.0;}
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keywordtype}{double}\ count\ =\ 0.0;}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ node\ :\ vertixes)\{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ long1+=node.second-\/>getLongitude();}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ lat1+=node.second-\/>getLatitude();}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ count+=1.0;}
+\DoxyCodeLine{00329\ \ \ \ \ \}}
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{keywordtype}{double}\ final\_long=long1\ /\ count;}
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keywordtype}{double}\ final\_lat=lat1\ /\ count;}
+\DoxyCodeLine{00332\ \ \ \ \ vector<pair<int,double>>\ angles;}
+\DoxyCodeLine{00333\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ node\ :\ vertixes)\{}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ angles.push\_back(make\_pair(node.second-\/>getId(),\ \mbox{\hyperlink{classCPheadquarters_ae2635c45b71648ed499511f55d514a48}{calculateAngle}}(node.second-\/>getLatitude(),node.second-\/>getLongitude(),final\_lat,\ final\_long,final\_lat+10,final\_long)));}
+\DoxyCodeLine{00335\ \ \ \ \ \}}
+\DoxyCodeLine{00336\ \ \ \ \ std::sort(angles.begin(),\ angles.end(),\ [](\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ a,\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ b)\ \{}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ return\ a.second\ <\ b.second;}
+\DoxyCodeLine{00338\ \ \ \ \ \});}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keywordtype}{double}\ result\ =\ 0;}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ angles.size()-\/1;\ i++)\ \{}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ result+=\ \mbox{\hyperlink{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46}{getDist}}(angles[i].first,angles[i+1].first);}
+\DoxyCodeLine{00344\ \ \ \ \ \}}
+\DoxyCodeLine{00345\ \ \ \ \ result+=\mbox{\hyperlink{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46}{getDist}}(angles[angles.size()-\/1].first,angles[0].first);}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \ \ \ \ cout<<\textcolor{stringliteral}{"{}Result:\ "{}}<<result<<\textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00348\ \}}
+
+\end{DoxyCode}
 \Hypertarget{classCPheadquarters_a305dbedcfe29a5f3aa308d0cdd6da875}\label{classCPheadquarters_a305dbedcfe29a5f3aa308d0cdd6da875} 
 \index{CPheadquarters@{CPheadquarters}!read\_coordinates@{read\_coordinates}}
 \index{read\_coordinates@{read\_coordinates}!CPheadquarters@{CPheadquarters}}
@@ -619,7 +715,7 @@ Definition at line \mbox{\hyperlink{CPheadquarters_8cpp_source_l00243}{243}} of 
 \DoxyCodeLine{00286\ \ \ \ \ \}}
 \DoxyCodeLine{00287\ \ \ \ \ result+=\mbox{\hyperlink{classCPheadquarters_aca1355c5e5395c335c07ebcaa6444b46}{getDist}}(mst\_preorder\_path[mst\_preorder\_path.size()-\/1],mst\_preorder\_path[0]);}
 \DoxyCodeLine{00288\ }
-\DoxyCodeLine{00289\ \ \ \ \ cout<<\textcolor{stringliteral}{"{}Result:"{}}<<result;}
+\DoxyCodeLine{00289\ \ \ \ \ cout<<\textcolor{stringliteral}{"{}Result:\ "{}}<<result<<\textcolor{charliteral}{'\(\backslash\)n'};}
 \DoxyCodeLine{00290\ }
 \DoxyCodeLine{00291\ \}}
 
